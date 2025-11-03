@@ -8,6 +8,35 @@ The application enables administrators to import content from Google Drive and m
 
 ## Recent Changes
 
+### November 3, 2025 - Local File Storage System
+
+**Local Media Folder Integration:**
+- Added built-in local file storage as the default content source
+- System automatically scans `server/media/images` and `server/media/videos` folders
+- Files are automatically detected and added to the database on server startup
+- Supports images (JPG, PNG, GIF, WEBP, BMP) and videos (MP4, MOV, AVI, MKV, WEBM)
+
+**Admin Interface Enhancements:**
+- Added "Local Media Folder" card in the admin imports section
+- Manual sync button to refresh local files without restarting server
+- Clear instructions for adding files to local folders
+- Real-time feedback showing added, removed, and unchanged files
+
+**Technical Implementation:**
+- Created `server/fileScanner.ts` - Scans local media folders and generates file metadata
+- Created `server/localFileSync.ts` - Synchronizes local files with database
+- Updated storage layer with `getContentByLocalPath()` and `deleteContentByLocalPath()` methods
+- Added POST `/api/content/sync` endpoint for manual synchronization
+- Automatic sync on server startup with concurrency protection
+- Preview endpoint serves watermarked local images same as Google Drive content
+- Download endpoint streams local files directly after purchase
+
+**Content Management Flexibility:**
+- Local files, Google Drive imports, and file uploads all work together seamlessly
+- Database tracks source (localFilePath, googleDriveId, or uploaded file)
+- Admins can use any combination of content sources
+- Local storage is now the preferred default option for simplicity
+
 ### October 30, 2025 - Netlify Deployment Fixes
 
 **Secrets Scanner Configuration:**

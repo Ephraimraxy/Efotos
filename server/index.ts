@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { syncWithLock } from "./localFileSync";
 
 const app = express();
 app.use(express.json());
@@ -39,6 +40,21 @@ app.use((req, res, next) => {
 
 (async () => {
   const server = await registerRoutes(app);
+
+  // Automatically scan local media folder on startup
+  log("Scanning local media folder for content...");
+  syncWithLock()
+    .then((result) => {
+      if (result) {
+        log(`Local media sync: +${result.added}, -${result.removed}, =${result.unchanged} files`);
+        if (result.errors.length > 0) {
+          log(`Sync errors: ${result.errors.length}`);
+        }
+      }
+    })
+    .catch((error) => {
+      log(`Local media sync failed: ${error}`);
+    });
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;

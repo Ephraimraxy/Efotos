@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
-import { LinkIcon, Loader2, Upload, Settings as SettingsIcon } from "lucide-react";
+import { LinkIcon, Loader2, Upload, Settings as SettingsIcon, RefreshCw, FolderOpen } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -151,6 +151,30 @@ export default function ImportsSection() {
     },
   });
 
+  const syncLocalFilesMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("POST", "/api/content/sync", {});
+      return await res.json();
+    },
+    onSuccess: (response) => {
+      queryClient.invalidateQueries({ queryKey: ["/api/content"] });
+      const { result } = response;
+      if (result) {
+        toast({
+          title: "Local files synced",
+          description: `Added: ${result.added}, Removed: ${result.removed}, Unchanged: ${result.unchanged}`,
+        });
+      }
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Sync Failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
   const handleDriveImport = () => {
     if (!driveUrl || (!driveTitle && !driveUrl.includes('/folders/'))) {
       toast({
@@ -284,7 +308,7 @@ export default function ImportsSection() {
         <div>
           <h2 className="text-3xl font-bold">Import Content</h2>
           <p className="text-muted-foreground">
-            Import images and videos from Google Drive
+            Add media from local storage, file uploads, or Google Drive
           </p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
@@ -476,6 +500,57 @@ export default function ImportsSection() {
               </>
             )}
           </Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Local Media Folder</CardTitle>
+          <CardDescription>
+            Store files directly on the server in <code className="bg-muted px-1 py-0.5 rounded text-xs">server/media/images</code> and <code className="bg-muted px-1 py-0.5 rounded text-xs">server/media/videos</code>. The system automatically scans these folders on startup and displays them in the gallery.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="rounded-lg bg-muted p-4 space-y-3">
+            <div className="flex items-start gap-3">
+              <FolderOpen className="w-5 h-5 text-muted-foreground mt-0.5 shrink-0" />
+              <div className="space-y-2 min-w-0">
+                <p className="font-medium">How to add files:</p>
+                <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
+                  <li>Place your image files in <code className="bg-background px-1 rounded text-xs">server/media/images/</code></li>
+                  <li>Place your video files in <code className="bg-background px-1 rounded text-xs">server/media/videos/</code></li>
+                  <li>Click "Sync Local Files" to scan and add them to the database</li>
+                  <li>Files will appear in the gallery immediately</li>
+                </ol>
+              </div>
+            </div>
+            <div className="text-xs text-muted-foreground mt-2">
+              <strong>Supported formats:</strong> Images (JPG, PNG, GIF, WEBP, BMP) • Videos (MP4, MOV, AVI, MKV, WEBM)
+            </div>
+          </div>
+          
+          <Button
+            onClick={() => syncLocalFilesMutation.mutate()}
+            disabled={syncLocalFilesMutation.isPending}
+            className="w-full"
+            data-testid="button-sync-local-files"
+          >
+            {syncLocalFilesMutation.isPending ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Syncing...
+              </>
+            ) : (
+              <>
+                <RefreshCw className="w-4 h-4 mr-2" />
+                Sync Local Files
+              </>
+            )}
+          </Button>
+          
+          <p className="text-xs text-muted-foreground">
+            The system automatically syncs on startup. Use this button to manually sync after adding new files to the folders.
+          </p>
         </CardContent>
       </Card>
 

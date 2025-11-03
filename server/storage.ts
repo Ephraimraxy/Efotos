@@ -6,8 +6,10 @@ export interface IStorage {
   // Content management
   getAllContent(): Promise<Content[]>;
   getContentById(id: string): Promise<Content | undefined>;
+  getContentByLocalPath(localFilePath: string): Promise<Content | undefined>;
   createContent(content: InsertContent): Promise<Content>;
   deleteContent(id: string): Promise<void>;
+  deleteContentByLocalPath(localFilePath: string): Promise<void>;
 
   // Purchase management
   createPurchase(purchase: InsertPurchase): Promise<Purchase>;
@@ -40,6 +42,11 @@ export class DatabaseStorage implements IStorage {
     return result || undefined;
   }
 
+  async getContentByLocalPath(localFilePath: string): Promise<Content | undefined> {
+    const [result] = await db.select().from(content).where(eq(content.localFilePath, localFilePath));
+    return result || undefined;
+  }
+
   async createContent(insertContent: InsertContent): Promise<Content> {
     const [result] = await db.insert(content).values(insertContent).returning();
     return result;
@@ -47,6 +54,10 @@ export class DatabaseStorage implements IStorage {
 
   async deleteContent(id: string): Promise<void> {
     await db.delete(content).where(eq(content.id, id));
+  }
+
+  async deleteContentByLocalPath(localFilePath: string): Promise<void> {
+    await db.delete(content).where(eq(content.localFilePath, localFilePath));
   }
 
   async createPurchase(insertPurchase: InsertPurchase): Promise<Purchase> {

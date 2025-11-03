@@ -9,6 +9,7 @@ import multer from "multer";
 import { Readable } from "stream";
 import { promises as fs, createReadStream } from "fs";
 import path from "path";
+import { syncWithLock } from "./localFileSync";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -74,6 +75,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(allContent);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch content" });
+    }
+  });
+
+  // Sync local media files with database
+  app.post("/api/content/sync", async (_req, res) => {
+    try {
+      const result = await syncWithLock();
+      
+      if (result === null) {
+        return res.status(409).json({ error: "Sync already in progress" });
+      }
+      
+      res.json({
+        message: "Local media sync completed",
+        result,
+      });
+    } catch (error) {
+      console.error("Sync error:", error);
+      res.status(500).json({ error: "Failed to sync local media files" });
     }
   });
 
@@ -996,7 +1016,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Download content from Google Drive (requires valid token)
+  // Download content from Google Drive or local files (requires valid token)
   app.get("/api/download/:token", async (req, res) => {
     try {
       const downloadToken = await storage.getDownloadToken(req.params.token);
@@ -1018,27 +1038,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Content not found" });
       }
 
-      const drive = await getUncachableGoogleDriveClient();
-
-      // Get file metadata for filename
-      const fileMetadata = await drive.files.get({
-        fileId: content.googleDriveId,
-        fields: "name"
-      });
-
-      // Download from Google Drive
-      const response = await drive.files.get(
-        { fileId: content.googleDriveId, alt: 'media' },
-        { responseType: 'arraybuffer' }
-      );
-
-      // Mark token as used
+      // Mark token as used before download
       await storage.markTokenAsUsed(req.params.token);
 
-      // Send file
-      res.set('Content-Type', content.mimeType);
-      res.set('Content-Disposition', `attachment; filename="${fileMetadata.data.name || content.title}"`);
-      res.send(Buffer.from(response.data as ArrayBuffer));
+      // Handle local file download
+      if (content.localFilePath) {
+        const filePath = content.localFilePath;
+        const fileName = path.basename(filePath);
+        
+        res.set('Content-Type', content.mimeType);
+        res.set('Content-Disposition', `attachment; filename="${content.title}${path.extname(fileName)}"`);
+        
+        const stream = createReadStream(filePath);
+        stream.pipe(res);
+        return;
+      }
+
+      // Handle Google Drive download
+      if (content.googleDriveId) {
+        const drive = await getUncachableGoogleDriveClient();
+
+        // Get file metadata for filename
+        const fileMetadata = await drive.files.get({
+          fileId: content.googleDriveId,
+          fields: "name"
+        });
+
+        // Download from Google Drive
+        const response = await drive.files.get(
+          { fileId: content.googleDriveId, alt: 'media' },
+          { responseType: 'arraybuffer' }
+        );
+
+        // Send file
+        res.set('Content-Type', content.mimeType);
+        res.set('Content-Disposition', `attachment; filename="${fileMetadata.data.name || content.title}"`);
+        res.send(Buffer.from(response.data as ArrayBuffer));
+        return;
+      }
+
+      res.status(404).json({ error: "No file source available" });
     } catch (error) {
       console.error("Download error:", error);
       res.status(500).json({ error: "Download failed" });

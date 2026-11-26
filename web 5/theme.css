@@ -139,3 +139,7 @@ body{font-size:15px;color:var(--ink)}
 @keyframes ringpulse{0%{box-shadow:0 12px 26px rgba(29,79,224,.3),0 0 0 0 rgba(29,79,224,.55)}100%{box-shadow:0 12px 26px rgba(29,79,224,.3),0 0 0 16px rgba(29,79,224,0)}}
 .btn.w:hover,.btn.line:hover{animation-name:ringpulsew}
 @keyframes ringpulsew{0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}100%{box-shadow:0 0 0 16px rgba(255,255,255,0)}}
+
+.feat:hover,.plan:hover,.spk:hover,.post:hover,.sess:hover,.tcard:hover{transform:none}.plan.hot:hover{transform:scale(1.04)}
+.feat:hover .i{transform:none}.hero .x{animation:none}.gal .ph:hover{transform:none}.sponsors span:hover{transform:none}
+body{font-size:16px}.hero h1{font-size:clamp(40px,7vw,78px);letter-spacing:-.02em}.h2{font-size:clamp(28px,4vw,44px)}

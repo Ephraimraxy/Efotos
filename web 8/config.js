@@ -24,11 +24,8 @@ window.SITE = {
 
 /* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
 window.FX = {
-  "reveal": "slide",
-  "parallax": ".mis .wrap,.tm .pair .b",
-  "heroFade": ".hero .wrap > div",
-  "sig": "frame",
-  "frame": "a,button,.btn,.card,.mc,.proj,.mem"
+  "reveal": "fade",
+  "page": "instant"
 };
 
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;

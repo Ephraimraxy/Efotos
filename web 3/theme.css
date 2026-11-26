@@ -161,3 +161,7 @@ body{font-size:15px;background:#fff}
 @media(max-width:600px){.arches,.tgrid,.exg,.ft .cols,.sgrid{grid-template-columns:minmax(0,1fr)}.tslide{flex-basis:100%}.stabs{overflow-x:auto;gap:18px}.stabs button{white-space:nowrap}.banner{flex-direction:column;text-align:center}.utils .btn{padding:7px 14px}.arch{height:360px}}
 
 .btn:hover{box-shadow:0 16px 32px rgba(23,96,220,.45)}.btn.or:hover{box-shadow:0 16px 32px rgba(245,138,31,.5)}
+
+.acol .balloon{animation:none}
+.tour:hover,.arch:hover,.exp:hover,.wy:hover,.post:hover,.mem:hover,.arch:hover{transform:none}
+body{font-size:15px}.hero h1{font-size:clamp(34px,5.2vw,54px);letter-spacing:-.03em}.sh{font-size:clamp(24px,3.2vw,34px);font-weight:800;letter-spacing:-.025em}

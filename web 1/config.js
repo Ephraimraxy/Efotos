@@ -80,8 +80,5 @@ window.VIDEOS = {
 /* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
 window.FX = {
   "reveal": "fade",
-  "split": ".hero h1,.section h2",
-  "parallax": ".photo,.thumb",
-  "heroFade": ".hero-inner",
-  "sig": "label"
+  "page": "instant"
 };

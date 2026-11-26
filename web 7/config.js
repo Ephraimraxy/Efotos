@@ -24,6 +24,7 @@ window.SITE = {
 /* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
 window.FX = {
   "reveal": "up",
+  "page": "fade",
   "split": ".hero h1,.h2,.cta h2",
   "parallax": ".col .main",
   "heroFade": ".hero .wrap > div:first-child",

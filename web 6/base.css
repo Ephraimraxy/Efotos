@@ -1,8 +1,8 @@
 /* Shared base for every site. Each site's theme.css sets the variables + look. */
 :root{--c1:#2c6e4a;--c2:#da8b46;--ink:#1f2630;--muted:#6f7782;--bg:#fff;--alt:#f5f6f8;--hf:'Poppins',system-ui,sans-serif;--bf:'Inter',system-ui,sans-serif;--r:16px;--w:1140px;--hd:72px;--nav-bg:#111;--shadow:0 14px 34px rgba(0,0,0,.09)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font:400 16px/1.65 var(--bf);color:var(--ink);background:var(--bg);overflow-x:hidden;animation:pagein .5s ease backwards;min-height:100vh;display:flex;flex-direction:column}
+html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
+body{font:400 16px/1.65 var(--bf);color:var(--ink);background:var(--bg);overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 body>main{flex:1 0 auto}
 img,svg,video,iframe{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -24,7 +24,6 @@ h1,h2,h3,h4{font-family:var(--hf);line-height:1.2}
 /* photo slot: image layer (zoomable) over a placeholder gradient */
 .ph{position:relative;overflow:hidden;isolation:isolate;background:var(--ph,linear-gradient(135deg,#8a8f98,#4b5058))}
 .ph::after{content:"";position:absolute;inset:0;z-index:-2;background:var(--img,none) var(--pos,center)/cover no-repeat;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.zoom:hover.ph::after,.zoom:hover .ph::after,.ph.zoom:hover::after{transform:scale(1.08)}
 .kb::after{animation:kb 24s ease-in-out infinite alternate}
 
 /* buttons */
@@ -106,7 +105,6 @@ h1,h2,h3,h4{font-family:var(--hf);line-height:1.2}
 .reveal{opacity:0}
 .reveal.in{opacity:1;animation:rise .8s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:var(--d,0s)}
 .progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--c2);transform-origin:0 50%;transform:scaleX(0);z-index:400;pointer-events:none}
-body.leaving{opacity:0;transition:opacity .2s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes pagein{from{opacity:0}}
 @keyframes panelin{from{opacity:0;transform:translateY(14px)}}

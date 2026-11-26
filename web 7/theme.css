@@ -91,3 +91,6 @@ body{font-size:15.5px;color:var(--ink)}
 .btn:hover{background-color:var(--c1);background-image:linear-gradient(#17524e,#17524e);background-size:100% 100%}
 .btn.y{background-image:linear-gradient(#e0a42a,#e0a42a)}.btn.y:hover{background-color:var(--c2);background-image:linear-gradient(#e0a42a,#e0a42a)}
 .btn.w{background-image:linear-gradient(#dcebe9,#dcebe9)}.btn.w:hover{background-color:#fff;background-image:linear-gradient(#dcebe9,#dcebe9);color:var(--c1)}
+
+.circle{animation:none}.svb::after{animation:none}
+body{font-size:17px;line-height:1.7}.hero h1{font-size:clamp(36px,5.2vw,58px)}.h2{font-size:clamp(30px,4.2vw,46px)}

@@ -22,6 +22,7 @@ window.SITE = {
 /* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
 window.FX = {
   "reveal": "zoom",
+  "page": "zoom",
   "tilt": ".feat,.spk,.plan,.post,.tc,.gstrip .ph",
   "tiltMax": 9,
   "split": ".hero h1,h2.t",

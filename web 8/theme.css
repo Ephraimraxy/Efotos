@@ -1,5 +1,5 @@
 
-:root{--c1:#0b4a9e;--c2:#f07a00;--ink:#2b2f38;--muted:#7d8290;--alt:#f6f7f9;--hf:'Prompt',sans-serif;--bf:'Poppins',sans-serif;--nav-bg:#0b4a9e;--w:1000px;--hd:62px}
+:root{--c1:#0b4a9e;--c2:#f07a00;--ink:#2b2f38;--muted:#7d8290;--alt:#f6f7f9;--hf:'Prompt',sans-serif;--bf:'Mulish',sans-serif;--nav-bg:#0b4a9e;--w:1000px;--hd:62px}
 body{font-size:14px;color:var(--ink)}
 .btn{background:var(--c2);border-radius:2px;box-shadow:none;padding:13px 22px;font:500 13px var(--hf);gap:10px}
 .btn::after{display:none}.btn:hover{background:#d96d00;transform:none}.btn.b{background:var(--c1)}.btn.b:hover{background:#093c82}
@@ -95,3 +95,12 @@ body{font-size:14px;color:var(--ink)}
 :root{--cur:#f07a00}
 .card:hover,.mc:hover,.mem:hover,.proj:hover{transform:none;box-shadow:none}
 .btn::before{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:#fff;transition:width .4s cubic-bezier(.2,.8,.2,1)}.btn:hover::before{width:100%}
+
+/* plain: simple colour hovers only */
+.vid .pl{animation:none}
+.card::after,.mc::after,.btn::before{display:none}
+.card:hover,.mc:hover,.mem:hover,.proj:hover{transform:none;box-shadow:none}
+.card:hover{border-color:var(--c1)}.mem:hover h3{color:var(--c1)}
+.proj{cursor:pointer}
+.btn:hover{background:#d96d00}.btn.b:hover{background:#093c82}
+body{font-size:14px}.hero h1{font-size:clamp(30px,4.8vw,52px)}.h2{font-size:clamp(22px,3vw,30px)}

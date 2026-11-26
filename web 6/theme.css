@@ -1,5 +1,5 @@
 
-:root{--c1:#ff7a45;--c2:#ff7a45;--ink:#10173a;--muted:#6d7390;--bg:#fff;--alt:#f3f4fa;--navy:#0f1535;--hf:'Plus Jakarta Sans',sans-serif;--bf:'Plus Jakarta Sans',sans-serif;--nav-bg:#0f1535;--w:1180px;--hd:76px}
+:root{--c1:#ff7a45;--c2:#ff7a45;--ink:#10173a;--muted:#6d7390;--bg:#fff;--alt:#f3f4fa;--navy:#0f1535;--hf:'Sora',sans-serif;--bf:'Nunito Sans',sans-serif;--nav-bg:#0f1535;--w:1180px;--hd:76px}
 body{background:#fff;color:var(--ink);font-size:15px}
 .or{color:var(--c1)}
 .btn{background:var(--c1);box-shadow:0 10px 24px rgba(255,122,69,.3);padding:14px 26px;font-weight:700;border-radius:12px}
@@ -125,3 +125,12 @@ body{background:#fff;color:var(--ink);font-size:15px}
 .btn{--liq:#0f1535}.btn.line{--liq:#ff7a45}.btn.w{--liq:#ffe8de}
 .btn.line:hover,.btn.dk:hover{background:transparent;color:#fff}.btn.w:hover{color:var(--c1)}
 .btn:hover{transform:none}
+
+/* plain: simple colour hovers only */
+.hero::before,.hero::after{display:none}
+.hero .pic .chip,.hero .pic .deco,.big .pv i{animation:none}
+.wc:hover,.plan:hover,.post:hover,.sv:hover,.sg .st:hover,.fiv div:hover{transform:none;box-shadow:none}
+.sg .st:hover b{transform:none}
+.btn:hover{transform:none;box-shadow:0 10px 24px rgba(255,122,69,.3)}
+.sv{transition:none}
+body{font-size:16.5px}.hero h1{font-size:clamp(32px,4.4vw,50px);letter-spacing:-.025em;font-weight:600}.h2{font-size:clamp(26px,3.3vw,38px);letter-spacing:-.02em;font-weight:600}

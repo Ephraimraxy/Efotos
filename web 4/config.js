@@ -24,6 +24,7 @@ window.SITE = {
 /* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
 window.FX = {
   "reveal": "clip",
+  "page": "fade",
   "cursor": "ring",
   "magnet": ".btn,.pill,.slist button",
   "scramble": ".nav li:not(.lg) a,.ft h4,.thead .pill",

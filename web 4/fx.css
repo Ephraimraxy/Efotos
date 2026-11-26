@@ -72,3 +72,20 @@
 .nav .sub .has-sub:hover>.sub,.nav .sub .has-sub:focus-within>.sub{opacity:1;visibility:visible;transform:none}
 .nav .sub .has-sub>a::after{transform:rotate(-45deg)}
 @media(max-width:960px){.nav .sub .sub{position:static;opacity:1;visibility:visible}}
+
+/* ---- in-place page change animations (View Transitions) ---- */
+.hd{view-transition-name:site-header}
+::view-transition-group(site-header){animation-duration:0s}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.32s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+[data-vt=fade]::view-transition-old(root){animation-name:vtout}
+[data-vt=fade]::view-transition-new(root){animation-name:vtin}
+[data-vt=slide]::view-transition-old(root){animation-name:vtoutl}
+[data-vt=slide]::view-transition-new(root){animation-name:vtinr}
+[data-vt=zoom]::view-transition-old(root){animation-name:vtoutz}
+[data-vt=zoom]::view-transition-new(root){animation-name:vtinz}
+[data-vt=blur]::view-transition-old(root){animation-name:vtoutb}
+[data-vt=blur]::view-transition-new(root){animation-name:vtinb}
+@keyframes vtout{to{opacity:0}}@keyframes vtin{from{opacity:0}}
+@keyframes vtoutl{to{opacity:0;transform:translateX(-46px)}}@keyframes vtinr{from{opacity:0;transform:translateX(46px)}}
+@keyframes vtoutz{to{opacity:0;transform:scale(1.04)}}@keyframes vtinz{from{opacity:0;transform:scale(.96)}}
+@keyframes vtoutb{to{opacity:0;filter:blur(10px)}}@keyframes vtinb{from{opacity:0;filter:blur(10px)}}

@@ -450,3 +450,16 @@ body>.footer{flex:none}
 .hero-inner h1,.hero-inner p,.hero-inner .crumbs{opacity:1}
 
 :root{--cur:#2c6e4a}
+
+/* plain site: simple colour/shadow hovers only – no lifting, zooming, floating or custom cursor */
+.hero.img-slot::after{animation:none}
+.video-card:hover,.card-s:hover,.sc:hover,.step:hover,.member:hover,.plan:hover,.exc-card:hover{transform:none;box-shadow:none}
+.video-card:hover::after,.exc-video:hover::after,.photo:hover::after,.thumb:hover::after,.mphoto:hover::after{transform:none}
+.video-card:hover .play,.exc-video:hover .play{transform:none;box-shadow:none}
+.card-s:hover .ico,.info-card:hover .ico{transform:none}.card-s:hover .more{transform:none}.info-card:hover{transform:none}
+.btn-orange:hover{transform:none}
+.orb,.scroll-hint{display:none}
+.marquee .track{animation:none;justify-content:center;width:100%;flex-wrap:wrap}
+.marquee span:nth-child(n+7){display:none}
+a.card-s:hover,a.sc:hover,.card-s:hover{transform:none!important;box-shadow:none!important}
+.marquee .track{flex-wrap:nowrap;width:auto;margin:0 auto}.marquee span{white-space:nowrap}.marquee span:nth-child(n+5){display:none}.marquee{text-align:center}

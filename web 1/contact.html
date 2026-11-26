@@ -20,22 +20,37 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container contact-grid">
-    <div class="contact-form reveal">
-      <p class="eyebrow">Get In Touch</p>
-      <h2>Send Us A Message</h2>
-      <div data-form-slot="contact"></div>
+<section class="section tight">
+  <div class="container" data-tabs>
+    <div class="tabs-nav" role="tablist"><button role="tab" data-tab="message" aria-selected="false">Send A Message</button><button role="tab" data-tab="office" aria-selected="false">Visit Us</button></div>
+
+    <div data-panel id="message">
+      <div class="contact-grid">
+        <div class="contact-form">
+          <p class="eyebrow">Get In Touch</p>
+          <h2>Send Us A Message</h2>
+          <div data-form-slot="contact"></div>
+        </div>
+        <aside class="info">
+          <div class="info-card reveal"><span class="ico" data-icon="phone"></span><div><h3>Phone</h3><p><a data-site-href="phone:tel:" data-site="phone"></a></p></div></div>
+          <div class="info-card reveal"><span class="ico" data-icon="mail"></span><div><h3>Email</h3><p><a data-site-href="email:mailto:" data-site="email"></a></p></div></div>
+          <div class="info-card reveal"><span class="ico" data-icon="clock"></span><div><h3>Days Open</h3><p data-site="hours"></p></div></div>
+        </aside>
+      </div>
     </div>
-    <aside class="info" id="office">
-      <div class="info-card reveal"><span class="ico" data-icon="pin"></span><div><h3>Head Office</h3><p data-site="address"></p></div></div>
-      <div class="info-card reveal"><span class="ico" data-icon="phone"></span><div><h3>Phone</h3><p><a data-site-href="phone:tel:" data-site="phone"></a></p></div></div>
-      <div class="info-card reveal"><span class="ico" data-icon="mail"></span><div><h3>Email</h3><p><a data-site-href="email:mailto:" data-site="email"></a></p></div></div>
-      <div class="info-card reveal"><span class="ico" data-icon="clock"></span><div><h3>Days Open</h3><p data-site="hours"></p></div></div>
-    </aside>
+
+    <div data-panel id="office">
+      <div class="contact-grid">
+        <iframe class="map" title="Map of our head office" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=111.49%2C-7.66%2C111.56%2C-7.60&amp;layer=mapnik&amp;marker=-7.6298%2C111.5239"></iframe>
+        <aside class="info">
+          <div class="info-card reveal"><span class="ico" data-icon="pin"></span><div><h3>Head Office</h3><p data-site="address"></p></div></div>
+          <div class="info-card reveal"><span class="ico" data-icon="clock"></span><div><h3>Days Open</h3><p data-site="hours"></p></div></div>
+          <a href="#message" class="btn btn-orange">Send A Message <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </div>
   </div>
-  <div class="container mt"><iframe class="map" title="Map of our head office" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-    src="https://www.openstreetmap.org/export/embed.html?bbox=111.49%2C-7.66%2C111.56%2C-7.60&amp;layer=mapnik&amp;marker=-7.6298%2C111.5239"></iframe></div>
 </section>
 </main>
 <div id="site-footer"></div>

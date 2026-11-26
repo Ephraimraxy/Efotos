@@ -15,21 +15,28 @@
 <main>
 
 <section class="hero hero-home img-slot" data-media="hero-home">
+  <span class="orb o1"></span><span class="orb o2"></span>
   <div class="container hero-inner">
     <p class="crumbs"><span>Recruitment &amp; Talent Management</span></p>
-    <h1>Find The Right Talent<br>For Your Business</h1>
+    <h1>Find The Right <span class="accent">Talent</span><br>For Your Business</h1>
     <p class="hero-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <div class="hero-cta">
       <a href="#quote" class="btn btn-orange" data-open-quote>Get A Quote <span aria-hidden="true">→</span></a>
       <a href="services.html" class="btn btn-ghost">Our Services</a>
     </div>
   </div>
+  <a href="#home-services" class="scroll-hint" aria-label="Scroll down"><i></i></a>
 </section>
 
-<section class="section">
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Recruitment</span><span>Executive Search</span><span>Talent Development</span><span>HR Consulting</span><span>Workforce Planning</span><span>Performance Management</span>
+  <span>Recruitment</span><span>Executive Search</span><span>Talent Development</span><span>HR Consulting</span><span>Workforce Planning</span><span>Performance Management</span>
+</div></div>
+
+<section class="section" id="home-services">
   <div class="container">
-    <p class="eyebrow center">What We Do</p>
-    <h2 class="center">Complete Talent Solutions<br>For Growing Companies</h2>
+    <p class="eyebrow center reveal">What We Do</p>
+    <h2 class="center reveal">Complete Talent Solutions<br>For Growing Companies</h2>
     <div class="grid g3 mt">
       <a href="services.html#acquisition" class="card-s reveal"><span class="ico" data-icon="users"></span><h3>Acquisition and Recruitment</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><span class="more">Learn more →</span></a>
       <a href="services.html#executive" class="card-s reveal"><span class="ico" data-icon="search"></span><h3>Executive Search</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><span class="more">Learn more →</span></a>
@@ -38,51 +45,25 @@
   </div>
 </section>
 
-<section class="stats">
-  <div class="container grid g4">
-    <div><b data-count="15" data-suffix="+">15+</b><span>Years Experience</span></div>
-    <div><b data-count="2400" data-suffix="+">2400+</b><span>Placements Made</span></div>
-    <div><b data-count="350" data-suffix="+">350+</b><span>Partner Companies</span></div>
-    <div><b data-count="98" data-suffix="%">98%</b><span>Client Satisfaction</span></div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container split">
-    <div class="photo img-slot reveal" data-media="about-1"></div>
-    <div class="reveal">
-      <p class="eyebrow">Recruitment Excellence</p>
-      <h2>Nurture And Develop Your Employees To Drive Organizational Success</h2>
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <ul class="ticks"><li>Have 15 Years Experience</li><li>Good Talent Management</li><li>Executive Search Included</li></ul>
-      <a href="about.html" class="btn btn-orange">About Us <span aria-hidden="true">→</span></a>
-    </div>
-  </div>
-</section>
+<section class="stats"><div class="container"><div class="stat-row grid g4">
+  <div class="reveal"><b data-count="15" data-suffix="+">15+</b><span>Years Experience</span></div>
+  <div class="reveal"><b data-count="2400" data-suffix="+">2400+</b><span>Placements Made</span></div>
+  <div class="reveal"><b data-count="350" data-suffix="+">350+</b><span>Partner Companies</span></div>
+  <div class="reveal"><b data-count="98" data-suffix="%">98%</b><span>Client Satisfaction</span></div>
+</div></div></section>
 
 <section class="section alt">
-  <div class="container">
-    <p class="eyebrow center">Event Highlights</p>
-    <h2 class="center">Energy And Excitement Of Our<br>Past Events And Engagements</h2>
-    <div class="grid g2 mt">
-      <button class="video-card img-slot" data-media="event-1" data-video="video-recruitment"><span class="play"></span><span class="cap"><b>Recruitment Events</b><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></span></button>
-      <button class="video-card img-slot" data-media="event-4" data-video="video-leadership"><span class="play"></span><span class="cap"><b>Leadership Events</b><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></span></button>
-    </div>
-    <p class="center mt"><a href="gallery.html" class="btn btn-orange">View Full Gallery <span aria-hidden="true">→</span></a></p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <p class="eyebrow center">Testimonials</p>
-    <h2 class="center">What Our Clients Say</h2>
-    <div class="grid g3 mt">
-      <figure class="quote-card reveal"><blockquote>“Talento found us a head of operations in three weeks. The shortlist was spot on.”</blockquote>
+  <div class="container narrow-2">
+    <p class="eyebrow center reveal">Testimonials</p>
+    <h2 class="center reveal">What Our Clients Say</h2>
+    <div class="carousel mt" data-carousel>
+      <figure class="slide"><blockquote>“Talento found us a head of operations in three weeks. The shortlist was spot on.”</blockquote>
         <figcaption><span class="avatar img-slot" data-media="person-3"></span><span><b>Amara Okafor</b><small>COO, Brightwave</small></span></figcaption></figure>
-      <figure class="quote-card reveal"><blockquote>“Their leadership programme changed how our managers coach their teams.”</blockquote>
+      <figure class="slide"><blockquote>“Their leadership programme changed how our managers coach their teams.”</blockquote>
         <figcaption><span class="avatar img-slot" data-media="person-2"></span><span><b>Daniel Brooks</b><small>HR Director, Northfield</small></span></figcaption></figure>
-      <figure class="quote-card reveal"><blockquote>“Professional, fast and genuinely invested in finding the right cultural fit.”</blockquote>
+      <figure class="slide"><blockquote>“Professional, fast and genuinely invested in finding the right cultural fit.”</blockquote>
         <figcaption><span class="avatar img-slot" data-media="person-1"></span><span><b>Sarah Mitchell</b><small>Founder, Lumen Labs</small></span></figcaption></figure>
+      <div class="dots"></div>
     </div>
   </div>
 </section>

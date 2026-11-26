@@ -1,6 +1,7 @@
 # Web 1 – Talento (multi-page recruitment website)
 
 Pages: `index.html` (Home) · `about.html` · `services.html` · `pricing.html` · `contact.html` · `gallery.html` (the "Our Gallery" mockup) · `admin.html` (form inbox)
+About, Services and Contact use tabs (deep links like `services.html#executive` open the right tab) so pages stay short.
 
 ## Run it
 ```bash

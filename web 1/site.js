@@ -189,6 +189,61 @@
     } finally { btn.disabled = false; }
   }));
 
+  /* ---------- tabs (with deep links such as services.html#executive) ---------- */
+  const tabsOf = r => $$(':scope > [role=tablist] > button', r);
+  const panelsOf = r => $$(':scope > [data-panel]', r);
+  const activate = (root, id) => {
+    tabsOf(root).forEach(b => { const on = b.dataset.tab === id; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+    panelsOf(root).forEach(p => p.classList.toggle('on', p.id === id));
+  };
+  $$('[data-tabs]').forEach(root => {
+    const first = tabsOf(root)[0]; if (first) activate(root, first.dataset.tab);
+    root.addEventListener('click', e => { const b = e.target.closest('button[data-tab]'); if (b && b.parentElement.parentElement === root) activate(root, b.dataset.tab); });
+    root.addEventListener('keydown', e => {
+      const b = e.target.closest('button[data-tab]'); if (!b || b.parentElement.parentElement !== root) return;
+      const list = tabsOf(root), i = list.indexOf(b), n = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (n) { e.preventDefault(); const t = list[(i + n + list.length) % list.length]; t.focus(); activate(root, t.dataset.tab); }
+    });
+  });
+  const openHash = () => {
+    const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!el) return;
+    const chain = []; let p = el.closest('[data-panel]');
+    while (p) { chain.unshift(p); p = p.parentElement.closest('[data-panel]'); }
+    chain.forEach(pp => activate(pp.parentElement, pp.id));
+    if (chain.length) { const top = chain[0].parentElement.getBoundingClientRect().top + scrollY - 90; scrollTo({ top: Math.max(top, 0), behavior: 'smooth' }); }
+  };
+  addEventListener('hashchange', openHash); openHash();
+
+  /* ---------- testimonial carousel ---------- */
+  $$('[data-carousel]').forEach(c => {
+    const slides = $$('.slide', c), dots = $('.dots', c); let i = 0, timer;
+    const show = n => { i = (n + slides.length) % slides.length; slides.forEach((s, k) => s.classList.toggle('on', k === i)); $$('button', dots).forEach((d, k) => d.classList.toggle('on', k === i)); };
+    const start = () => { clearInterval(timer); if (!matchMedia('(prefers-reduced-motion:reduce)').matches) timer = setInterval(() => show(i + 1), 5500); };
+    slides.forEach((_, k) => { const b = document.createElement('button'); b.setAttribute('aria-label', 'Show testimonial ' + (k + 1)); b.onclick = () => { show(k); start(); }; dots.append(b); });
+    c.addEventListener('mouseenter', () => clearInterval(timer)); c.addEventListener('mouseleave', start);
+    show(0); start();
+  });
+
+  /* ---------- scroll progress bar + page transitions ---------- */
+  const bar = document.createElement('div'); bar.className = 'progress'; document.body.append(bar);
+  const prog = () => { const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`; };
+  addEventListener('scroll', prog, { passive: true }); prog();
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank' || a.hasAttribute('data-open-quote')) return;
+    const u = new URL(a.href, location.href);
+    if (u.origin !== location.origin || u.pathname === location.pathname || /^(mailto|tel):/.test(a.getAttribute('href'))) return;
+    e.preventDefault(); document.body.classList.add('leaving'); setTimeout(() => { location.href = u.href; }, 220);
+  });
+  addEventListener('pageshow', e => { if (e.persisted) document.body.classList.remove('leaving'); });
+
+  /* ---------- staggered reveal delays ---------- */
+  $$('.reveal').forEach(el => {
+    const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    el.style.setProperty('--d', Math.min(sibs.indexOf(el), 5) * 90 + 'ms');
+  });
+
   /* ---------- counters, reveal, pricing toggle ---------- */
   const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(en => {
     if (!en.isIntersecting) return; io.unobserve(en.target);

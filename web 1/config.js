@@ -47,7 +47,7 @@ window.MEDIA = {
   /* ---------- content images ---------- */
   'team-1':  { src: u('1600880292203-757bb62b4baf', 700), alt: 'Interview in progress', fallback: 'images/team-1.jpg' },
   'team-2':  { src: u('1542744173-8e7e53415bb0', 700), alt: 'Meeting room discussion' },
-  'cta':     { src: u('1560250097-0b93528c311a'), alt: 'Professional working on a laptop' },
+  'cta':     { src: u('1454165804606-c3d57bc86b40'), alt: 'Professional working on a laptop' },
   'about-1': { src: u('1519389950473-47ba0277781c', 900), alt: 'Our team at work' },
   'about-2': { src: u('1556761175-b413da4baf72', 900), alt: 'Planning session' },
 
@@ -59,7 +59,11 @@ window.MEDIA = {
 
   /* ---------- service photos ---------- */
   'service-1': { src: u('1600880292089-90a7e086ee0c', 800), alt: 'Acquisition and recruitment' },
-  'service-2': { src: u('1573497019940-1c28c88b4f3e', 800), alt: 'Executive search' }
+  'service-2': { src: u('1573497019940-1c28c88b4f3e', 800), alt: 'Executive search' },
+  'service-3': { src: u('1454165804606-c3d57bc86b40', 800), alt: 'Performance management' },
+  'service-4': { src: u('1522202176988-66273c2fd55f', 800), alt: 'Learning and development' },
+  'service-5': { src: u('1497366216548-37526070297c', 800), alt: 'HR consulting' },
+  'service-6': { src: u('1519389950473-47ba0277781c', 800), alt: 'Workforce planning' }
 };
 
 /* Videos shown in the pop-up player. Paste a YouTube/Vimeo link or an .mp4 URL.

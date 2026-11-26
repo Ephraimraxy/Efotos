@@ -103,7 +103,7 @@
   $$('[data-form-slot]').forEach(el => el.innerHTML = formHTML(el.dataset.formSlot));
   $$('[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon));
   $$('[data-site]').forEach(el => { const v = el.dataset.site; el.textContent = Array.isArray(S[v]) ? S[v].join(', ') : S[v]; });
-  $$('[data-site-href]').forEach(el => { const [k, p] = el.dataset.siteHref.split(':'); el.href = p + (k === 'phone' ? tel : S[k]); });
+  $$('[data-site-href]').forEach(el => { const d = el.dataset.siteHref, i = d.indexOf(':'), k = d.slice(0, i), p = d.slice(i + 1); el.href = p + (k === 'phone' ? tel : S[k]); });
 
   /* ---------- media (images from config.js) ---------- */
   const applyImg = (el, m) => {

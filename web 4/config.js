@@ -25,13 +25,12 @@ window.SITE = {
 window.FX = {
   "reveal": "clip",
   "cursor": "ring",
-  "tilt": ".mem,.proj,.rc,.aside a",
   "magnet": ".btn,.pill,.slist button",
-  "ripple": ".btn",
-  "split": ".hero h1,.h2,.touch h2",
   "scramble": ".nav li:not(.lg) a,.ft h4,.thead .pill",
+  "split": ".hero h1,.h2,.touch h2",
   "parallax": ".imgs .b,.portrait",
-  "tiltMax": 6
+  "sig": "lens",
+  "lens": ".proj,.mem .ph,.imgs .ph,.svcgrid .ph.sp,.touch .ph"
 };
 
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;

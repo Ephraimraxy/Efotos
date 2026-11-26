@@ -29,8 +29,7 @@ h1,h2,h3,h4{font-family:var(--hf);line-height:1.2}
 
 /* buttons */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 28px;border-radius:999px;font:600 14px/1 var(--hf);background:var(--c2);color:#fff;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer;white-space:nowrap}
-.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);pointer-events:none}
-.btn:hover{transform:translateY(-2px)}.btn:hover::after{animation:shine .7s}
+.btn:hover{transform:translateY(-2px)}
 .btn i{font-style:normal;display:inline-block;transition:transform .25s}.btn:hover i{transform:translateX(4px)}
 .btn.line{background:transparent;border:1.5px solid currentColor}
 .btn.sm{padding:10px 20px;font-size:13px}

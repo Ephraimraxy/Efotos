@@ -134,3 +134,8 @@ body{font-size:15px;color:var(--ink)}
   .gal{grid-template-columns:repeat(2,minmax(0,1fr))}.dir,.ft .cols{grid-template-columns:minmax(0,1fr)}.plan.hot{transform:none}.cdband h3{max-width:none}
 }
 @media(max-width:600px){.cdband .cd b{font-size:30px}.announce .st{gap:30px}.gal{grid-auto-rows:150px}}
+
+.btn:hover{animation:ringpulse .9s ease-out}
+@keyframes ringpulse{0%{box-shadow:0 12px 26px rgba(29,79,224,.3),0 0 0 0 rgba(29,79,224,.55)}100%{box-shadow:0 12px 26px rgba(29,79,224,.3),0 0 0 16px rgba(29,79,224,0)}}
+.btn.w:hover,.btn.line:hover{animation-name:ringpulsew}
+@keyframes ringpulsew{0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}100%{box-shadow:0 0 0 16px rgba(255,255,255,0)}}

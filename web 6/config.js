@@ -24,13 +24,10 @@ window.SITE = {
 /* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
 window.FX = {
   "reveal": "pop",
-  "cursor": "none",
-  "spot": ".wc,.sg .st,.fiv div,.plan,.post",
-  "tilt": ".plan,.sv",
-  "magnet": ".btn",
-  "ripple": ".btn",
   "parallax": ".hero .pic,.two .ph",
-  "tiltMax": 5
+  "sig": "depth",
+  "depth": ".wc,.sg .st,.fiv div,.plan,.post,.sv",
+  "liquid": ".btn"
 };
 
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;

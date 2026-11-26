@@ -114,7 +114,6 @@ body{background:#fff;color:var(--ink);font-size:15px}
 .sg .st,.wc,.fiv div,.plan,.post,.sv{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,background .3s}
 .sg .st b{font-size:38px}.sg .st:hover b{transform:scale(1.08);transition:.3s}
 .fiv div:hover{box-shadow:0 20px 44px rgba(255,122,69,.4)}
-.sv::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.25) 50%,transparent 60%);transform:translateX(-120%);transition:transform .9s}.sv:hover::after{transform:translateX(120%)}
 
 @media(max-width:960px){
   .hero .wrap,.ab-top,.aff,.two,.rv,.sd,.ft .top{grid-template-columns:minmax(0,1fr)}.hero .pic{height:340px;margin:0 20px 30px}.hero .acts{padding-bottom:30px}
@@ -122,3 +121,7 @@ body{background:#fff;color:var(--ink);font-size:15px}
   .nav>ul>li>a{color:#fff}.hd .btn{display:none}
 }
 @media(max-width:600px){.fiv{grid-template-columns:minmax(0,1fr)}.nums{gap:24px}.ft .cols{grid-template-columns:minmax(0,1fr)}.hero .pic .chip{left:10px}.big{height:260px}}
+
+.btn{--liq:#0f1535}.btn.line{--liq:#ff7a45}.btn.w{--liq:#ffe8de}
+.btn.line:hover,.btn.dk:hover{background:transparent;color:#fff}.btn.w:hover{color:var(--c1)}
+.btn:hover{transform:none}

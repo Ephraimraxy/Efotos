@@ -159,3 +159,5 @@ body{font-size:15px;background:#fff}
   .banner{padding:150px 24px 28px}.banner .ph{left:50%;transform:translateX(-50%);bottom:auto;top:-10px}.ncard{grid-template-columns:1fr}.hero{height:620px}.sbar{margin-top:-70px}
 }
 @media(max-width:600px){.arches,.tgrid,.exg,.ft .cols,.sgrid{grid-template-columns:minmax(0,1fr)}.tslide{flex-basis:100%}.stabs{overflow-x:auto;gap:18px}.stabs button{white-space:nowrap}.banner{flex-direction:column;text-align:center}.utils .btn{padding:7px 14px}.arch{height:360px}}
+
+.btn:hover{box-shadow:0 16px 32px rgba(23,96,220,.45)}.btn.or:hover{box-shadow:0 16px 32px rgba(245,138,31,.5)}

@@ -120,3 +120,6 @@ body{font-size:14.5px;color:var(--ink)}
   .ft .cols{grid-template-columns:repeat(2,minmax(0,1fr))}.hd .btn{display:none}.ab .col{height:300px}
 }
 @media(max-width:600px){.ft .cols{grid-template-columns:minmax(0,1fr)}.chk{grid-template-columns:minmax(0,1fr)}}
+
+.btn:hover{box-shadow:0 0 0 7px rgba(143,211,183,.28),0 14px 30px rgba(31,74,61,.35)}
+.btn:hover i{transform:rotate(90deg) scale(1.1)}.btn i{transition:transform .4s}

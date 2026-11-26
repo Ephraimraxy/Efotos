@@ -1,4 +1,4 @@
-# Talento – Our Gallery page
+# Web 1 – Talento (Our Gallery page)
 
 Static site (HTML/CSS/JS, no build step). Open `index.html` or run `npx serve .`.
 

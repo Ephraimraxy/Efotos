@@ -1,0 +1,8 @@
+{
+  "name": "web-1-talento",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Talento recruitment website (multi-page) with a zero-dependency Node server",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=16" }
+}

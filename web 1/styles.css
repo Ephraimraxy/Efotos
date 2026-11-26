@@ -441,3 +441,12 @@ body.leaving{opacity:0;transition:opacity .2s}
 body{min-height:100vh;display:flex;flex-direction:column}
 body>main{flex:1 0 auto}
 body>.footer{flex:none}
+
+/* ===== motion upgrade: glass + pops ===== */
+:root{--spot:rgba(44,110,74,.14);--pop:rgba(218,139,70,.8);--glass-bg:rgba(255,255,255,.14)}
+.cta-card{background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5)}
+.cap{padding:7rem 9rem;border-radius:8rem;background:rgba(10,30,20,.22);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);left:12rem;right:12rem;bottom:12rem}
+.exc-card{background:linear-gradient(145deg,rgba(44,110,74,.96),rgba(37,93,63,.92));box-shadow:0 14rem 30rem rgba(44,110,74,.35),inset 0 1px 0 rgba(255,255,255,.25)}
+.stats .stat-row>div{background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:12rem}
+.main-nav .sub{background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.hero-inner h1,.hero-inner p,.hero-inner .crumbs{opacity:1}

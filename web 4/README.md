@@ -2,7 +2,7 @@
 
 Creative agency website (black + lime). Services tabs, project filter with lightbox, reviews carousel, project brief form.
 
-Pages: `index.html`, `about.html`, `services.html`, `projects.html`, `team.html`, `contact.html` · `admin.html` (form inbox)
+Pages: `index.html`, `services.html`, `projects.html`, `contact.html` · `admin.html` (form inbox)
 
 ## Run
 ```bash

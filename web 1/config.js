@@ -76,3 +76,17 @@ window.VIDEOS = {
   'video-leadership':  { src: SAMPLE, title: 'Leadership Events' },
   'video-team':        { src: SAMPLE, title: 'Meet Our Team' }
 };
+
+/* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
+window.FX = {
+  "reveal": "fade",
+  "cursor": "none",
+  "spot": ".card-s,.plan,.sc,.step,.member",
+  "tilt": ".card-s,.plan,.member,.step",
+  "magnet": ".btn",
+  "ripple": ".btn",
+  "split": ".hero h1,.section h2",
+  "parallax": ".photo,.thumb",
+  "heroFade": ".hero-inner",
+  "tiltMax": 5
+};

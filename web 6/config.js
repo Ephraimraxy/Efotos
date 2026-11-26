@@ -21,6 +21,18 @@ window.SITE = {
   "formEndpoint": ""
 };
 
+/* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
+window.FX = {
+  "reveal": "pop",
+  "cursor": "none",
+  "spot": ".wc,.sg .st,.fiv div,.plan,.post",
+  "tilt": ".plan,.sv",
+  "magnet": ".btn",
+  "ripple": ".btn",
+  "parallax": ".hero .pic,.two .ph",
+  "tiltMax": 5
+};
+
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 window.MEDIA = {
@@ -35,11 +47,11 @@ window.MEDIA = {
   'st-1': { src: u('1556155092-490a1ba16284', 500), alt: "Accounting software" },
   'st-2': { src: u('1554224154-26032ffc0d07', 500), alt: "Tax forms" },
   'st-3': { src: u('1565514020179-026b92b84bb6', 500), alt: "Cash" },
-  'why': { src: u('1560264280-88b68371db39', 1600), alt: "Open-plan office" },
+  'why': { src: u('1504384308090-c894fdcc538d', 1600), alt: "Open-plan office" },
   'two': { src: u('1573497620053-ea5300f94f21', 900), alt: "Two advisors talking", pos: 'center 20%' },
-  'rv-1': { src: u('1573497019940-1c28c88b4f3e', 700), alt: "Accountant", pos: 'center 15%' },
-  'rv-2': { src: u('1500648767791-00dcc994a43e', 300), alt: "Client", pos: 'center 20%' },
-  'rv-3': { src: u('1472099645785-5658abf4ff4e', 300), alt: "Client", pos: 'center 20%' },
+  'rv-1': { src: u('1508214751196-bcfd4ca60f91', 700), alt: "Accountant", pos: 'center 15%' },
+  'rv-2': { src: u('1531427186611-ecfd6d936c79', 300), alt: "Client", pos: 'center 20%' },
+  'rv-3': { src: u('1522529599102-193c0d76b5b6', 300), alt: "Client", pos: 'center 20%' },
   'b-1': { src: u('1554224155-6726b3ff858f', 800), alt: "Tax deductions" },
   'b-2': { src: u('1498050108023-c5249f4df085', 800), alt: "Accounting software" },
   'b-3': { src: u('1579621970563-ebec7560ff3e', 800), alt: "Growing savings" },

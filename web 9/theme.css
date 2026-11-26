@@ -102,6 +102,19 @@ body{font-size:14.5px;color:var(--ink)}
 .ft form{display:flex;gap:6px;margin-top:8px}.ft input{flex:1;min-width:0;padding:10px 14px;border-radius:99px;border:0;background:rgba(255,255,255,.1);color:#fff;font:inherit}.ft input::placeholder{color:#8fb0a3}.ft .btn{padding:8px 14px}
 .ft .fbar{border-top:1px solid rgba(255,255,255,.12);margin-top:34px;padding:16px 0;display:flex;justify-content:space-between;font-size:11px;gap:10px;flex-wrap:wrap}
 
+
+/* ===== upgrade: calm, breathing, glass ===== */
+:root{--cur:#8fd3b7;--spot:rgba(143,211,183,.2);--pop:rgba(143,211,183,.8);--glass-bg:rgba(255,255,255,.12)}
+.hd{background:rgba(31,74,61,.72);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5)}
+.hero .tags span{animation:breathe 6s ease-in-out infinite}.hero .tags span:nth-child(2){animation-delay:-1.5s}.hero .tags span:nth-child(3){animation-delay:-3s}.hero .tags span:nth-child(4){animation-delay:-4.5s}
+.hero .sat{box-shadow:0 20px 50px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.4)}
+.hero .wrap::before,.hero .wrap::after{content:"";position:absolute;border-radius:50%;pointer-events:none;filter:blur(30px)}.hero .wrap::before{width:300px;height:300px;left:-80px;bottom:-60px;background:rgba(143,211,183,.28);animation:float 11s ease-in-out infinite}.hero .wrap::after{width:240px;height:240px;right:6%;top:-60px;background:rgba(255,255,255,.14);animation:float 14s -5s ease-in-out infinite}
+.bc,.sv,.res .it,.pc{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s,background .4s}
+.bc:hover .i{animation:breathe 1.6s ease-in-out infinite}
+.sv svg.bg{transition:transform .8s cubic-bezier(.2,.8,.2,1)}.sv:hover svg.bg{transform:rotate(12deg) scale(1.18)}
+.disc .acts,.fb .sat{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.pc.hot{box-shadow:0 26px 60px rgba(31,74,61,.35)}
+
 @media(max-width:960px){
   .hero{padding-top:70px}.hero .wrap,.ab,.fb .top,.res,.fq,.pg{grid-template-columns:minmax(0,1fr)}.hero .glass{justify-self:start;flex-wrap:wrap}.sg{grid-template-columns:minmax(0,1fr)}.sh,.bh{flex-direction:column;align-items:flex-start}
   .ft .cols{grid-template-columns:repeat(2,minmax(0,1fr))}.hd .btn{display:none}.ab .col{height:300px}

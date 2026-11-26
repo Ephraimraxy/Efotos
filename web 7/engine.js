@@ -118,7 +118,7 @@
 
   /* ---- countdown ---- */
   $$('[data-countdown]').forEach(el => {
-    const end = new Date(el.dataset.countdown).getTime(), set = (u, v) => { const n = $(`[data-u=${u}]`, el); if (n) n.textContent = String(v).padStart(2, '0'); };
+    const end = new Date(el.dataset.countdown).getTime(), set = (u, v) => { const n = $(`[data-u=${u}]`, el); if (!n) return; const t = String(v).padStart(2, '0'); if (n.textContent !== t) { n.textContent = t; n.classList.remove('flip'); void n.offsetWidth; n.classList.add('flip'); } };
     const tick = () => { let d = Math.max(0, end - Date.now()); set('d', Math.floor(d / 864e5)); set('h', Math.floor(d % 864e5 / 36e5)); set('m', Math.floor(d % 36e5 / 6e4)); set('s', Math.floor(d % 6e4 / 1e3)); };
     tick(); setInterval(tick, 1000);
   });
@@ -131,7 +131,7 @@
   $$('.reveal').forEach(el => { const s = [...el.parentElement.children].filter(c => c.classList.contains('reveal')); el.style.setProperty('--d', Math.min(s.indexOf(el), 6) * 90 + 'ms'); });
   const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(en => {
     if (!en.isIntersecting) return; io.unobserve(en.target); const el = en.target;
-    if (el.dataset.count) { const end = +el.dataset.count, suf = el.dataset.suffix || '', pre = el.dataset.prefix || '', t0 = performance.now(); const tick = t => { const p = Math.min((t - t0) / 1500, 1); el.textContent = pre + Math.round(end * (1 - Math.pow(1 - p, 3))).toLocaleString() + suf; if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }
+    if (el.dataset.count) { const end = +el.dataset.count, suf = el.dataset.suffix || '', pre = el.dataset.prefix || '', t0 = performance.now(); const tick = t => { const p = Math.min((t - t0) / 1500, 1); el.textContent = pre + Math.round(end * (1 - Math.pow(1 - p, 3))).toLocaleString() + suf; if (p < 1) requestAnimationFrame(tick); else el.classList.add('pop'); }; requestAnimationFrame(tick); }
     else el.classList.add('in');
   }), { threshold: .12 }) : null;
   $$('[data-count],.reveal').forEach(el => io ? io.observe(el) : (el.classList.add('in'), el.dataset.count && (el.textContent = (el.dataset.prefix || '') + el.dataset.count + (el.dataset.suffix || ''))));

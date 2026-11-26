@@ -2,7 +2,7 @@
 
 Travel booking website (blue TravelPerk template). Search form filters tours, tour/hotel/activity booking with live total, destinations, blog.
 
-Pages: `index.html`, `tours.html`, `hotels.html`, `restaurants.html`, `destinations.html`, `activities.html`, `about.html`, `blog.html`, `contact.html` · `admin.html` (form inbox)
+Pages: `index.html`, `tours.html`, `hotels.html`, `restaurants.html`, `destinations.html`, `activities.html`, `about.html`, `blog.html`, `contact.html`, `tour-bali-escape.html`, `tour-swiss-alps-adventure.html`, `tour-tokyo-discovery.html`, `tour-cape-town-journey.html`, `tour-paris-city-break.html`, `tour-venice-romance.html`, `tour-santorini-sunsets.html`, `tour-canadian-rockies-hike.html`, `tour-ha-long-bay-cruise.html`, `tour-cappadocia-balloons.html` · `admin.html` (form inbox)
 
 ## Run
 ```bash

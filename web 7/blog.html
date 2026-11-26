@@ -10,11 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="fx.css">
 </head>
 <body>
 <header class="hd"><div class="wrap row"><a href="index.html" class="logo"><i>C</i>Consult</a>
   <nav class="nav" id="nav"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
-    <li class="has-sub"><a href="services.html">Practice Areas</a><ul class="sub"><li><a href="services.html#planning">Tax Planning</a></li><li><a href="services.html#income">Income Tax Preparation</a></li><li><a href="services.html#corporate">Corporate Tax</a></li><li><a href="services.html#international">International Taxation</a></li></ul></li>
+    <li class="has-sub"><a href="services.html">Practice Areas</a><ul class="sub">
+      <li class="has-sub"><a href="services.html#planning">Individuals</a><ul class="sub"><li><a href="services.html#planning">Tax Planning</a></li><li><a href="services.html#income">Income Tax Preparation</a></li></ul></li>
+      <li class="has-sub"><a href="services.html#corporate">Businesses</a><ul class="sub"><li><a href="services.html#corporate">Corporate Tax Services</a></li><li><a href="services.html#sales">Sales and Use Tax</a></li><li><a href="services.html#audit">Tax Audit Support</a></li></ul></li>
+      <li><a href="services.html#international">International Taxation</a></li></ul></li>
     <li><a href="testimonials.html">Testimonials</a></li><li><a href="blog.html">Our Blog</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
   <div class="hd-actions"><a href="contact.html" class="btn hide-m">Get Tax Advice <i>→</i></a><button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
 </div></header>
@@ -28,5 +32,6 @@
   <div class="fb"><span>© <span data-year></span> Consult. All rights reserved.</span><span><a data-site-href="phone:tel:" data-site="phone"></a> · <a data-site-href="email:mailto:" data-site="email"></a></span></div></div></footer>
 <script src="config.js"></script>
 <script src="engine.js"></script>
+<script src="fx.js"></script>
 </body>
 </html>

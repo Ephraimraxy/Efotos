@@ -22,6 +22,16 @@ window.SITE = {
   "formEndpoint": ""
 };
 
+/* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
+window.FX = {
+  "reveal": "slide",
+  "cursor": "none",
+  "spot": ".card,.proj,.mem",
+  "ripple": ".btn",
+  "parallax": ".mis .wrap,.tm .pair .b",
+  "heroFade": ".hero .wrap > div"
+};
+
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 window.MEDIA = {
@@ -45,6 +55,14 @@ window.MEDIA = {
   'pr-4': { src: u('1460925895917-afdab827c52f', 900), alt: "Analytics" },
   'pr-5': { src: u('1517048676732-d65bc937f952', 900), alt: "Merger meeting" },
   'pr-6': { src: u('1531545514256-b1400bc00f31', 900), alt: "Customer insights" },
+  'mm-3': { src: u('1507679799987-c73779587ccf', 500), alt: "Consultant", pos: 'center 20%' },
+  'mm-4': { src: u('1487412720507-e7ab37603c6f', 500), alt: "Consultant", pos: 'center 20%' },
+  'mm-5': { src: u('1500648767791-00dcc994a43e', 500), alt: "Consultant", pos: 'center 20%' },
+  'mm-6': { src: u('1589156280159-27698a70f29e', 500), alt: "Consultant", pos: 'center 20%' },
+  'bl-1': { src: u('1591696205602-2f950c417cb9', 800), alt: "Growth chart" },
+  'bl-2': { src: u('1531482615713-2afd69097998', 800), alt: "Operations review" },
+  'bl-3': { src: u('1556155092-490a1ba16284', 800), alt: "Research on a laptop" },
+  'bl-4': { src: u('1517048676732-d65bc937f952', 800), alt: "Team meeting" },
 };
 
 const SAMPLE = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';

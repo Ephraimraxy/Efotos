@@ -72,6 +72,21 @@ body{font-size:14px;color:var(--ink)}
 .ft .logo{font-size:26px}.ft .fb{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding:16px 0;display:flex;justify-content:space-between;font-weight:500;gap:10px;flex-wrap:wrap}.ft .fb .s{display:flex;gap:12px}.ft .fb .s a{display:grid;place-items:center}
 .modal-box{border-top:4px solid var(--c2)}.modal-box h3{font:600 22px var(--hf)}.modal .lbl{margin-bottom:6px}
 
+
+/* ===== upgrade ===== */
+:root{--spot:rgba(240,122,0,.14);--pop:rgba(240,122,0,.85)}
+.hd.stuck,.top{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.mc{background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.sbar{background:linear-gradient(120deg,rgba(11,74,158,.96),rgba(15,92,190,.94));box-shadow:0 20px 50px rgba(11,74,158,.3)}
+.sbar b{font-size:42px}
+.card,.mc,.proj,.mem{position:relative;transition:transform .35s,box-shadow .35s}
+.card::after,.mc::after{content:"";position:absolute;left:0;bottom:-3px;height:3px;width:0;background:var(--c2);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover::after,.mc:hover::after{width:100%}.card{border-bottom-color:transparent!important}
+.mem .ph{height:260px}.mem h3{margin-top:12px;font:600 16px var(--hf)}.mem p{font-size:12px;color:var(--c2)}
+.bl{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:30px;align-items:start}.pp .ph{height:170px;margin-bottom:12px}.pp small{font-size:11px;color:var(--c2);text-transform:uppercase;letter-spacing:.08em}.pp h3{margin:6px 0}
+.cats li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee;font-size:13px}.cats b{color:var(--c1)}
+@media(max-width:960px){.bl{grid-template-columns:minmax(0,1fr)}}
+
 @media(max-width:960px){
   .ab,.tm,.sv{grid-template-columns:minmax(0,1fr)}.mg{grid-template-columns:minmax(0,1fr)}.mis{--ov:linear-gradient(rgba(11,74,158,.92),rgba(11,74,158,.92))}.ab .col{height:340px}.ft .cols{grid-template-columns:repeat(2,minmax(0,1fr))}.top .l span:nth-child(2){display:none}.hd .btn{display:none}.hd{top:33px}
 }

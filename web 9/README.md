@@ -2,7 +2,7 @@
 
 Work-life balance consulting website (green Balanza template). Consultation booking modal, programmes tabs, pricing, FAQ, blog.
 
-Pages: `index.html`, `about.html`, `services.html`, `pricing.html`, `blog.html`, `contact.html` · `admin.html` (form inbox)
+Pages: `index.html`, `about.html`, `services.html`, `pricing.html`, `contact.html` · `admin.html` (form inbox)
 
 ## Run
 ```bash

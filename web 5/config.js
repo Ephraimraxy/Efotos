@@ -18,6 +18,20 @@ window.SITE = {
   "formEndpoint": ""
 };
 
+/* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
+window.FX = {
+  "reveal": "left",
+  "cursor": "none",
+  "tilt": ".spk,.post,.plan:not(.hot),.feat",
+  "spot": ".feat,.sess,.tcard,.plan",
+  "magnet": ".btn",
+  "ripple": ".btn",
+  "split": ".hero h1,.h2",
+  "parallax": ".kcol .a,.kcol .b",
+  "heroFade": ".hero .wrap",
+  "tiltMax": 7
+};
+
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 window.MEDIA = {

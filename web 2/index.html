@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="fx.css">
 </head>
 <body data-progress>
 <header class="hd">
@@ -21,11 +22,12 @@
     <a href="index.html" class="logo" aria-label="Eventen home">Even<em>ten</em></a>
     <nav class="nav" id="nav"><ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li class="has-sub"><a href="about.html">About</a><ul class="sub"><li><a href="about.html">About Eventen</a></li><li><a href="venue.html">The Venue</a></li><li><a href="sponsors.html">Sponsors</a></li><li><a href="faq.html">FAQ</a></li></ul></li>
       <li class="has-sub"><a href="speakers.html">Speakers</a><ul class="sub"><li><a href="speakers.html">All Speakers</a></li><li><a href="speakers.html#startup">Startup Track</a></li><li><a href="contact.html">Become A Speaker</a></li></ul></li>
       <li class="has-sub"><a href="schedule.html">Schedules</a><ul class="sub"><li><a href="schedule.html#day1">Day 1 – Opening</a></li><li><a href="schedule.html#day2">Day 2 – Workshops</a></li><li><a href="schedule.html#day3">Day 3 – Closing</a></li></ul></li>
-      <li class="has-sub"><a href="tickets.html">Pages</a><ul class="sub"><li><a href="tickets.html">Tickets</a></li><li><a href="about.html#faq">FAQ</a></li><li><a href="about.html#venue">Venue</a></li></ul></li>
-      <li class="has-sub"><a href="news.html">News</a><ul class="sub"><li><a href="news.html">Latest News</a></li></ul></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li class="has-sub"><a href="tickets.html">Pages</a><ul class="sub"><li><a href="tickets.html">Tickets</a></li><li><a href="venue.html">Venue</a></li><li><a href="faq.html">FAQ</a></li><li><a href="sponsors.html">Sponsors</a></li></ul></li>
+      <li class="has-sub"><a href="news.html">News</a><ul class="sub"><li><a href="news.html">Latest News</a></li><li><a href="contact.html">Press Enquiries</a></li></ul></li>
       <li><a href="contact.html">Contact</a></li>
     </ul></nav>
     <div class="hd-actions"><span class="s hide-m"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><a href="tickets.html" class="btn hide-m">Buy Ticket <i>→</i></a><button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
@@ -39,7 +41,7 @@
     <div class="person"><span class="ring"></span><span class="ring r2"></span><div class="ph photo" data-media="hero-person" ></div></div>
     <div>
       <h6>Upcoming New <b>Event</b> 2027</h6>
-      <h1>Startup <span>Global</span><br>Conference</h1>
+      <h1>Startup <span class="gl">Global</span><br>Conference</h1>
       <div class="meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 22 - 24 April 2027</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Queenbay Mall 4217 Road, USA</span></div>
       <p class="d">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <div class="acts"><a href="tickets.html" class="btn">Purchase Ticket</a><a href="schedule.html" class="btn line">View Schedule</a></div>
@@ -89,6 +91,22 @@
 </div></div>
 </div></section>
 
+
+<section class="sec sched-prev"><div class="wrap center"><p class="eyebrow">Programme</p><h2 class="t" data-x>Three Days <span class="pink">Of Impact</span></h2>
+  <div class="mt" style="text-align:left"><div data-tabs style="max-width:900px;margin:auto"><div class="tabs-nav" role="tablist"><button role="tab" data-tab="pday1">Day 1</button><button role="tab" data-tab="pday2">Day 2</button><button role="tab" data-tab="pday3">Day 3</button></div><div data-panel id="pday1"><div class="sess"><div class="tm">09:00 AM</div><div><h3>Registration & Welcome Coffee</h3><p>Main Lobby</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div><div class="sess"><div class="tm">10:00 AM</div><div><h3>Opening Keynote: The Next Decade of Startups</h3><p>Hall A · Daniel Brooks</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div><div class="sess"><div class="tm">01:00 PM</div><div><h3>Panel: Funding In A Changing Market</h3><p>Hall B · Henry Walsh</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div></div><div data-panel id="pday2"><div class="sess"><div class="tm">09:30 AM</div><div><h3>Workshop: Growth Marketing Playbook</h3><p>Room 1 · Maria Gomez</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div><div class="sess"><div class="tm">11:30 AM</div><div><h3>Workshop: Building With AI</h3><p>Room 2 · Omar Haddad</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div><div class="sess"><div class="tm">02:00 PM</div><div><h3>Fireside Chat: Design That Scales</h3><p>Hall A · Sophie Lane</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div></div><div data-panel id="pday3"><div class="sess"><div class="tm">10:00 AM</div><div><h3>Keynote: Leading Through Change</h3><p>Hall A · Marcus Lee</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div><div class="sess"><div class="tm">12:00 PM</div><div><h3>1-on-1 Mentor Sessions</h3><p>Lounge</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div><div class="sess"><div class="tm">03:00 PM</div><div><h3>Awards & Closing Ceremony</h3><p>Hall A</p></div><button class="btn sm" data-modal="buyModal">Get Ticket</button></div></div></div></div><p class="mt"><a href="schedule.html" class="btn">Full Schedule <i>→</i></a></p></div></section>
+
+<section class="sec alt"><div class="wrap center"><p class="eyebrow">Testimonials</p><h2 class="t">What Attendees <span class="pink">Say</span></h2>
+  <div class="grid g3 mt" style="--gap:24px;text-align:left"><div class="tc reveal"><span class="q">”</span><div class="st">★★★★★</div><p>Hands down the best startup event I have attended – the speakers were world class.</p><div class="who"><div class="ph " data-media="spk-2" ></div><span><b>Maria Gomez</b><small>Founder, Lumen</small></span></div></div><div class="tc reveal"><span class="q">”</span><div class="st">★★★★★</div><p>I met my lead investor in the networking lounge. Worth every minute.</p><div class="who"><div class="ph " data-media="spk-1" ></div><span><b>Daniel Brooks</b><small>CEO, Northwind</small></span></div></div><div class="tc reveal"><span class="q">”</span><div class="st">★★★★★</div><p>Brilliantly organised with energy that carried through all three days.</p><div class="who"><div class="ph " data-media="spk-4" ></div><span><b>Emily Carter</b><small>VP Growth, Pixel</small></span></div></div></div></div></section>
+
+<section class="sec"><div class="wrap center"><p class="eyebrow">Moments</p><h2 class="t">Last Year In <span class="pink">Pictures</span></h2>
+  <div class="gstrip mt"><div class="ph zoom" data-media="gal-1" data-zoom="gal-1"></div><div class="ph zoom" data-media="gal-2" data-zoom="gal-2"></div><div class="ph zoom" data-media="gal-3" data-zoom="gal-3"></div><div class="ph zoom" data-media="gal-4" data-zoom="gal-4"></div><div class="ph zoom" data-media="gal-5" data-zoom="gal-5"></div><div class="ph zoom" data-media="gal-6" data-zoom="gal-6"></div></div><p class="mt"><a href="gallery.html" class="btn">Open Gallery <i>→</i></a></p></div></section>
+
+<section class="sec alt"><div class="wrap center"><p class="eyebrow">Latest News</p><h2 class="t">From The <span class="pink">Blog</span></h2>
+  <div class="grid g3 mt" style="--gap:26px;text-align:left"><article class="post reveal"><div class="ph zoom" data-media="post-1" ></div><div class="b"><small>12 Nov 2026</small><h3>Keynote Lineup Announced For Eventen 2027</h3><p>Meet the founders and investors taking the main stage this April.</p></div></article><article class="post reveal"><div class="ph zoom" data-media="post-2" ></div><div class="b"><small>02 Nov 2026</small><h3>5 Ways To Get The Most Out Of A Startup Conference</h3><p>Plan your agenda, meet the right people and follow up the smart way.</p></div></article><article class="post reveal"><div class="ph zoom" data-media="post-3" ></div><div class="b"><small>20 Oct 2026</small><h3>Early-Bird Tickets Now Available</h3><p>Save up to 30% when you book before the end of the year.</p></div></article></div></div></section>
+
+<section class="sec"><div class="wrap split" style="align-items:start"><div><p class="eyebrow">FAQ</p><h2 class="t">Questions? <span class="pink">Answered</span></h2><p class="lead mt-s">Everything you need to know before you book.</p><p class="mt-s"><a href="faq.html" class="btn">All Questions <i>→</i></a></p></div>
+  <div class="acc" data-one><details open><summary>How do I get my ticket after purchase?</summary><p>A confirmation email with your QR code is sent right after your order. Show it at the entrance.</p></details><details><summary>Can I get a refund?</summary><p>Tickets are fully refundable up to 30 days before the event.</p></details><details><summary>Is the event streamed online?</summary><p>Yes. Standard passes include access to the live stream and recordings.</p></details><details><summary>Do you offer group discounts?</summary><p>Teams of 5+ get 15% off – contact us for a code.</p></details></div></div></section>
+
 <section class="cta ph ov" data-media="cta-bg"><div class="wrap"><h2>Don't Miss The Startup Event Of The Year</h2><p style="opacity:.9;margin-bottom:24px">Early-bird pricing ends soon – secure your seat today.</p><a href="tickets.html" class="btn" style="background:#fff;color:var(--pink)">Purchase Ticket</a></div></section>
 <div class="modal" id="buyModal" hidden><div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="bt">
   <button class="modal-x" data-close aria-label="Close">×</button><p class="eyebrow">Eventen 2027</p><h3 id="bt" style="margin-bottom:16px">Purchase Ticket</h3>
@@ -113,5 +131,6 @@
 </div></footer>
 <script src="config.js"></script>
 <script src="engine.js"></script>
+<script src="fx.js"></script>
 </body>
 </html>

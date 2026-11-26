@@ -250,7 +250,7 @@
     const el = en.target;
     if (el.dataset.count) {
       const end = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now();
-      const tick = t => { const p = Math.min((t - t0) / 1400, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(tick); };
+      const tick = t => { const p = Math.min((t - t0) / 1400, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(tick); else el.classList.add('pop'); };
       requestAnimationFrame(tick);
     } else el.classList.add('in');
   }), { threshold: .15 }) : null;

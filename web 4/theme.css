@@ -118,6 +118,21 @@ body{background:var(--bg);color:#fff;font-size:15px}
 .acc details{background:#1b1b1b}.acc details p{color:var(--muted)}
 .map{width:100%;height:280px;border:0;border-radius:24px;filter:grayscale(1) invert(.9) contrast(.9);margin-top:20px}
 
+
+/* ===== upgrade ===== */
+:root{--cur:#a6ff3d;--cur-blend:difference;--spot:rgba(166,255,61,.16);--pop:rgba(166,255,61,.85)}
+.hd .row{background:rgba(10,10,10,.55);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border:1px solid rgba(255,255,255,.1)}
+.slist button{background:linear-gradient(var(--lime),var(--lime)) no-repeat left center/0 100%;transition:background-size .45s cubic-bezier(.2,.8,.2,1),color .25s,border-color .25s}
+.slist button:hover{background-size:100% 100%;color:#101010;border-color:var(--lime)}.slist button:hover b{color:#101010}
+.aside a,.mem,.proj,.rc{transition:transform .35s,box-shadow .35s}
+.panel,.rc,.stats{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.stats{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.stats b{font-size:34px}
+.proj::after{content:"↗";position:absolute;right:18px;top:16px;width:42px;height:42px;border-radius:50%;background:var(--lime);color:#101010;display:grid;place-items:center;font-size:18px;transform:scale(0) rotate(-45deg);transition:transform .4s cubic-bezier(.2,.9,.3,1.4);z-index:3}
+.proj:hover::after{transform:none}
+.big .track{animation-duration:20s}.big:hover .track{animation-duration:6s}
+.hl{transition:transform .3s}.h2:hover .hl{transform:rotate(1.5deg) scale(1.05)}
+
 @media(max-width:960px){
   .hd .row{padding:0 22px}.nav{position:absolute;top:calc(100% + 8px);left:0;right:0;border-radius:24px}.nav .lg{display:none}.logo.m{display:flex}.nav>ul{padding:10px 24px 18px}
   .hero{padding-top:120px;border-radius:0 0 40px 40px}.hero .mid{grid-template-columns:1fr}.hero .side,.hero .rate{display:none}.portrait{height:340px;max-width:300px;margin:20px auto 0}.hero .cta2{position:static;transform:none;justify-content:center;margin-top:20px;background:none;flex-wrap:wrap}

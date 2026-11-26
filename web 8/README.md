@@ -2,7 +2,7 @@
 
 Business consulting website (blue/orange Consult template). `about.html` replicates the About page mockup; also home, services, projects (filter + lightbox), contact, quote modal.
 
-Pages: `index.html`, `about.html`, `services.html`, `projects.html`, `contact.html` · `admin.html` (form inbox)
+Pages: `index.html`, `about.html`, `services.html`, `projects.html`, `contact.html`, `team.html`, `blog.html`, `faq.html` · `admin.html` (form inbox)
 
 ## Run
 ```bash

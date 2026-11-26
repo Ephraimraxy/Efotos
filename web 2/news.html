@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="fx.css">
 </head>
 <body data-progress>
 <header class="hd">
@@ -21,11 +22,12 @@
     <a href="index.html" class="logo" aria-label="Eventen home">Even<em>ten</em></a>
     <nav class="nav" id="nav"><ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li class="has-sub"><a href="about.html">About</a><ul class="sub"><li><a href="about.html">About Eventen</a></li><li><a href="venue.html">The Venue</a></li><li><a href="sponsors.html">Sponsors</a></li><li><a href="faq.html">FAQ</a></li></ul></li>
       <li class="has-sub"><a href="speakers.html">Speakers</a><ul class="sub"><li><a href="speakers.html">All Speakers</a></li><li><a href="speakers.html#startup">Startup Track</a></li><li><a href="contact.html">Become A Speaker</a></li></ul></li>
       <li class="has-sub"><a href="schedule.html">Schedules</a><ul class="sub"><li><a href="schedule.html#day1">Day 1 – Opening</a></li><li><a href="schedule.html#day2">Day 2 – Workshops</a></li><li><a href="schedule.html#day3">Day 3 – Closing</a></li></ul></li>
-      <li class="has-sub"><a href="tickets.html">Pages</a><ul class="sub"><li><a href="tickets.html">Tickets</a></li><li><a href="about.html#faq">FAQ</a></li><li><a href="about.html#venue">Venue</a></li></ul></li>
-      <li class="has-sub"><a href="news.html">News</a><ul class="sub"><li><a href="news.html">Latest News</a></li></ul></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li class="has-sub"><a href="tickets.html">Pages</a><ul class="sub"><li><a href="tickets.html">Tickets</a></li><li><a href="venue.html">Venue</a></li><li><a href="faq.html">FAQ</a></li><li><a href="sponsors.html">Sponsors</a></li></ul></li>
+      <li class="has-sub"><a href="news.html">News</a><ul class="sub"><li><a href="news.html">Latest News</a></li><li><a href="contact.html">Press Enquiries</a></li></ul></li>
       <li><a href="contact.html">Contact</a></li>
     </ul></nav>
     <div class="hd-actions"><span class="s hide-m"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><a href="tickets.html" class="btn hide-m">Buy Ticket <i>→</i></a><button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
@@ -49,5 +51,6 @@
 </div></footer>
 <script src="config.js"></script>
 <script src="engine.js"></script>
+<script src="fx.js"></script>
 </body>
 </html>

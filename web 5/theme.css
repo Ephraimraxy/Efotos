@@ -115,6 +115,20 @@ body{font-size:15px;color:var(--ink)}
 .ft .fb{border-top:1px solid rgba(255,255,255,.1);margin-top:50px;padding:22px 0;text-align:center;font-size:13px}
 .ft .soc{display:flex;gap:10px;margin-top:18px}.ft .soc a{width:36px;height:36px;border-radius:50%;background:#16204a;display:grid;place-items:center;transition:.3s}.ft .soc a:hover{background:var(--c1);color:#fff}
 
+
+/* ===== upgrade ===== */
+:root{--cur:#1d4fe0;--spot:rgba(29,79,224,.16);--pop:rgba(255,193,7,.8);--glass-bg:rgba(255,255,255,.14)}
+.cdband{background:linear-gradient(110deg,rgba(27,68,210,.92),rgba(45,99,255,.88));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.28);box-shadow:0 24px 60px rgba(29,79,224,.4),inset 0 1px 0 rgba(255,255,255,.35)}
+.cdband .cd div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:10px 12px;min-width:76px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sess{background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9)}
+.announce{background-size:220% 220%;animation:gradmove 14s ease infinite}
+.feat{border:1px solid rgba(29,79,224,.08)}
+.feat:hover .i{transform:rotate(-12deg) scale(1.12)}.feat .i{transition:.35s}
+.tcard,.plan{transition:transform .35s,box-shadow .35s}
+.hero .x{animation:float 6s ease-in-out infinite}.hero .x:nth-of-type(2){animation-delay:-2s}
+.gal .ph{transition:transform .5s}.gal .ph:hover{transform:scale(.97)}
+.sponsors span{transition:.3s}.sponsors span:hover{transform:translateY(-4px) scale(1.08)}
+
 @media(max-width:960px){
   .hero{padding:120px 0 120px}.hero .play{display:none}.kcol{height:380px}.cdband{padding:30px}.cdband .cd{gap:18px}.sess{grid-template-columns:1fr}.sess .r{align-items:flex-start;flex-direction:row;flex-wrap:wrap}.sess .ph{height:180px}
   .gal{grid-template-columns:repeat(2,minmax(0,1fr))}.dir,.ft .cols{grid-template-columns:minmax(0,1fr)}.plan.hot{transform:none}.cdband h3{max-width:none}

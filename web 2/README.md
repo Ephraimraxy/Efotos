@@ -2,7 +2,7 @@
 
 Startup conference website (purple/pink event template). Live countdown, ticket purchase with order total, schedule tabs, speaker filter.
 
-Pages: `index.html`, `about.html`, `speakers.html`, `schedule.html`, `tickets.html`, `news.html`, `contact.html` · `admin.html` (form inbox)
+Pages: `index.html`, `about.html`, `speakers.html`, `schedule.html`, `tickets.html`, `news.html`, `contact.html`, `gallery.html`, `faq.html`, `venue.html`, `sponsors.html` · `admin.html` (form inbox)
 
 ## Run
 ```bash

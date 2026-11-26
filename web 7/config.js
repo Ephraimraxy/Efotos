@@ -21,6 +21,17 @@ window.SITE = {
   "formEndpoint": ""
 };
 
+/* MOTION: turn effects on/off here (see fx.js). Set a value to '' to disable it. */
+window.FX = {
+  "reveal": "up",
+  "cursor": "none",
+  "spot": ".sc,.rc,.post",
+  "ripple": ".btn",
+  "split": ".hero h1,.h2,.cta h2",
+  "parallax": ".col .main",
+  "heroFade": ".hero .wrap > div:first-child"
+};
+
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 window.MEDIA = {
@@ -29,15 +40,15 @@ window.MEDIA = {
   'ab-1': { src: u('1556761175-5973dc0f32e7', 1000), alt: "Team discussing documents" },
   'ab-2': { src: u('1531545514256-b1400bc00f31', 700), alt: "Colleagues at a laptop" },
   'ab-3': { src: u('1573497620053-ea5300f94f21', 700), alt: "Two women meeting" },
-  'sv-1': { src: u('1554224155-6726b3ff858f', 900), alt: "Tax documents" },
-  'sv-2': { src: u('1554224154-26032ffc0d07', 900), alt: "Tax forms" },
-  'sv-3': { src: u('1542744173-8e7e53415bb0', 900), alt: "Corporate meeting" },
-  'sv-4': { src: u('1436491865332-7a61a109cc05', 900), alt: "International travel" },
-  'sv-5': { src: u('1460925895917-afdab827c52f', 900), alt: "Sales analytics" },
-  'sv-6': { src: u('1450101499163-c8848c66ca85', 900), alt: "Signing documents" },
-  'p-1': { src: u('1500648767791-00dcc994a43e', 200), alt: "Client", pos: 'center 20%' },
-  'p-2': { src: u('1573497019940-1c28c88b4f3e', 200), alt: "Client", pos: 'center 20%' },
-  'p-3': { src: u('1560250097-0b93528c311a', 200), alt: "Client", pos: 'center 20%' },
+  'sv-1': { src: u('1554224154-26032ffc0d07', 900), alt: "Tax forms and calculator" },
+  'sv-2': { src: u('1553729459-efe14ef6055d', 900), alt: "Counting money" },
+  'sv-3': { src: u('1504384308090-c894fdcc538d', 900), alt: "Corporate office" },
+  'sv-4': { src: u('1486406146926-c627a92ad1ab', 900), alt: "City towers" },
+  'sv-5': { src: u('1526304640581-d334cdbbf45e', 900), alt: "Dollar bills" },
+  'sv-6': { src: u('1521791055366-0d553872125f', 900), alt: "Signing documents" },
+  'p-1': { src: u('1507003211169-0a1dd7228f2d', 200), alt: "Client", pos: 'center 20%' },
+  'p-2': { src: u('1589156280159-27698a70f29e', 200), alt: "Client", pos: 'center 20%' },
+  'p-3': { src: u('1531746020798-e6953c6e8e04', 200), alt: "Client", pos: 'center 20%' },
   'b-1': { src: u('1554224155-6726b3ff858f', 800), alt: "Tax deductions" },
   'b-2': { src: u('1554224154-26032ffc0d07', 800), alt: "Year-end checklist" },
   'b-3': { src: u('1556155092-490a1ba16284', 800), alt: "International tax" },

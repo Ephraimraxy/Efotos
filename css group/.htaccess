@@ -4,8 +4,18 @@ DirectoryIndex index.html index.php
 
 # Old WordPress addresses -> new pages (keeps Google rankings and shared links working)
 Redirect 301 /about-css-group/ /about.html
-Redirect 301 /our-services/ /companies.html
+Redirect 301 /our-services/ /services.html
+Redirect 301 /service/agriculture/ /agriculture.html
+Redirect 301 /service/construction/ /construction.html
+Redirect 301 /service/energy/ /energy.html
+Redirect 301 /service/aviation/ /aviation.html
+Redirect 301 /service/real-estate/ /real-estate.html
+Redirect 301 /service/ict/ /ict.html
 Redirect 301 /blog/ /news.html
+Redirect 301 /css-group-news/ /news.html
+Redirect 301 /category/css-group-news/ /news.html
+Redirect 301 /2025/01/03/bayelsa-state-government-invests-in-its-youths-for-food-sustainability/ /news-bayelsa.html
+Redirect 301 /2025/01/02/ebonyi-state-government-equips-youths-with-agricultural-entrepreneurial-skills-at-css-farms-nasarawa-state/ /news-ebonyi.html
 Redirect 301 /contact-us/ /contact.html
 Redirect 301 /company-overview/careers/ /careers.html
 Redirect 301 /job-listing-grid/ /careers.html

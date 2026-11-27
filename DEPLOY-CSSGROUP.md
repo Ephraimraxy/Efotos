@@ -1,26 +1,29 @@
 # Replace cssgroup.com.ng with the new CSS Group site (cPanel guide)
 
-You have: `css-group-site.zip` (about 30 files, 1 MB: HTML pages, CSS/JS, images, `forms.php`, `.htaccess`).
+You have: `css-group-site.zip` (about 70 files, 3 MB: HTML pages, CSS/JS, images, `forms.php`, `.htaccess`).
 It is a plain static site plus one PHP file for the forms, so it runs on your cPanel with nothing to install.
 
 
-## What I found on the live cssgroup.com.ng (checked today)
-- It is a **WordPress** site (theme "Consulting", Elementor, WooCommerce shop, Contact Form 7, Revolution Slider, Instagram feed).
-- Real company details were reused in the new site: both offices (20 Thomas Sankara Street, Asokoro, Abuja; Km 10 Abuja–Keffi Road,
-  Gora, Nasarawa), phone +234 702 603 3333, info@cssgroup.com.ng, hours Mon–Sat 8:00–6:00, the Chairman's quote
-  (Prof. John Kennedy Opara), vision, mission, the four core values, the six sector descriptions, the two news headlines,
-  and the company's own photos and logo (training events, estate, sector images).
-- NOT carried over: the **Shop** (WooCommerce), the **job listings** (they are template placeholders: Houston, Toronto, etc.), the
-  homepage **hero video** (`/wp-content/uploads/2024/11/CSS_Slider_1.mp4`, 22 MB), and the full text of the two news articles.
-  Before you remove WordPress, download from `wp-content/uploads` anything you still want (File Manager → select → Download),
-  e.g. the video; then drop it into `/public_html/images/` and tell me if you want it added as a hero video.
-- Old addresses (`/about-css-group/`, `/our-services/`, `/blog/`, `/contact-us/`, `/company-overview/careers/`) are redirected to
-  the new pages by `.htaccess`, so existing links and Google results keep working.
-- Claims taken from the old site and shown as their own words: "500+ employees", "thousands of projects / satisfied customers".
-  Please confirm they are still accurate.
-- The old contact email in the page header was misspelled (`info@cssroup.com.ng`); the new site uses `info@cssgroup.com.ng`.
-- The photo of the Chairman on the old site was only a 48 px thumbnail, so the new site shows his quote without a portrait.
-  Send a larger photo and I will add it.
+## What this new site is
+- **Design:** the Agrigo template (your sample, web 25) with everything kept the same: top bar, rounded green layout, card grids,
+  green "why choose us" band, statistics band, gallery cards, news, call-back banner, dark footer.
+- **Content, logo and navigation come from the live cssgroup.com.ng** (WordPress). Menu order is the same as the old site:
+  Home · About CSS Group · Careers · Services (Agriculture, Construction, Energy, Aviation, Real Estate, ICT) · News · Contact,
+  plus the "Request a call back" button (opens the call-back form, as the old homepage had).
+- **Pages (14):** Home, About, Services, one page for each of the 6 services, News + the two news articles, Careers, Contact.
+- **Real content reused:** both offices and hours (Mon–Sat 8:00–6:00), phone +234 702 603 3333, info@cssgroup.com.ng,
+  the Chairman's quote (Prof. John Kennedy Opara), vision, mission, the four core values (Excellence, Passion, Creativity, Integrity),
+  "Visioneers / Implementers / Value driven", the six service descriptions, "500+ employees", "thousands of projects and customers",
+  both news headlines, your logo, and about 45 of your own photographs (CSS Farms training events, ISAC Resort, sector images).
+- **Left out on purpose:** the Shop (it only held the template's demo books), the job listings (template placeholders: Houston,
+  Toronto…), the "company overview/history" page (template text about "Consulting WP"), and all other demo pages from the old theme.
+- **Not available on the old site, so not invented:** body text of the two news articles (they are photo galleries only) and
+  detail text for each service (the old service pages were empty); each service page uses the same description as the old site.
+  Send me the real wording and I will add it.
+- **Not copied (large files):** the hero video and the two ISAC Resort videos (`/wp-content/uploads/…mp4`, 20+ MB each).
+  Download them from the old site before removing it; I can add them to the new site if you want.
+- Please confirm "500+ employees" and "award-winning group" are still accurate (they came from the old site).
+- The old header listed a mistyped email (`info@cssroup.com.ng`); the new site uses `info@cssgroup.com.ng`.
 
 ## Before you start: protect what already exists
 Your DNS shows these subdomains on the same server: `cssfarms`, `cssenergy`, `cssconstruction`, `cssaviation`,
@@ -53,13 +56,12 @@ Edit with File Manager → **Edit**:
 - `forms.php` (top lines): `$MAIL_TO` = the inbox that should receive enquiries (default `info@cssgroup.com.ng`),
   `$MAIL_FROM` = a real mailbox on the domain (default `website@cssgroup.com.ng` – create it in cPanel → Email Accounts,
   or change it to an existing one). This improves delivery and keeps messages out of spam.
-- Photos: the company's own photos are in `/images/`. A few pictures (energy, construction, aviation, ICT, the services page) are
-  free Unsplash stock photos until you provide your own. To swap one, upload your file to `/public_html/images/` and in `config.js`
-  change that key's `src` to `'images/your-file.jpg'`. Keys: `hero`, `co1`–`co6` (cards), `r1`–`r6` (services page), `a1`–`a3`, `n1`, `n2`.
+- Photos: the company's own photos are in `/images/`. Construction, energy, aviation and ICT use the small sector images from the old site (350 px wide, a little soft when enlarged). To swap one, upload your file to `/public_html/images/` and in `config.js`
+  change that key's `src` to `'images/your-file.jpg'`. Keys: `hero`, `about1`, `about2`, `c1`–`c6` (service cards), `sv1`–`sv6` (service pages), `bay1`–`bay12` and `ebo1`–`ebo12` (news galleries).
 
 ## Step 4 – Test
 1. Open https://cssgroup.com.ng (hard refresh: Ctrl+F5). The `.htaccess` forces HTTPS.
-2. Click through every menu item (they switch pages without a full reload, that is normal).
+2. Click through every menu item and the six service pages (pages switch without a full reload, that is normal).
 3. Send a test message on **Contact** and **Careers**. You should see "Thank you…", receive an email, and a line is
    saved in `public_html/submissions/forms.jsonl` (private; web access is blocked).
 4. If no email arrives: check spam; confirm `$MAIL_FROM` exists as a mailbox; cPanel → **Track Delivery** shows the attempt.
@@ -87,11 +89,11 @@ Choose the case that matches:
 Move the new files out of `public_html` and move your `old-site-backup` files back (or restore the cPanel backup zip).
 
 ## What each file does
-- `index.html, about.html, companies.html, careers.html, contact.html` – the five pages
+- 14 `.html` pages (home, about, services, six service pages, news, two news articles, careers, contact)
 - `config.js` – phone/email/address and all photo links (one file to edit)
 - `theme.css, base.css, fx*.css/js, engine.js, pjax.js` – design and behaviour (leave as is)
 - `forms.php` – receives form posts, emails them, saves a copy, blocks spam (honeypot + 8 per hour per visitor)
 - `.htaccess` – HTTPS, caching, blocks private files
 
 ## Content to review before going live
-Text comes from your current website. Real estate and a few other descriptions were lightly rewritten; please read every page once.
+Text comes from your current website. Please read every page once, especially Real Estate (the old site repeated the construction wording there, kept as is).

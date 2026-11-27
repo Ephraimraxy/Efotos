@@ -15,7 +15,12 @@ window.SITE = {
   "phone": "+234 702 603 3333",
   "email": "info@cssgroup.com.ng",
   "address": "No 20 Thomas Sankara Street, Asokoro, 900231, Abuja, NG.",
-  "hours": "Mon–Sat 8:00 AM–6:00 PM",
+  "office1": "Abuja Office",
+  "address1": "No 20 Thomas Sankara Street, Asokoro, 900231, Abuja, NG.",
+  "office2": "Nasarawa Office (CSS Farms)",
+  "address2": "Km 10 Abuja–Keffi Expressway, Gora, Nasarawa State, NG.",
+  "hours": "Mon–Sat: 8:00 AM–6:00 PM",
+  "closed": "Sunday: Closed",
   "formEndpoint": "forms.php"
 };
 

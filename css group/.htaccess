@@ -1,38 +1,48 @@
-# CSS Group site – Apache settings for cPanel
+# CSS Group website – Apache settings (cPanel)
 Options -Indexes
 DirectoryIndex index.html index.php
-
-# Old WordPress addresses -> new pages (keeps Google rankings and shared links working)
-Redirect 301 /about-css-group/ /about.html
-Redirect 301 /our-services/ /services.html
-Redirect 301 /service/agriculture/ /agriculture.html
-Redirect 301 /service/construction/ /construction.html
-Redirect 301 /service/energy/ /energy.html
-Redirect 301 /service/aviation/ /aviation.html
-Redirect 301 /service/real-estate/ /real-estate.html
-Redirect 301 /service/ict/ /ict.html
-Redirect 301 /blog/ /news.html
-Redirect 301 /css-group-news/ /news.html
-Redirect 301 /category/css-group-news/ /news.html
-Redirect 301 /2025/01/03/bayelsa-state-government-invests-in-its-youths-for-food-sustainability/ /news-bayelsa.html
-Redirect 301 /2025/01/02/ebonyi-state-government-equips-youths-with-agricultural-entrepreneurial-skills-at-css-farms-nasarawa-state/ /news-ebonyi.html
-Redirect 301 /contact-us/ /contact.html
-Redirect 301 /company-overview/careers/ /careers.html
-Redirect 301 /job-listing-grid/ /careers.html
-Redirect 301 /shop-2/ /index.html
-
-# Force HTTPS (SSL is active on this account)
 RewriteEngine On
+
+# ===== Maintenance mode: switched on/off from the admin panel (admin.cssgroup.com.ng) =====
+# When the file maintenance.flag exists, visitors get the maintenance page (HTTP 503) unless they use "Preview live site".
+RewriteCond %{HTTP_HOST} ^(www\.)?cssgroup\.com\.ng$ [NC]
+RewriteCond %{DOCUMENT_ROOT}/maintenance.flag -f
+RewriteCond %{HTTP_COOKIE} !css_preview=__PREVIEW_TOKEN__
+RewriteCond %{REQUEST_URI} !^/(maintenance\.html|images/css-mark\.png)$
+RewriteRule ^ - [R=503,L]
+ErrorDocument 503 /maintenance.html
+
+# ===== Force HTTPS =====
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Never serve stored form submissions
+# ===== Old WordPress addresses -> new pages (main domain only; other sites on this account are untouched) =====
+RewriteCond %{HTTP_HOST} !^(www\.)?cssgroup\.com\.ng$ [NC]
+RewriteRule ^ - [S=17]
+RewriteRule ^about-css-group/?$ /about.html [R=301,L]
+RewriteRule ^our-services/?$ /services.html [R=301,L]
+RewriteRule ^service/agriculture/?$ /agriculture.html [R=301,L]
+RewriteRule ^service/construction/?$ /construction.html [R=301,L]
+RewriteRule ^service/energy/?$ /energy.html [R=301,L]
+RewriteRule ^service/aviation/?$ /aviation.html [R=301,L]
+RewriteRule ^service/real-estate/?$ /real-estate.html [R=301,L]
+RewriteRule ^service/ict/?$ /ict.html [R=301,L]
+RewriteRule ^blog/?$ /news.html [R=301,L]
+RewriteRule ^css-group-news/?$ /news.html [R=301,L]
+RewriteRule ^category/css-group-news/?$ /news.html [R=301,L]
+RewriteRule ^2025/01/03/bayelsa-state-government-invests-in-its-youths-for-food-sustainability/?$ /news-bayelsa.html [R=301,L]
+RewriteRule ^2025/01/02/ebonyi-state-government-equips-youths-with-agricultural-entrepreneurial-skills-at-css-farms-nasarawa-state/?$ /news-ebonyi.html [R=301,L]
+RewriteRule ^contact-us/?$ /contact.html [R=301,L]
+RewriteRule ^company-overview/careers/?$ /careers.html [R=301,L]
+RewriteRule ^job-listing-grid/?$ /careers.html [R=301,L]
+RewriteRule ^shop-2/?$ /index.html [R=301,L]
+
+# ===== Never serve stored form submissions =====
 <FilesMatch "\.(jsonl|log)$">
   Require all denied
 </FilesMatch>
 
-# Compression and caching
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
 </IfModule>
@@ -44,4 +54,10 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   ExpiresByType image/png "access plus 1 month"
   ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
+# config.js is rewritten by the admin panel: never cache it for long
+<FilesMatch "^config\.js$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache"
+  </IfModule>
+</FilesMatch>
 ErrorDocument 404 /index.html

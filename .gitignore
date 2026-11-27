@@ -110,3 +110,10 @@ uploads/
 
 # Local development files
 .local/
+# secrets and built packages (the real token/setup key live only in the delivered zips and on the server)
+cssgroup-admin/data/setup.key
+cssgroup-admin/data/users.json
+cssgroup-admin/data/history/
+cssgroup-admin/data/*.log
+css-group-site.zip
+cssgroup-admin.zip

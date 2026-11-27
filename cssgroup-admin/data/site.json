@@ -1,0 +1,627 @@
+{
+  "company": {
+    "name": "CSS Group of Companies"
+  },
+  "contact": {
+    "phone": "+234 702 603 3333",
+    "email": "info@cssgroup.com.ng",
+    "hours": "Mon–Sat: 8:00 AM–6:00 PM",
+    "closed": "Sunday: Closed",
+    "offices": [
+      {
+        "label": "Abuja Office",
+        "address": "No 20 Thomas Sankara Street, Asokoro, 900231, Abuja, NG."
+      },
+      {
+        "label": "Nasarawa Office (CSS Farms)",
+        "address": "Km 10 Abuja–Keffi Expressway, Gora, Nasarawa State, NG."
+      }
+    ]
+  },
+  "banner": {
+    "on": false,
+    "text": "",
+    "link": ""
+  },
+  "media": {
+    "hero": {
+      "label": "Main hero photo (top of home page)",
+      "group": "Home",
+      "src": "images/hero.jpg",
+      "original": "images/hero.jpg",
+      "alt": "Main hero photo (top of home page)",
+      "pos": "center"
+    },
+    "about1": {
+      "label": "Welcome section – left photo",
+      "group": "Home",
+      "src": "images/about1.jpg",
+      "original": "images/about1.jpg",
+      "alt": "Welcome section – left photo",
+      "pos": "center"
+    },
+    "about2": {
+      "label": "Welcome section – right photo",
+      "group": "Home",
+      "src": "images/about2.jpg",
+      "original": "images/about2.jpg",
+      "alt": "Welcome section – right photo",
+      "pos": "center"
+    },
+    "f1": {
+      "label": "Excellence section – large photo",
+      "group": "Home",
+      "src": "images/aerial.jpg",
+      "original": "images/aerial.jpg",
+      "alt": "Excellence section – large photo",
+      "pos": "center"
+    },
+    "c1": {
+      "label": "Agriculture – card photo",
+      "group": "Service cards (home & services page)",
+      "src": "images/sector-service-farm.jpg",
+      "original": "images/sector-service-farm.jpg",
+      "alt": "Agriculture – card photo",
+      "pos": "center"
+    },
+    "c2": {
+      "label": "Construction – card photo",
+      "group": "Service cards (home & services page)",
+      "src": "images/sector-construction.jpg",
+      "original": "images/sector-construction.jpg",
+      "alt": "Construction – card photo",
+      "pos": "center"
+    },
+    "c3": {
+      "label": "Energy – card photo",
+      "group": "Service cards (home & services page)",
+      "src": "images/sector-energy.jpg",
+      "original": "images/sector-energy.jpg",
+      "alt": "Energy – card photo",
+      "pos": "center"
+    },
+    "c4": {
+      "label": "Aviation – card photo",
+      "group": "Service cards (home & services page)",
+      "src": "images/sector-airplane2.jpg",
+      "original": "images/sector-airplane2.jpg",
+      "alt": "Aviation – card photo",
+      "pos": "center"
+    },
+    "c5": {
+      "label": "Real Estate – card photo",
+      "group": "Service cards (home & services page)",
+      "src": "images/sector-real-estate.jpg",
+      "original": "images/sector-real-estate.jpg",
+      "alt": "Real Estate – card photo",
+      "pos": "center"
+    },
+    "c6": {
+      "label": "ICT – card photo",
+      "group": "Service cards (home & services page)",
+      "src": "images/sector-ict.jpg",
+      "original": "images/sector-ict.jpg",
+      "alt": "ICT – card photo",
+      "pos": "center"
+    },
+    "sv1": {
+      "label": "Agriculture – page photo",
+      "group": "Service pages – main photo",
+      "src": "images/train1.jpg",
+      "original": "images/train1.jpg",
+      "alt": "Agriculture – page photo",
+      "pos": "center"
+    },
+    "sv2": {
+      "label": "Construction – page photo",
+      "group": "Service pages – main photo",
+      "src": "images/sector-construction.jpg",
+      "original": "images/sector-construction.jpg",
+      "alt": "Construction – page photo",
+      "pos": "center"
+    },
+    "sv3": {
+      "label": "Energy – page photo",
+      "group": "Service pages – main photo",
+      "src": "images/sector-energy.jpg",
+      "original": "images/sector-energy.jpg",
+      "alt": "Energy – page photo",
+      "pos": "center"
+    },
+    "sv4": {
+      "label": "Aviation – page photo",
+      "group": "Service pages – main photo",
+      "src": "images/sector-airplane2.jpg",
+      "original": "images/sector-airplane2.jpg",
+      "alt": "Aviation – page photo",
+      "pos": "center"
+    },
+    "sv5": {
+      "label": "Real Estate – page photo",
+      "group": "Service pages – main photo",
+      "src": "images/resort.jpg",
+      "original": "images/resort.jpg",
+      "alt": "Real Estate – page photo",
+      "pos": "center"
+    },
+    "sv6": {
+      "label": "ICT – page photo",
+      "group": "Service pages – main photo",
+      "src": "images/sector-ict.jpg",
+      "original": "images/sector-ict.jpg",
+      "alt": "ICT – page photo",
+      "pos": "center"
+    },
+    "chair": {
+      "label": "Chairman portrait",
+      "group": "Chairman",
+      "src": "images/chairman.jpg",
+      "original": "images/chairman.jpg",
+      "alt": "Chairman portrait",
+      "pos": "center"
+    },
+    "gate": {
+      "label": "Gate / office",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/gate.jpg",
+      "original": "images/gate.jpg",
+      "alt": "Gate / office",
+      "pos": "center"
+    },
+    "aerial": {
+      "label": "Campus aerial view",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/aerial.jpg",
+      "original": "images/aerial.jpg",
+      "alt": "Campus aerial view",
+      "pos": "center"
+    },
+    "resort": {
+      "label": "ISAC Resort – building",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/resort.jpg",
+      "original": "images/resort.jpg",
+      "alt": "ISAC Resort – building",
+      "pos": "center"
+    },
+    "rest": {
+      "label": "ISAC Resort – restaurant (also video poster)",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/rest.jpg",
+      "original": "images/rest.jpg",
+      "alt": "ISAC Resort – restaurant (also video poster)",
+      "pos": "center"
+    },
+    "lounge": {
+      "label": "ISAC Resort – lounge",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/lounge.jpg",
+      "original": "images/lounge.jpg",
+      "alt": "ISAC Resort – lounge",
+      "pos": "center"
+    },
+    "room1": {
+      "label": "ISAC Resort – room",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/room1.jpg",
+      "original": "images/room1.jpg",
+      "alt": "ISAC Resort – room",
+      "pos": "center"
+    },
+    "train1": {
+      "label": "Training event 1",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/train1.jpg",
+      "original": "images/train1.jpg",
+      "alt": "Training event 1",
+      "pos": "center"
+    },
+    "train2": {
+      "label": "Training event 2",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/train2.jpg",
+      "original": "images/train2.jpg",
+      "alt": "Training event 2",
+      "pos": "center"
+    },
+    "ev1": {
+      "label": "Event photo 1",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/ev1.jpg",
+      "original": "images/ev1.jpg",
+      "alt": "Event photo 1",
+      "pos": "center"
+    },
+    "ev2": {
+      "label": "Event photo 2",
+      "group": "Extra photos (gallery & real estate page)",
+      "src": "images/ev2.jpg",
+      "original": "images/ev2.jpg",
+      "alt": "Event photo 2",
+      "pos": "center"
+    },
+    "bay1": {
+      "label": "Bayelsa gallery 1",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay1.jpg",
+      "original": "images/bay1.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay2": {
+      "label": "Bayelsa gallery 2",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay2.jpg",
+      "original": "images/bay2.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay3": {
+      "label": "Bayelsa gallery 3",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay3.jpg",
+      "original": "images/bay3.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay4": {
+      "label": "Bayelsa gallery 4",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay4.jpg",
+      "original": "images/bay4.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay5": {
+      "label": "Bayelsa gallery 5",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay5.jpg",
+      "original": "images/bay5.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay6": {
+      "label": "Bayelsa gallery 6",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay6.jpg",
+      "original": "images/bay6.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay7": {
+      "label": "Bayelsa gallery 7",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay7.jpg",
+      "original": "images/bay7.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay8": {
+      "label": "Bayelsa gallery 8",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay8.jpg",
+      "original": "images/bay8.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay9": {
+      "label": "Bayelsa gallery 9",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay9.jpg",
+      "original": "images/bay9.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay10": {
+      "label": "Bayelsa gallery 10",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay10.jpg",
+      "original": "images/bay10.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay11": {
+      "label": "Bayelsa gallery 11",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay11.jpg",
+      "original": "images/bay11.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "bay12": {
+      "label": "Bayelsa gallery 12",
+      "group": "News – Bayelsa gallery",
+      "src": "images/bay12.jpg",
+      "original": "images/bay12.jpg",
+      "alt": "News – Bayelsa gallery photo",
+      "pos": "center"
+    },
+    "ebo1": {
+      "label": "Ebonyi gallery 1",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo1.jpg",
+      "original": "images/ebo1.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo2": {
+      "label": "Ebonyi gallery 2",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo2.jpg",
+      "original": "images/ebo2.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo3": {
+      "label": "Ebonyi gallery 3",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo3.jpg",
+      "original": "images/ebo3.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo4": {
+      "label": "Ebonyi gallery 4",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo4.jpg",
+      "original": "images/ebo4.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo5": {
+      "label": "Ebonyi gallery 5",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo5.jpg",
+      "original": "images/ebo5.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo6": {
+      "label": "Ebonyi gallery 6",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo6.jpg",
+      "original": "images/ebo6.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo7": {
+      "label": "Ebonyi gallery 7",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo7.jpg",
+      "original": "images/ebo7.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo8": {
+      "label": "Ebonyi gallery 8",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo8.jpg",
+      "original": "images/ebo8.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo9": {
+      "label": "Ebonyi gallery 9",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo9.jpg",
+      "original": "images/ebo9.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo10": {
+      "label": "Ebonyi gallery 10",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo10.jpg",
+      "original": "images/ebo10.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo11": {
+      "label": "Ebonyi gallery 11",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo11.jpg",
+      "original": "images/ebo11.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "ebo12": {
+      "label": "Ebonyi gallery 12",
+      "group": "News – Ebonyi gallery",
+      "src": "images/ebo12.jpg",
+      "original": "images/ebo12.jpg",
+      "alt": "News – Ebonyi gallery photo",
+      "pos": "center"
+    },
+    "oct1": {
+      "label": "More from CSS Farms 1",
+      "group": "News – More from CSS Farms",
+      "src": "images/oct1.jpg",
+      "original": "images/oct1.jpg",
+      "alt": "News – More from CSS Farms photo",
+      "pos": "center"
+    },
+    "oct2": {
+      "label": "More from CSS Farms 2",
+      "group": "News – More from CSS Farms",
+      "src": "images/oct2.jpg",
+      "original": "images/oct2.jpg",
+      "alt": "News – More from CSS Farms photo",
+      "pos": "center"
+    },
+    "oct3": {
+      "label": "More from CSS Farms 3",
+      "group": "News – More from CSS Farms",
+      "src": "images/oct3.jpg",
+      "original": "images/oct3.jpg",
+      "alt": "News – More from CSS Farms photo",
+      "pos": "center"
+    },
+    "oct4": {
+      "label": "More from CSS Farms 4",
+      "group": "News – More from CSS Farms",
+      "src": "images/oct4.jpg",
+      "original": "images/oct4.jpg",
+      "alt": "News – More from CSS Farms photo",
+      "pos": "center"
+    },
+    "oct5": {
+      "label": "More from CSS Farms 5",
+      "group": "News – More from CSS Farms",
+      "src": "images/oct5.jpg",
+      "original": "images/oct5.jpg",
+      "alt": "News – More from CSS Farms photo",
+      "pos": "center"
+    },
+    "oct6": {
+      "label": "More from CSS Farms 6",
+      "group": "News – More from CSS Farms",
+      "src": "images/oct6.jpg",
+      "original": "images/oct6.jpg",
+      "alt": "News – More from CSS Farms photo",
+      "pos": "center"
+    },
+    "oct7": {
+      "label": "More from CSS Farms 7",
+      "group": "News – More from CSS Farms",
+      "src": "images/oct7.jpg",
+      "original": "images/oct7.jpg",
+      "alt": "News – More from CSS Farms photo",
+      "pos": "center"
+    },
+    "oct8": {
+      "label": "More from CSS Farms 8",
+      "group": "News – More from CSS Farms",
+      "src": "images/oct8.jpg",
+      "original": "images/oct8.jpg",
+      "alt": "News – More from CSS Farms photo",
+      "pos": "center"
+    }
+  },
+  "videos": {
+    "isac": {
+      "label": "ISAC Resort video (home page pop-up)",
+      "src": "images/isac-resort.mp4",
+      "title": "ISAC Resort"
+    }
+  },
+  "text": {
+    "top_bar": {
+      "label": "Top bar – welcome line",
+      "default": "Welcome to CSS Group – A Diversified Business Conglomerate in Nigeria",
+      "value": null
+    },
+    "tagline": {
+      "label": "Home hero – small tagline",
+      "default": "A diversified business conglomerate in Nigeria",
+      "value": null
+    },
+    "hero_text": {
+      "label": "Home hero – paragraph",
+      "default": "One of the most diversified business conglomerates in Africa, providing value-added products and services that meet the basic needs of the populace.",
+      "value": null
+    },
+    "about_text": {
+      "label": "Welcome paragraph (home & about)",
+      "default": "CSS Group is one of the most diversified business conglomerates in Africa, with a reputation for excellent business practices. Our core business focus is to provide value-added products and services that meet the basic needs of the populace.",
+      "value": null
+    },
+    "vision_short": {
+      "label": "Vision (short, home page)",
+      "default": "To be an efficiency-driven organization of first choice, providing excellence in goods and services at a competitive price.",
+      "value": null
+    },
+    "mission_short": {
+      "label": "Mission (short, home page)",
+      "default": "To provide value-added services to our clients through strategic partnerships, to support the nation’s growth.",
+      "value": null
+    },
+    "vision_long": {
+      "label": "Vision (about page)",
+      "default": "To be an efficiency-driven organization of first choice, providing excellence in goods and services at a competitive price through creativity, innovative technology and strategic partnership.",
+      "value": null
+    },
+    "mission_long": {
+      "label": "Mission (about page)",
+      "default": "Our organization provides value-added services to our clients by utilizing strategic partnerships to provide clean environment, accessible road networks, renewable energy solutions, agro-allied products, training and air transportation, to support the nation’s growth.",
+      "value": null
+    },
+    "quote_text": {
+      "label": "Chairman quote",
+      "default": "“Those Who Live Beyond Themselves Live Beyond Their Time.”",
+      "value": null
+    },
+    "quote_name": {
+      "label": "Chairman name",
+      "default": "Prof. John Kennedy Opara",
+      "value": null
+    },
+    "quote_role": {
+      "label": "Chairman title",
+      "default": "Chairman and Founder, CSS Group",
+      "value": null
+    },
+    "careers_text": {
+      "label": "Careers page paragraph",
+      "default": "CSS Group employs more than 500 people across agriculture, construction, energy, aviation, real estate and ICT. Send us your details and we will contact you when a suitable role opens.",
+      "value": null
+    },
+    "cta_title": {
+      "label": "Call-back banner – title",
+      "default": "Talk to us about your requirements?",
+      "value": null
+    },
+    "cta_text": {
+      "label": "Call-back banner – text",
+      "default": "Request a call back and tell us which of our services you would like to discuss.",
+      "value": null
+    },
+    "footer_blurb": {
+      "label": "Footer description",
+      "default": "One of the most diversified business conglomerates in Africa, providing value-added products and services that meet the basic needs of the populace.",
+      "value": null
+    },
+    "svc_agriculture": {
+      "label": "Agriculture page description",
+      "default": "We grow everything organically through our mechanized farming system and modern irrigation techniques. We are simply the root network and baseline of Agriculture in Africa.",
+      "value": null
+    },
+    "svc_construction": {
+      "label": "Construction page description",
+      "default": "We are a leading civil and building construction company offering diversified general contracting, design-build services, pre-construction planning and comprehensive project management services.",
+      "value": null
+    },
+    "svc_energy": {
+      "label": "Energy page description",
+      "default": "We help companies and individuals meet their objectives uninterruptedly by enhancing their daily activities with the right renewable energy technology.",
+      "value": null
+    },
+    "svc_aviation": {
+      "label": "Aviation page description",
+      "default": "Discover new places and experience world-class services. We have the solutions to your travel needs. In our world, everyone is a VIP.",
+      "value": null
+    },
+    "svc_real_estate": {
+      "label": "Real Estate page description",
+      "default": "We are a leading civil and building construction company offering diversified general contracting, design-build services, pre-construction planning and comprehensive project management services.",
+      "value": null
+    },
+    "svc_ict": {
+      "label": "ICT page description",
+      "default": "We are an evolving high-tech company specialized in IT consulting, security management, network and servers, service management, governance, risk, audit and cloud services.",
+      "value": null
+    }
+  },
+  "fx": {
+    "reveal": "pop",
+    "page": "slide",
+    "tilt": ".sc,.pjc,.nw",
+    "tiltMax": 5
+  },
+  "maintenance": {
+    "on": false,
+    "title": "We will be back soon",
+    "message": "Our website is being updated. Thank you for your patience.",
+    "until": "",
+    "email": "info@cssgroup.com.ng"
+  }
+}

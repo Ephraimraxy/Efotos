@@ -30,10 +30,13 @@ window.FX = {
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 window.MEDIA = {
+  'chair': { src: 'images/chairman.jpg', alt: "chair" },
+  'gate': { src: 'images/gate.jpg', alt: "gate" },
+  'aerial': { src: 'images/aerial.jpg', alt: "aerial" },
   'hero': { src: 'images/hero.jpg', alt: "hero" },
   'about1': { src: 'images/about1.jpg', alt: "about1" },
   'about2': { src: 'images/about2.jpg', alt: "about2" },
-  'f1': { src: 'images/ev1.jpg', alt: "f1" },
+  'f1': { src: 'images/aerial.jpg', alt: "f1" },
   'train1': { src: 'images/train1.jpg', alt: "train1" },
   'train2': { src: 'images/train2.jpg', alt: "train2" },
   'ev1': { src: 'images/ev1.jpg', alt: "ev1" },
@@ -54,6 +57,14 @@ window.MEDIA = {
   'c4': { src: 'images/sector-airplane2.jpg', alt: "c4" },
   'c5': { src: 'images/sector-real-estate.jpg', alt: "c5" },
   'c6': { src: 'images/sector-ict.jpg', alt: "c6" },
+  'oct1': { src: 'images/oct1.jpg', alt: "oct1" },
+  'oct2': { src: 'images/oct2.jpg', alt: "oct2" },
+  'oct3': { src: 'images/oct3.jpg', alt: "oct3" },
+  'oct4': { src: 'images/oct4.jpg', alt: "oct4" },
+  'oct5': { src: 'images/oct5.jpg', alt: "oct5" },
+  'oct6': { src: 'images/oct6.jpg', alt: "oct6" },
+  'oct7': { src: 'images/oct7.jpg', alt: "oct7" },
+  'oct8': { src: 'images/oct8.jpg', alt: "oct8" },
   'bay1': { src: 'images/bay1.jpg', alt: "bay1" },
   'ebo1': { src: 'images/ebo1.jpg', alt: "ebo1" },
   'bay2': { src: 'images/bay2.jpg', alt: "bay2" },
@@ -82,4 +93,5 @@ window.MEDIA = {
 
 const SAMPLE = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
 window.VIDEOS = {
+  'isac': { src: 'images/isac-resort.mp4', title: "ISAC Resort" },
 };

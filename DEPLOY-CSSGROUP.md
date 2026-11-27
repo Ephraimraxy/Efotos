@@ -20,8 +20,10 @@ It is a plain static site plus one PHP file for the forms, so it runs on your cP
 - **Not available on the old site, so not invented:** body text of the two news articles (they are photo galleries only) and
   detail text for each service (the old service pages were empty); each service page uses the same description as the old site.
   Send me the real wording and I will add it.
-- **Not copied (large files):** the hero video and the two ISAC Resort videos (`/wp-content/uploads/…mp4`, 20+ MB each).
-  Download them from the old site before removing it; I can add them to the new site if you want.
+- **Video:** the very large homepage video backdrop (`CSS_Slider_1.mp4`, 22 MB) was NOT added, as requested. The 9 MB
+  **ISAC Resort** video from your media library *is* included (home page → "Watch: ISAC Resort" opens it in a pop-up, file
+  `images/isac-resort.mp4`). Other media added from your library: the Chairman's full portrait, the office/gate photos,
+  the campus aerial view, the ISAC Resort rooms and restaurant, and the October 2025 event photos (News page).
 - Please confirm "500+ employees" and "award-winning group" are still accurate (they came from the old site).
 - The old header listed a mistyped email (`info@cssroup.com.ng`); the new site uses `info@cssgroup.com.ng`.
 

@@ -65,3 +65,15 @@ Brand names and contact details in these sites are placeholders (several mock-up
 | web 30 | Terra Futures | Agriculture report 2035 | 6 | plain (none) |
 | web 31 | Rootwell Farm | Farm stay | 7 | depth cursor |
 | web 32 | Aliança Construtora | Construction (Portuguese) | 5 | plain (none) |
+
+## Sites 33–40 (original designs, not copied from any mockup)
+| Folder | Brand | Type | Pages | Signature effect |
+|---|---|---|---|---|
+| web 33 | Carewell Hospital | Multi-specialty hospital | 6 | plain |
+| web 34 | Medora Family Clinic | Children’s clinic | 6 | bubble cursor |
+| web 35 | Stackly | Workflow SaaS (dark) | 6 | dot-field hero |
+| web 36 | Nimbus AI | AI assistant + waitlist | 5 | ink trail |
+| web 37 | Vaultline | Premium banking app | 6 | plain |
+| web 38 | Penny | Teen money app | 4 | confetti clicks |
+| web 39 | Brightwell Academy | K-12 school | 6 | plain |
+| web 40 | Lumen Learning | Online learning platform | 7 | 3D-tilt cards |

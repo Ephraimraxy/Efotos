@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Submissions – Admin</title>
+<style>body{font:15px system-ui;max-width:920px;margin:30px auto;padding:0 16px;color:#222}input,button{font:inherit;padding:8px 12px}
+button{background:#222;color:#fff;border:0;border-radius:6px;cursor:pointer}.card{border:1px solid #ddd;border-radius:10px;padding:14px;margin:12px 0}
+small{color:#777}p{margin:4px 0;white-space:pre-wrap}.tag{display:inline-block;background:#eee;border-radius:99px;padding:1px 9px;font-size:12px;margin-left:6px}</style></head>
+<body><h1>Form submissions</h1>
+<form id="f"><input id="t" type="password" placeholder="Admin token" required> <button>Load</button></form>
+<p id="s"></p><div id="list"></div>
+<script>
+document.getElementById('f').onsubmit = async e => {
+  e.preventDefault();
+  const s = document.getElementById('s'), list = document.getElementById('list'); list.textContent = '';
+  const r = await fetch('/api/submissions', { headers: { 'X-Admin-Token': document.getElementById('t').value } });
+  if (!r.ok) { s.textContent = r.status === 403 ? 'Admin is disabled: start the server with ADMIN_TOKEN set.' : 'Wrong token.'; return; }
+  const rows = await r.json(); s.textContent = rows.length + ' submission(s)';
+  rows.forEach(x => {
+    const c = document.createElement('div'); c.className = 'card';
+    const h = document.createElement('b'); h.textContent = x.name || x.email || x.phone || '(no name)';
+    const t = document.createElement('span'); t.className = 'tag'; t.textContent = x.type;
+    const m = document.createElement('small'); m.textContent = ' ' + new Date(x.at).toLocaleString() + ' · ' + (x.page || '');
+    c.append(h, t, m);
+    Object.entries(x).filter(([k]) => !['id', 'at', 'type', 'page', 'name'].includes(k) && x[k]).forEach(([k, v]) => { const p = document.createElement('p'); const b = document.createElement('b'); b.textContent = k + ': '; p.append(b, document.createTextNode(v)); c.append(p); });
+    list.append(c);
+  });
+};
+</script></body></html>

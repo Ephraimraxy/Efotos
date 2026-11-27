@@ -2,6 +2,15 @@
 Options -Indexes
 DirectoryIndex index.html index.php
 
+# Old WordPress addresses -> new pages (keeps Google rankings and shared links working)
+Redirect 301 /about-css-group/ /about.html
+Redirect 301 /our-services/ /companies.html
+Redirect 301 /blog/ /news.html
+Redirect 301 /contact-us/ /contact.html
+Redirect 301 /company-overview/careers/ /careers.html
+Redirect 301 /job-listing-grid/ /careers.html
+Redirect 301 /shop-2/ /index.html
+
 # Force HTTPS (SSL is active on this account)
 RewriteEngine On
 RewriteCond %{HTTPS} off

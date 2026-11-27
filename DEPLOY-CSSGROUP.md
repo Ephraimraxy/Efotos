@@ -1,7 +1,26 @@
 # Replace cssgroup.com.ng with the new CSS Group site (cPanel guide)
 
-You have: `css-group-site.zip` (19 files: HTML pages, CSS/JS, `forms.php`, `.htaccess`).
+You have: `css-group-site.zip` (about 30 files, 1 MB: HTML pages, CSS/JS, images, `forms.php`, `.htaccess`).
 It is a plain static site plus one PHP file for the forms, so it runs on your cPanel with nothing to install.
+
+
+## What I found on the live cssgroup.com.ng (checked today)
+- It is a **WordPress** site (theme "Consulting", Elementor, WooCommerce shop, Contact Form 7, Revolution Slider, Instagram feed).
+- Real company details were reused in the new site: both offices (20 Thomas Sankara Street, Asokoro, Abuja; Km 10 Abuja–Keffi Road,
+  Gora, Nasarawa), phone +234 702 603 3333, info@cssgroup.com.ng, hours Mon–Sat 8:00–6:00, the Chairman's quote
+  (Prof. John Kennedy Opara), vision, mission, the four core values, the six sector descriptions, the two news headlines,
+  and the company's own photos and logo (training events, estate, sector images).
+- NOT carried over: the **Shop** (WooCommerce), the **job listings** (they are template placeholders: Houston, Toronto, etc.), the
+  homepage **hero video** (`/wp-content/uploads/2024/11/CSS_Slider_1.mp4`, 22 MB), and the full text of the two news articles.
+  Before you remove WordPress, download from `wp-content/uploads` anything you still want (File Manager → select → Download),
+  e.g. the video; then drop it into `/public_html/images/` and tell me if you want it added as a hero video.
+- Old addresses (`/about-css-group/`, `/our-services/`, `/blog/`, `/contact-us/`, `/company-overview/careers/`) are redirected to
+  the new pages by `.htaccess`, so existing links and Google results keep working.
+- Claims taken from the old site and shown as their own words: "500+ employees", "thousands of projects / satisfied customers".
+  Please confirm they are still accurate.
+- The old contact email in the page header was misspelled (`info@cssroup.com.ng`); the new site uses `info@cssgroup.com.ng`.
+- The photo of the Chairman on the old site was only a 48 px thumbnail, so the new site shows his quote without a portrait.
+  Send a larger photo and I will add it.
 
 ## Before you start: protect what already exists
 Your DNS shows these subdomains on the same server: `cssfarms`, `cssenergy`, `cssconstruction`, `cssaviation`,
@@ -30,13 +49,13 @@ cPanel → **File Manager** → open `public_html`.
 
 ## Step 3 – Set your real details (2 minutes)
 Edit with File Manager → **Edit**:
-- `config.js` → `window.SITE`: change `phone`, `address`, `email` to the real ones.
+- `config.js` → `window.SITE`: phone, address and email are already the real ones; change only if needed.
 - `forms.php` (top lines): `$MAIL_TO` = the inbox that should receive enquiries (default `info@cssgroup.com.ng`),
   `$MAIL_FROM` = a real mailbox on the domain (default `website@cssgroup.com.ng` – create it in cPanel → Email Accounts,
   or change it to an existing one). This improves delivery and keeps messages out of spam.
-- Photos: every picture is a free Unsplash stock photo, hotlinked. To use your own photos, upload them to `/public_html/images/`
-  and in `config.js` change each `src` to `'images/your-file.jpg'`.
-  Key names: `hero`, `co1`…`co6` (the six companies), `a1`–`a3`, `w1`–`w3`.
+- Photos: the company's own photos are in `/images/`. A few pictures (energy, construction, aviation, ICT, the services page) are
+  free Unsplash stock photos until you provide your own. To swap one, upload your file to `/public_html/images/` and in `config.js`
+  change that key's `src` to `'images/your-file.jpg'`. Keys: `hero`, `co1`–`co6` (cards), `r1`–`r6` (services page), `a1`–`a3`, `n1`, `n2`.
 
 ## Step 4 – Test
 1. Open https://cssgroup.com.ng (hard refresh: Ctrl+F5). The `.htaccess` forces HTTPS.
@@ -75,5 +94,4 @@ Move the new files out of `public_html` and move your `old-site-backup` files ba
 - `.htaccess` – HTTPS, caching, blocks private files
 
 ## Content to review before going live
-Written from what is known about the group (farms, energy, construction, aviation, ICT, real estate). Check names,
-descriptions, phone number and address. No statistics or claims were invented; add yours in `companies.html`/`about.html`.
+Text comes from your current website. Real estate and a few other descriptions were lightly rewritten; please read every page once.

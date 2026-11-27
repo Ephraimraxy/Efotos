@@ -12,9 +12,10 @@
 
 window.SITE = {
   "name": "CSS Group of Companies",
-  "phone": "+234 000 000 0000",
+  "phone": "+234 702 603 3333",
   "email": "info@cssgroup.com.ng",
-  "address": "Abuja, Nigeria (update with head-office address)",
+  "address": "No 20 Thomas Sankara Street, Asokoro, 900231, Abuja, NG.",
+  "hours": "Mon–Sat 8:00 AM–6:00 PM",
   "formEndpoint": "forms.php"
 };
 
@@ -27,19 +28,24 @@ window.FX = {
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 window.MEDIA = {
-  'hero': { src: u('1523192193543-6e7296d960e4', 1800), alt: "Modern city buildings" },
-  'co1': { src: u('1523741543316-beb7fc7023d8', 900), alt: "Farm fields" },
-  'co2': { src: u('1509391366360-2e959784a276', 900), alt: "Solar panels" },
-  'co3': { src: u('1574362848149-11496d93a7c7', 900), alt: "Building project" },
-  'co4': { src: u('1530521954074-e64f6810b32d', 900), alt: "Airport traveller" },
-  'co5': { src: u('1517694712202-14dd9538aa97', 900), alt: "Software code" },
-  'co6': { src: u('1512917774080-9991f1c4c750', 900), alt: "Modern home" },
-  'a1': { src: u('1581578017093-cd30fce4eeb7', 600), alt: "Farm worker" },
-  'a2': { src: u('1600047509807-ba8f99d2cdde', 600), alt: "Residence" },
-  'a3': { src: u('1615811361523-6bd03d7748e7', 600), alt: "Tractor aerial" },
-  'w1': { src: u('1556761175-5973dc0f32e7', 800), alt: "Team" },
-  'w2': { src: u('1521791136064-7986c2920216', 800), alt: "Handshake" },
-  'w3': { src: u('1519389950473-47ba0277781c', 800), alt: "Desk" },
+  'hero': { src: 'images/hero.jpg', alt: "CSS Group" },
+  'co1': { src: 'images/sector-service-farm.jpg', alt: "Agriculture" },
+  'co2': { src: 'images/sector-construction.jpg', alt: "Construction" },
+  'co3': { src: 'images/sector-energy.jpg', alt: "Energy" },
+  'co4': { src: 'images/sector-airplane2.jpg', alt: "Aviation" },
+  'co5': { src: 'images/sector-real-estate.jpg', alt: "Real estate" },
+  'co6': { src: 'images/sector-ict.jpg', alt: "ICT" },
+  'r1': { src: 'images/farms-training-2.jpg', alt: "Agriculture" },
+  'r2': { src: u('1574362848149-11496d93a7c7', 900), alt: "Construction" },
+  'r3': { src: u('1509391366360-2e959784a276', 900), alt: "Energy" },
+  'r4': { src: u('1530521954074-e64f6810b32d', 900), alt: "Aviation" },
+  'r5': { src: 'images/estate.jpg', alt: "Real estate" },
+  'r6': { src: u('1517694712202-14dd9538aa97', 900), alt: "ICT" },
+  'a1': { src: 'images/farms-training-1.jpg', alt: "CSS Farms training" },
+  'a2': { src: 'images/estate.jpg', alt: "Residence" },
+  'a3': { src: 'images/farms-training-2.jpg', alt: "Farm" },
+  'n1': { src: 'images/farms-training-2.jpg', alt: "News" },
+  'n2': { src: 'images/farms-training-1.jpg', alt: "News" },
 };
 
 const SAMPLE = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';

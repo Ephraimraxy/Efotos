@@ -2,7 +2,7 @@
 
 CSS Group of Companies corporate site (plain). Built for cPanel: static files + forms.php.
 
-Pages: `index.html`, `about.html`, `companies.html`, `careers.html`, `contact.html` · `admin.html` (form inbox)
+Pages: `index.html`, `about.html`, `companies.html`, `news.html`, `careers.html`, `contact.html` · `admin.html` (form inbox)
 
 ## Run
 ```bash

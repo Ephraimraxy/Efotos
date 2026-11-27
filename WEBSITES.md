@@ -32,3 +32,25 @@ custom cursor (`ring/blob/dot/none`). Set any value to `''` to switch it off. Ef
 Every form posts to `/api/forms`; submissions are saved to `data/submissions.json` and can be read at
 `/admin.html` after starting with `ADMIN_TOKEN=your-secret npm start`. On static hosting, set
 `SITE.formEndpoint` in `config.js` (for example a Formspree URL).
+
+## Sites 10–25
+Brand names and contact details in these sites are placeholders (several mock-ups were based on real companies).
+
+| Folder | Brand | Type | Pages | Signature effect |
+|---|---|---|---|---|
+| web 10 | Paylane | Fintech app / global accounts | 5 | dot-field hero |
+| web 11 | Atlas Properties | Residential real estate | 5 | plain (none) |
+| web 12 | Rent H&U | Home rentals | 6 | glass bubble cursor |
+| web 13 | RentXHome | Apartment rentals | 5 | magnifier lens |
+| web 14 | Agriture | Agriculture | 5 | falling leaves |
+| web 15 | Verdant Landscaping | Landscaping | 4 | plain (none) |
+| web 16 | NavikX | Agritech platform | 6 | GPS crosshair |
+| web 17 | Platinum Bank | Digital bank | 5 | plain (none) |
+| web 18 | Jenny Scott | Designer portfolio | 5 | ink-trail cursor |
+| web 19 | Eventra | Event management | 6 | confetti clicks |
+| web 20 | Lucky Knot | Wedding services (Vietnamese) | 7 | petals on click |
+| web 21 | Axion Bank | Banking & lending | 6 | 3D tilt cards |
+| web 22 | Abdullah Tariq | Developer portfolio | 5 | rolling-letter buttons |
+| web 23 | Planet Friendly Gardening | Gardening & shop | 7 | depth cursor |
+| web 24 | Gretna Green | Wedding venue | 5 | plain (none) |
+| web 25 | Agrigo | Smart agriculture | 7 | tilt cards |

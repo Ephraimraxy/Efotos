@@ -1,0 +1,34 @@
+/* Styles for fx-pack2.js (set 2). Accent colours can be set per theme with --cur */
+.fxp2-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9998}
+.fxp2-field{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+.fxp2-petal{position:fixed;width:14px;height:18px;border-radius:100% 0 100% 0;pointer-events:none;z-index:9998;opacity:.9;box-shadow:inset 0 -2px 3px rgba(214,120,150,.25);animation:fxpetal var(--d,3s) ease-in forwards}
+@keyframes fxpetal{0%{transform:translate(0,0) rotate(0) scale(var(--s,1));opacity:.95}100%{transform:translate(var(--dx,60px),240px) rotate(var(--r,200deg)) scale(var(--s,1));opacity:0}}
+
+.fxp2-c3d{transition:transform .35s cubic-bezier(.2,.8,.2,1);will-change:transform}
+
+.fxr{display:inline-block;position:relative;overflow:hidden;vertical-align:top;line-height:inherit}
+.fxr .a,.fxr .b{display:inline-flex;white-space:pre}
+.fxr .b{position:absolute;left:0;top:0}
+.fxr b{display:inline-block;font-weight:inherit;transition:transform .45s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i) * 22ms)}
+.fxr .b b{transform:translateY(105%)}
+:is(a,button):hover .fxr .a b{transform:translateY(-105%)}
+:is(a,button):hover .fxr .b b{transform:translateY(0)}
+
+.fxp2-mag{position:absolute;width:170px;height:170px;border-radius:50%;overflow:hidden;pointer-events:none;z-index:6;opacity:0;transform:scale(.6);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.3,1.3);border:3px solid #fff;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 0 0 1px rgba(0,0,0,.15)}
+.fxp2-mag.on{opacity:1;transform:scale(1)}
+.fxp2-mag b{position:absolute;background-repeat:no-repeat;background-size:cover}
+
+.fxp2-bubble{position:fixed;left:0;top:0;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(5px) saturate(1.6);backdrop-filter:blur(5px) saturate(1.6);border:1px solid rgba(255,255,255,.55);box-shadow:0 8px 30px rgba(10,40,100,.25),inset 0 0 24px rgba(255,255,255,.35);transition:opacity .2s,width .35s cubic-bezier(.2,.8,.3,1.2),height .35s cubic-bezier(.2,.8,.3,1.2),margin .35s cubic-bezier(.2,.8,.3,1.2)}
+.fxp2-bubble.on{opacity:1}.fxp2-bubble.big{width:132px;height:132px;margin:-66px 0 0 -66px}.fxp2-bubble.tiny{width:36px;height:36px;margin:-18px 0 0 -18px}
+
+.fxp2-leaf{position:fixed;pointer-events:none;z-index:9998;margin:-11px 0 0 -11px;animation:fxleaf 2.8s ease-in forwards}
+@keyframes fxleaf{0%{transform:translate(0,0) rotate(0) scale(var(--s,1));opacity:1}100%{transform:translate(var(--dx,60px),210px) rotate(var(--r,200deg)) scale(var(--s,1));opacity:0}}
+
+.fxp2-gh,.fxp2-gv{position:fixed;left:0;top:0;pointer-events:none;z-index:9997;background:color-mix(in srgb,var(--cur,#9be15d) 55%,transparent);opacity:0;transition:opacity .25s}
+.fxp2-gh{width:100%;height:1px}.fxp2-gv{width:1px;height:100%}
+.fxp2-gtag{position:fixed;left:0;top:0;pointer-events:none;z-index:9999;font:600 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.04em;color:#0b2a14;background:var(--cur,#9be15d);padding:5px 8px;border-radius:3px;white-space:nowrap;opacity:0;transition:opacity .25s,background .2s}
+.fxp2-gh.on,.fxp2-gv.on,.fxp2-gtag.on{opacity:1}.fxp2-gv.on,.fxp2-gh.on{opacity:.7}.fxp2-gtag.lock{background:#fff}
+
+@media(pointer:coarse){.fxp2-canvas,.fxp2-petal,.fxp2-leaf,.fxp2-bubble,.fxp2-gh,.fxp2-gv,.fxp2-gtag,.fxp2-mag{display:none}}
+@media(prefers-reduced-motion:reduce){.fxp2-petal,.fxp2-leaf{display:none}}

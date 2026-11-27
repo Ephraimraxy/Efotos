@@ -1,0 +1,12 @@
+{
+  "name": "web-15",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Verdant Landscaping multi-page website with a zero-dependency Node server",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

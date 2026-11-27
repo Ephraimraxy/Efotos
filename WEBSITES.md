@@ -54,3 +54,14 @@ Brand names and contact details in these sites are placeholders (several mock-up
 | web 23 | Planet Friendly Gardening | Gardening & shop | 7 | depth cursor |
 | web 24 | Gretna Green | Wedding venue | 5 | plain (none) |
 | web 25 | Agrigo | Smart agriculture | 7 | tilt cards |
+
+## Sites 26–32 (longer pages)
+| Folder | Brand | Type | Pages | Signature effect |
+|---|---|---|---|---|
+| web 26 | Farmora | Farm-tech & marketplace | 6 | sparkle cursor |
+| web 27 | KidHope | Non-profit charity | 7 | confetti clicks |
+| web 28 | Rivora Fresh | Online grocery (working cart) | 6 | tilt cards |
+| web 29 | Verde Living Walls | Vertical gardens | 5 | falling leaves |
+| web 30 | Terra Futures | Agriculture report 2035 | 6 | plain (none) |
+| web 31 | Rootwell Farm | Farm stay | 7 | depth cursor |
+| web 32 | Aliança Construtora | Construction (Portuguese) | 5 | plain (none) |

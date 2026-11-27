@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donate – KidHope</title>
+<meta name="description" content="Donate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="fx.css">
+<link rel="stylesheet" href="fx-pack.css">
+<link rel="stylesheet" href="fx-pack2.css">
+</head>
+<body>
+<header class="hd"><div class="wrap row"><a href="index.html" class="logo"><i>❤</i>KidHope</a><nav class="nav" id="nav"><ul><li><a href="index.html">Home</a></li><li><a href="campaigns.html">Campaigns</a></li><li class="has-sub"><a href="about.html">About Us</a><ul class="sub"><li><a href="about.html">Our story</a></li><li><a href="volunteer.html">Volunteer</a></li></ul></li><li><a href="stories.html">Stories</a></li><li><a href="contact.html">Contacts</a></li></ul></nav><div class="hd-actions"><a class="dn hide-m" href="donate.html">Donate now</a><button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div></header>
+<main>
+<section class="pg"><div class="wrap"><h1>Donate</h1><p>Every gift goes straight to a child in need.</p></div></section><div class="wrap camp" style="padding-top:40px"><div class="don"><div class="dbox"><h3 style="font-size:24px;margin-bottom:14px">Make a donation</h3><div class="amts" id="amts"><button type="button">$10</button><button type="button" class="on">$36</button><button type="button">$75</button><button type="button">$150</button></div><form class="f" data-form="donation" data-success="Thank you! A receipt will be emailed to you." novalidate><input class="hp" name="website" tabindex="-1" autocomplete="off"><label>Full name<input name="name" type="text" required placeholder=""></label><label>Email<input name="email" type="email" required placeholder=""></label><label>Amount (USD)<input name="amount" type="number" required placeholder="36"></label><label>Cause<select name="cause"><option>Where needed most</option><option>Clean water</option><option>Education</option><option>Food</option><option>Shelter</option></select></label><label>Frequency<select name="freq"><option>One-time</option><option>Monthly</option></select></label><button class="btn" type="submit">Donate now</button></form></div><div><h3 style="font-size:24px;margin-bottom:14px">Where your money goes</h3><div class="acc" data-one><details open><summary>$10 feeds a child for a week</summary><p>Nutritious meals through our school feeding programme.</p></details><details><summary>$36 puts a child in school</summary><p>Uniform, books and fees for a term.</p></details><details><summary>$75 brings clean water</summary><p>Provides filters for a family for a year.</p></details><details><summary>$150 funds a safe shelter bed</summary><p>A month of safe housing and care.</p></details></div></div></div></div>
+<script>(()=>{const w=document.getElementById('amts');if(!w)return;w.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;w.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));const i=document.querySelector('input[name=amount]');if(i)i.value=b.textContent.replace('$','')})})();</script>
+</main>
+<footer class="ft"><div class="wrap"><div class="cols"><div><a href="index.html" class="logo"><i>❤</i>KidHope</a><p style="margin-top:12px;max-width:280px">A non-profit giving children access to food, clean water, education and safe shelter.</p></div><div><h4>Pages</h4><ul><li><a href="campaigns.html">Campaigns</a></li><li><a href="volunteer.html">Volunteer</a></li><li><a href="stories.html">Stories</a></li><li><a href="donate.html">Donate</a></li></ul></div><div><h4>Contact</h4><ul><li data-site="address"></li><li data-site="phone"></li><li data-site="email"></li></ul></div></div><div class="fb">© <span data-year></span> KidHope (demo non-profit). Placeholder details.</div></div></footer>
+<script src="config.js"></script>
+<script src="engine.js"></script>
+<script src="fx.js"></script>
+<script src="fx-pack.js"></script>
+<script src="fx-pack2.js"></script>
+<script src="pjax.js"></script>
+</body>
+</html>

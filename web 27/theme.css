@@ -23,3 +23,5 @@ body{font-size:14px;font-weight:400}h1,h2,h3{font-weight:400;letter-spacing:-.01
 @media(max-width:900px){.hero,.tri,.help,.sol .g4,.val,.cg,.feat,.ng,.don,.ft .cols{grid-template-columns:minmax(0,1fr)}.hero{background:var(--c1)}.hero .ph{width:92%;height:300px;margin-bottom:30px}.sol,.feat{margin:0 10px}.sol{padding:34px 20px}.help .im .ph.tall{height:210px;grid-row:auto}.val .g2{grid-template-columns:1fr}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .row{margin:14px auto 0;background:#fff;border-radius:99px;padding:0 12px 0 28px;height:62px;box-shadow:0 12px 34px rgba(0,0,0,.14);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);max-width:min(1060px,calc(100% - 32px))}.hd .logo{font-size:20px;color:#14281f}.hd .nav a{color:#14281f}.hd .nav{margin-left:auto;margin-right:18px}}

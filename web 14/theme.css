@@ -18,3 +18,5 @@ body{font-size:14.5px;font-weight:400}h1,h2,h3{font-weight:500;letter-spacing:-.
 @media(max-width:900px){.strip,.two,.green,.coll,.sol,.g3,.ft .cols{grid-template-columns:minmax(0,1fr)}.coll .big{height:200px}.strip{margin:-40px 16px 0}.hero{height:460px}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .row{position:relative}.hd .nav{position:absolute;left:50%;transform:translateX(-50%)}.hd .logo{font-size:20px}.hd .nav>ul{gap:26px}}

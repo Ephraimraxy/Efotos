@@ -134,3 +134,5 @@ body{background:#fff;color:var(--ink);font-size:15px}
 .btn:hover{transform:none;box-shadow:0 10px 24px rgba(255,122,69,.3)}
 .sv{transition:none}
 body{font-size:16.5px}.hero h1{font-size:clamp(32px,4.4vw,50px);letter-spacing:-.025em;font-weight:600}.h2{font-size:clamp(26px,3.3vw,38px);letter-spacing:-.02em;font-weight:600}
+/* header-variant */
+@media(min-width:961px){.hd .row{position:relative}.hd .nav{position:absolute;left:50%;transform:translateX(-50%)}.hd .logo{font-size:18px}.hd .nav>ul{gap:26px}}

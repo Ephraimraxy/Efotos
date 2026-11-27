@@ -17,3 +17,5 @@ body{font-size:14px}h1,h2,h3{font-weight:700;letter-spacing:-.02em}
 @media(max-width:900px){.hero .wrap,.about,.g4,.feat .wrap,.feat .li,.stat .wrap,.pj .g3,.pl,.ft .cols{grid-template-columns:minmax(0,1fr)}.hero .ph{height:300px}.about .ph,.about .m{height:240px}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .row{gap:0}.hd .logo{padding:0 30px 0 0;margin-right:26px;border-right:1px solid rgba(128,128,128,.45);height:var(--hd);font-size:22px}.hd .nav{margin-right:auto}.hd .nav>ul{gap:0}.hd .nav>ul>li>a{padding:0 20px;height:var(--hd);border-left:1px solid rgba(128,128,128,.3);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.hd .nav>ul>li:last-child>a{border-right:1px solid rgba(128,128,128,.3)}.hd .nav>ul>li>a::before{display:none}.hd .hd-actions{margin-left:24px}}

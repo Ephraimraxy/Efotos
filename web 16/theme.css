@@ -21,3 +21,5 @@ body{font-size:13px;font-weight:300}h1,h2,h3{font-weight:500;letter-spacing:-.02
 @media(max-width:900px){.shell,.why,.cards,.cards.c4,.wideg,.ft .cols,.sbar{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:1fr 1fr}.nav a{color:#fff}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .row{gap:0}.hd .logo{padding:0 30px 0 0;margin-right:26px;border-right:1px solid rgba(128,128,128,.45);height:var(--hd);font-size:17px}.hd .nav{margin-right:auto}.hd .nav>ul{gap:0}.hd .nav>ul>li>a{padding:0 20px;height:var(--hd);border-left:1px solid rgba(128,128,128,.3);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.hd .nav>ul>li:last-child>a{border-right:1px solid rgba(128,128,128,.3)}.hd .nav>ul>li>a::before{display:none}.hd .hd-actions{margin-left:24px}}

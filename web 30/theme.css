@@ -27,3 +27,5 @@ body{font-size:14px;font-weight:300;color:var(--ink)}h1,h2,h3{font-weight:400;le
 @media(max-width:900px){.exec,.mkt,.tech,.sus,.bars,.live,.ch4,.g2,.g3,.chain .gr,.tp,.tg{grid-template-columns:minmax(0,1fr)}.bento{grid-template-columns:1fr 1fr}.bn.wide{grid-column:span 2}.vc .line{grid-template-columns:1fr}.vc .line::before{display:none}.vc .nd:nth-child(n){margin:0}.cover{padding:30px 20px}.exec .t,.sus .t{margin:16px}.vc,.tech,.bars,.live,.chain,.ch4{padding:24px 18px}.cover h1{font-size:52px}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .row{margin:14px auto 0;background:rgba(245,246,234,.92);border-radius:99px;padding:0 12px 0 28px;height:56px;box-shadow:0 12px 34px rgba(0,0,0,.14);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);max-width:min(1060px,calc(100% - 32px))}.hd .logo{font-size:17px;color:#1d3328}.hd .nav a{color:#1d3328}.hd .nav{margin-left:auto;margin-right:18px}}

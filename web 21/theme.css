@@ -18,3 +18,5 @@ main,.hd,.ft{max-width:1100px;margin-inline:auto}.page{background:#fff;margin:40
 @media(max-width:900px){.tri,.oth .g3,.evo,.fl,.pl{grid-template-columns:minmax(0,1fr)}.tri{margin:-60px 16px 0}.tri a.m{transform:none}.evo .b{padding:30px}.nav a{color:#fff}.body,.fl,.oth{padding-left:20px;padding-right:20px}.pg{padding-left:20px;padding-right:20px}.page{margin:0}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .row{position:relative}.hd .nav{position:absolute;left:50%;transform:translateX(-50%)}.hd .logo{font-size:17px}.hd .nav>ul{gap:26px}}

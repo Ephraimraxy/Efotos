@@ -104,3 +104,5 @@ body{font-size:14px;color:var(--ink)}
 .proj{cursor:pointer}
 .btn:hover{background:#d96d00}.btn.b:hover{background:#093c82}
 body{font-size:14px}.hero h1{font-size:clamp(30px,4.8vw,52px)}.h2{font-size:clamp(22px,3vw,30px)}
+/* header-variant */
+@media(min-width:961px){.hd .row{height:112px;border-bottom:1px solid rgba(128,128,128,.35)}.hd .logo{font-size:30px;letter-spacing:.01em}.hd .nav a{text-transform:uppercase;letter-spacing:.16em;font-size:11px}.hd .nav>ul{gap:34px}}

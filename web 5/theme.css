@@ -143,3 +143,5 @@ body{font-size:15px;color:var(--ink)}
 .feat:hover,.plan:hover,.spk:hover,.post:hover,.sess:hover,.tcard:hover{transform:none}.plan.hot:hover{transform:scale(1.04)}
 .feat:hover .i{transform:none}.hero .x{animation:none}.gal .ph:hover{transform:none}.sponsors span:hover{transform:none}
 body{font-size:16px}.hero h1{font-size:clamp(40px,7vw,78px);letter-spacing:-.02em}.h2{font-size:clamp(28px,4vw,44px)}
+/* header-variant */
+@media(min-width:961px){.hd .row{margin:14px auto 0;background:rgba(255,255,255,.92);border-radius:99px;padding:0 12px 0 28px;height:60px;box-shadow:0 12px 34px rgba(0,0,0,.14);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);max-width:min(1060px,calc(100% - 32px))}.hd .logo{font-size:20px;color:#1b1b1f}.hd .nav a{color:#1b1b1f}.hd .nav{margin-left:auto;margin-right:18px}}

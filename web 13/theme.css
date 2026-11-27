@@ -18,3 +18,5 @@ body{font-size:16px}h1,h2,h3{font-weight:600;letter-spacing:.01em;text-transform
 @media(max-width:900px){.feat,.ap,.ft .cols,.srch{grid-template-columns:minmax(0,1fr)}.feat{margin:-120px 16px 0}.hero{height:520px}.nav a{color:#fff}.feat .ph{min-height:200px}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .nav{margin-right:auto;margin-left:48px}.hd .nav a{text-transform:uppercase;letter-spacing:.09em;font-size:12px}.hd .nav>ul{gap:24px}.hd .logo{font-size:22px}}

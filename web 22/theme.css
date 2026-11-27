@@ -18,3 +18,5 @@ body{font-size:14.5px;color:var(--ink)}h1,h2,h3{font-weight:400;letter-spacing:-
 @media(max-width:900px){.hero .wrap,.pr,.cg,.tools .wrap,.tools .tl,.flow .wrap{grid-template-columns:minmax(0,1fr)}.hero .ph{height:340px;transform:none}.tools .tl{grid-template-columns:1fr 1fr}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .logo{order:3;font-size:26px}.hd .nav{order:1;margin-right:auto}.hd .hd-actions{order:2;margin-right:22px}}

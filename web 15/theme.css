@@ -15,3 +15,5 @@ body{background:#0f2417;color:#e8f1e6;font-size:16px;font-weight:400}h1,h2,h3{fo
 @media(max-width:900px){.hero,.lt,.dk .row2,.g3,.cust .g3{grid-template-columns:minmax(0,1fr)}.hero>.ph{clip-path:none;min-height:260px}.lt .l{padding:44px 24px}.nav a{color:#fff}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .row{display:grid;grid-template-columns:1fr auto 1fr;gap:20px}.hd .logo{grid-column:2;grid-row:1;justify-self:center;font-size:19px}.hd .nav{grid-column:1;grid-row:1;justify-self:start}.hd .nav>ul{gap:20px}.hd .hd-actions{grid-column:3;grid-row:1;justify-self:end}}

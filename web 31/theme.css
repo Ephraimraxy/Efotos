@@ -23,3 +23,5 @@ body{font-size:16px;color:var(--ink);background:#f3f1ea url("data:image/svg+xml,
 @media(max-width:900px){.hero .wrap,.who,.vals,.do .wrap,.ag,.rg,.tst,.nw,.loc,.ft .cols{grid-template-columns:minmax(0,1fr)}.seal{display:none}.shape{height:250px}.ag{grid-template-columns:1fr 1fr}.nav a{color:#fff}}
 
 .ph::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ov,none);pointer-events:none}
+/* header-variant */
+@media(min-width:961px){.hd .row{gap:0}.hd .logo{padding:0 30px 0 0;margin-right:26px;border-right:1px solid rgba(128,128,128,.45);height:var(--hd);font-size:19px}.hd .nav{margin-right:auto}.hd .nav>ul{gap:0}.hd .nav>ul>li>a{padding:0 20px;height:var(--hd);border-left:1px solid rgba(128,128,128,.3);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.hd .nav>ul>li:last-child>a{border-right:1px solid rgba(128,128,128,.3)}.hd .nav>ul>li>a::before{display:none}.hd .hd-actions{margin-left:24px}}

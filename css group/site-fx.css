@@ -89,3 +89,7 @@ h1,h2,h3,.hero h1,.logo,.quote p,.stat b,.nums b,.pr b,.vc b,.cbk h2{font-family
 .sc.svc-card .sv-cap b{color:#fff;display:inline;font-size:18px;letter-spacing:0}.sc.svc-card .sv-cap i{color:#fff}.sc.svc-card .sv-cap{align-items:center}
 .sc.svc-card .sv-desc em{color:#fff;display:-webkit-box;font-size:13px;font-weight:500}.sc.svc-card .sv-desc u{color:#f5c518;display:block;font-size:12px}
 .sc.svc-card span{color:inherit;text-transform:none;font-size:inherit;display:flex}
+/* chairman portrait: clean rounded frame with a soft colour ring that turns inside it (no spilling corners) */
+.quote .qp{position:relative;overflow:hidden;border-radius:22px;padding:5px;isolation:isolate}
+.quote .qp::before{inset:-80%;border-radius:0;z-index:0}
+.quote .qp .ph{animation:none;border:0;border-radius:18px;z-index:1;--pos:center 18%}

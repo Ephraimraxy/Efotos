@@ -43,7 +43,12 @@ function start_session(): void {
 }
 function csrf(): string { if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(24)); return $_SESSION['csrf']; }
 function csrf_field(): string { return '<input type="hidden" name="_t" value="' . h(csrf()) . '">'; }
-function csrf_check(): void { $t = $_POST['_t'] ?? ''; if (!is_string($t) || !hash_equals(csrf(), $t)) { http_response_code(400); exit('Security check failed. Go back, refresh the page and try again.'); } }
+function csrf_check(): void {
+    $t = $_POST['_t'] ?? ''; if (is_string($t) && hash_equals(csrf(), $t)) return;
+    // Stale page or expired session: never a dead end - go back with a friendly note, nothing is changed.
+    if (!current_user()) { flash('Your session ended (or the page was open too long). Please sign in again.', 'err'); redirect('?page=login'); }
+    $pg = preg_replace('/[^a-z_]/', '', (string)($_GET['page'] ?? 'dashboard')); flash('That page was out of date, so nothing was changed. Please try again.', 'err'); redirect('?page=' . ($pg ?: 'dashboard'));
+}
 function flash(string $msg, string $type = 'ok'): void { $_SESSION['flash'][] = [$type, $msg]; }
 function take_flash(): array { $f = $_SESSION['flash'] ?? []; unset($_SESSION['flash']); return $f; }
 function redirect(string $to): void { header('Location: ' . $to); exit; }
@@ -65,7 +70,7 @@ function users(): array { return jread(DATA_DIR . '/users.json', []); }
 function save_users(array $u): void { jwrite(DATA_DIR . '/users.json', array_values($u)); }
 function find_user(string $name): ?array { foreach (users() as $u) if (strcasecmp($u['username'], $name) === 0) return $u; return null; }
 function current_user(): ?array { return $_SESSION['user'] ?? null; }
-function require_login(): array { $u = current_user(); if (!$u) redirect('?page=login'); return $u; }
+function require_login(): array { $u = current_user(); if (!$u) { if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') flash('Your session ended (or the page was open too long). Please sign in again and repeat the step.', 'err'); redirect('?page=login'); } return $u; }
 function require_owner(): array { $u = require_login(); if (($u['role'] ?? '') !== 'owner') { http_response_code(403); exit('Only the owner can do this.'); } return $u; }
 function password_ok(string $p): bool { return strlen($p) >= 12; }
 

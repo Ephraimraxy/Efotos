@@ -239,7 +239,7 @@ function save_site(array $s, string $note): bool {
 function maintenance_html(array $m, string $company): string {
     $title = h($m['title'] ?? 'We will be back soon'); $msg = nl2br(h($m['message'] ?? '')); $until = h($m['until'] ?? ''); $mail = h($m['email'] ?? '');
     $extra = ($until ? "<p class=\"u\">Expected back: <b>$until</b></p>" : '') . ($mail ? "<p class=\"u\">Need us now? <a href=\"mailto:$mail\">$mail</a></p>" : '');
-    return "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta name=\"robots\" content=\"noindex\"><title>" . h($company) . " – $title</title><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#0a3d1b,#10a24a);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif;color:#fff;text-align:center;padding:24px}.c{max-width:560px}.l{height:84px;width:auto;background:#fff;border-radius:16px;padding:10px 16px;margin:0 auto 22px;display:block}h1{font-size:clamp(28px,5vw,44px);margin:0 0 12px;line-height:1.15}p{margin:0 0 10px;opacity:.92}.u{font-size:14px}a{color:#ffd24a}</style></head><body><div class=\"c\"><img class=\"l\" src=\"/images/css-logo.png\" alt=\"\"><h1>$title</h1><p>$msg</p>$extra</div></body></html>";
+    return "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta name=\"robots\" content=\"noindex\"><title>" . h($company) . " – $title</title><link rel=\"icon\" href=\"/favicon.ico\" sizes=\"any\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#0a3d1b,#10a24a);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif;color:#fff;text-align:center;padding:24px}.c{max-width:560px}.l{height:84px;width:auto;background:#fff;border-radius:16px;padding:10px 16px;margin:0 auto 22px;display:block}h1{font-size:clamp(28px,5vw,44px);margin:0 0 12px;line-height:1.15}p{margin:0 0 10px;opacity:.92}.u{font-size:14px}a{color:#ffd24a}</style></head><body><div class=\"c\"><img class=\"l\" src=\"/images/css-logo.png\" alt=\"\"><h1>$title</h1><p>$msg</p>$extra</div></body></html>";
 }
 function apply_maintenance(array $m, string $company): bool {
     if (!empty($m['on'])) { return write_site_file('maintenance.html', maintenance_html($m, $company)) && write_site_file('maintenance.flag', date('c') . "\n"); }
@@ -334,6 +334,46 @@ function site_from_zip(string $id, string $label, string $zipPath, bool $replace
     if (!@rename($tmp, $dest)) { if ($exists) @rename($bak, $dest); rrmdir($tmp); return 'Could not move the files into place (permissions).'; }
     $keepGate = site_register($id, $label !== '' ? $label : site_label($id)); return $keepGate ? '' : 'The files were installed but the protection rules could not be written.';
 }
+// ===== Email accounts (cPanel UAPI, called from this server with an API token) =====
+function cp_key(): string { return hash('sha256', 'css-cp-token|' . (string)cfg('preview_token'), true); }
+function cp_conf(): ?array { $c = jread(DATA_DIR . '/cpanel.json', []); return (!empty($c['user']) && !empty($c['tok'])) ? $c : null; }
+function cp_token(array $c): string {
+    $raw = base64_decode((string)$c['tok'], true); if ($raw === false) return '';
+    if (($c['enc'] ?? '') === 'sodium' && function_exists('sodium_crypto_secretbox_open')) { $n = substr($raw, 0, 24); $o = sodium_crypto_secretbox_open(substr($raw, 24), $n, cp_key()); return $o === false ? '' : $o; }
+    return $raw;
+}
+function cp_save(string $user, string $token, string $host = ''): bool {
+    $enc = ''; if (function_exists('sodium_crypto_secretbox')) { $n = random_bytes(24); $raw = $n . sodium_crypto_secretbox($token, $n, cp_key()); $enc = 'sodium'; } else $raw = $token;
+    $ok = jwrite(DATA_DIR . '/cpanel.json', ['user' => $user, 'tok' => base64_encode($raw), 'enc' => $enc, 'host' => $host, 'saved' => date('c')]); @chmod(DATA_DIR . '/cpanel.json', 0600); return $ok;
+}
+/** Call a cPanel UAPI function. Returns ['ok'=>bool,'data'=>mixed,'err'=>string]. */
+function cp_call(string $mod, string $fn, array $q = []): array {
+    $c = cp_conf(); if (!$c) return ['ok' => false, 'data' => null, 'err' => 'Not connected to cPanel yet.'];
+    if (!function_exists('curl_init')) return ['ok' => false, 'data' => null, 'err' => 'PHP curl is missing (cPanel > Select PHP Version > Extensions > curl).'];
+    $host = $c['host'] !== '' && isset($c['host']) ? (string)$c['host'] : 'cpanel.cssgroup.com.ng';
+    $base = (string)($c['base'] ?? ('https://' . $host . ':2083')); $path = '/execute/' . $mod . '/' . $fn; $tok = cp_token($c);
+    if ($tok === '') return ['ok' => false, 'data' => null, 'err' => 'The saved API token could not be read. Connect again.'];
+    $tries = [[$base . $path, true, []]]; if (str_starts_with($base, 'https://') && !isset($c['base'])) $tries[] = ['https://127.0.0.1:2083' . $path, false, ['Host: ' . $host . ':2083']];
+    $body = false; $cerr = '';
+    foreach ($tries as [$u, $verify, $xh]) {
+        $ch = curl_init($u); curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_POST => true, CURLOPT_POSTFIELDS => http_build_query($q), CURLOPT_TIMEOUT => 25, CURLOPT_CONNECTTIMEOUT => 8, CURLOPT_SSL_VERIFYPEER => $verify, CURLOPT_SSL_VERIFYHOST => $verify ? 2 : 0, CURLOPT_HTTPHEADER => array_merge(['Authorization: cpanel ' . $c['user'] . ':' . $tok], $xh)]);
+        $body = curl_exec($ch); $code = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE); $cerr = curl_error($ch); curl_close($ch);
+        if ($body !== false && $code > 0) break;
+    }
+    if ($body === false) return ['ok' => false, 'data' => null, 'err' => 'Could not reach cPanel (' . $cerr . ').'];
+    if (isset($code) && ($code === 401 || $code === 403)) return ['ok' => false, 'data' => null, 'err' => 'cPanel refused the login. Check the cPanel username and the API token.'];
+    $j = json_decode((string)$body, true); if (!is_array($j)) return ['ok' => false, 'data' => null, 'err' => 'cPanel gave an unexpected answer (HTTP ' . ($code ?? 0) . ').'];
+    $res = $j['result'] ?? $j; if ((int)($res['status'] ?? 0) === 1) return ['ok' => true, 'data' => $res['data'] ?? null, 'err' => ''];
+    return ['ok' => false, 'data' => null, 'err' => trim(implode(' ', array_map('strval', (array)($res['errors'] ?? ['cPanel reported an error.']))))];
+}
+function email_list(): array { // all mailboxes of the whole account (main domain + subdomains/add-on domains)
+    $r = cp_call('Email', 'list_pops_with_disk', ['no_human_readable_keys' => 0]); if (!$r['ok']) $r = cp_call('Email', 'list_pops');
+    if (!$r['ok']) return $r; $out = [];
+    foreach ((array)$r['data'] as $a) { if (!is_array($a)) continue; $email = (string)($a['email'] ?? (($a['user'] ?? '') . '@' . ($a['domain'] ?? ''))); if (!str_contains($email, '@')) continue; [$u, $d] = explode('@', $email, 2);
+        $out[] = ['email' => $email, 'user' => $u, 'domain' => $d, 'used' => (string)($a['humandiskused'] ?? ($a['diskused'] ?? '')), 'quota' => (string)($a['humandiskquota'] ?? ($a['diskquota'] ?? '')), 'login_off' => !empty($a['suspended_login']), 'in_off' => !empty($a['suspended_incoming'])]; }
+    usort($out, fn($a, $b) => strcmp($a['domain'] . $a['user'], $b['domain'] . $b['user'])); return ['ok' => true, 'data' => $out, 'err' => ''];
+}
+function email_domains(): array { $r = cp_call('Email', 'list_mail_domains'); if (!$r['ok']) return []; $o = []; foreach ((array)$r['data'] as $d) $o[] = is_array($d) ? (string)($d['domain'] ?? '') : (string)$d; return array_values(array_filter($o)); }
 function maintenance_is_on(): bool { return is_file(site_root() . '/maintenance.flag'); }
 
 /* ---------- uploads ---------- */

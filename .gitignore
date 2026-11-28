@@ -122,3 +122,4 @@ cssgroup-admin.zip
 !cssgroup-admin/public/
 !cssgroup-admin/public/**
 cssgroup-install.zip
+cssgroup-admin/data/cpanel.json

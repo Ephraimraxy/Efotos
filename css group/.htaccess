@@ -3,19 +3,21 @@ Options -Indexes
 DirectoryIndex index.html index.php
 RewriteEngine On
 
+# ===== Opening /_sites/... directly is only for you (use "Preview" in the admin) =====
+RewriteCond %{THE_REQUEST} \s/+_sites/
+RewriteCond %{HTTP_COOKIE} !css_preview=__PREVIEW_TOKEN__
+RewriteRule ^ - [F]
+
 # ===== Maintenance mode: switched on/off from the admin panel (admin.cssgroup.com.ng) =====
 # When the file maintenance.flag exists, visitors get the maintenance page (HTTP 503) unless they use "Preview live site".
 RewriteCond %{HTTP_HOST} ^(www\.)?cssgroup\.com\.ng$ [NC]
-RewriteCond %{DOCUMENT_ROOT}/maintenance.flag -f
+RewriteCond %{DOCUMENT_ROOT}/_sites/css-new/maintenance.flag -f
 RewriteCond %{HTTP_COOKIE} !css_preview=__PREVIEW_TOKEN__
-RewriteCond %{REQUEST_URI} !^/(maintenance\.html|images/css-mark\.png)$
+RewriteCond %{REQUEST_URI} !^/_sites/css-new/(maintenance\.html|images/css-mark\.png)$
 RewriteRule ^ - [R=503,L]
-ErrorDocument 503 /maintenance.html
+ErrorDocument 503 /_sites/css-new/maintenance.html
 
-# ===== Force HTTPS =====
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# (HTTPS is forced by the switch rules in the main .htaccess, one folder up)
 
 # ===== Old WordPress addresses -> new pages (main domain only; other sites on this account are untouched) =====
 RewriteCond %{HTTP_HOST} !^(www\.)?cssgroup\.com\.ng$ [NC]
@@ -60,4 +62,4 @@ RewriteRule ^shop-2/?$ /index.html [R=301,L]
     Header set Cache-Control "no-cache"
   </IfModule>
 </FilesMatch>
-ErrorDocument 404 /index.html
+ErrorDocument 404 /_sites/css-new/index.html

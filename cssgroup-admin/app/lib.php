@@ -245,6 +245,95 @@ function apply_maintenance(array $m, string $company): bool {
     if (!empty($m['on'])) { return write_site_file('maintenance.html', maintenance_html($m, $company)) && write_site_file('maintenance.flag', date('c') . "\n"); }
     $f = site_root() . '/maintenance.flag'; return !is_file($f) || @unlink($f);
 }
+// ===== Websites: several versions side by side, one of them live =====
+// Every website lives in <root_dir>/_sites/<id>/. The OLD site (WordPress) stays in <root_dir> and is shown when no site is chosen.
+// The choice is written into a managed block at the top of <root_dir>/.htaccess (the visitor-facing rules).
+function root_dir(): string { $r = (string)cfg('root_dir', ''); return rtrim($r !== '' ? $r : dirname(dirname(site_root())), '/'); }
+function sites_dir(): string { return root_dir() . '/_sites'; }
+function managed_id(): string { return basename(site_root()); }          // the site this admin edits (photos, texts, news...)
+function valid_site_id(string $id): bool { return (bool)preg_match('/^[a-z0-9][a-z0-9_-]{1,40}$/', $id); }
+function sites_reg(): array { $r = jread(DATA_DIR . '/sites.json', []); $r['sites'] = is_array($r['sites'] ?? null) ? $r['sites'] : []; $r['live'] = isset($r['live']) && is_string($r['live']) ? $r['live'] : null; return $r; }
+function sites_save(array $r): bool { return jwrite(DATA_DIR . '/sites.json', $r); }
+function site_label(string $id): string { $r = sites_reg(); return (string)($r['sites'][$id]['label'] ?? ($id === managed_id() ? 'New CSS Group website' : $id)); }
+function live_id(): ?string { $l = sites_reg()['live']; return ($l && valid_site_id($l) && is_dir(sites_dir() . '/' . $l)) ? $l : null; }
+function switch_is_live(): bool { return live_id() !== null; }
+function site_has_index(string $id): bool { $d = sites_dir() . '/' . $id; return is_file("$d/index.html") || is_file("$d/index.php") || is_file("$d/index.htm"); }
+/** All folders under _sites with their state. */
+function sites_all(): array {
+    $reg = sites_reg(); $out = []; $live = live_id();
+    foreach ((array)@scandir(sites_dir()) as $n) {
+        if (!is_string($n) || $n === '' || $n[0] === '.' || !is_dir(sites_dir() . '/' . $n) || is_link(sites_dir() . '/' . $n)) continue;
+        $out[] = ['id' => $n, 'label' => (string)($reg['sites'][$n]['label'] ?? ($n === managed_id() ? 'New CSS Group website' : $n)), 'registered' => isset($reg['sites'][$n]) || $n === managed_id(), 'live' => $n === $live, 'editable' => $n === managed_id(), 'index' => site_has_index($n), 'created' => (string)($reg['sites'][$n]['created'] ?? '')];
+    }
+    usort($out, fn($a, $b) => [!$a['editable'], $a['label']] <=> [!$b['editable'], $b['label']]); return $out;
+}
+function gate_block(): string {
+    $t = (string)cfg('preview_token');
+    return "# BEGIN CSSGROUP-GATE (managed by the admin panel)\n<IfModule mod_rewrite.c>\nRewriteEngine On\n# Opening /_sites/... directly is only for you (\"Preview\" in the admin)\nRewriteCond %{THE_REQUEST} \\s/+_sites/\nRewriteCond %{HTTP_COOKIE} !css_preview=$t\nRewriteRule ^ - [F]\n</IfModule>\n# END CSSGROUP-GATE\n";
+}
+function site_gate_install(string $id): bool {
+    $f = sites_dir() . '/' . $id . '/.htaccess'; $cur = is_file($f) ? (string)file_get_contents($f) : '';
+    $cur = preg_replace('/# BEGIN CSSGROUP-GATE.*?# END CSSGROUP-GATE\R?\n?/s', '', $cur);
+    if ($id === managed_id()) return true; // the managed site ships its own gate in its .htaccess
+    return @file_put_contents($f, gate_block() . "\n" . ltrim($cur), LOCK_EX) !== false;
+}
+function switch_block(?string $live): string {
+    $t = (string)cfg('preview_token'); $h = '^(www\.)?cssgroup\.com\.ng$'; $wp = '!^/(wp-admin|wp-login\.php|wp-includes|wp-content|wp-json|xmlrpc\.php)';
+    $b = "# BEGIN CSSGROUP-SWITCH (managed by the admin panel - do not edit this block)\n<IfModule mod_rewrite.c>\nRewriteEngine On\n"
+       . "# HTTPS for the main domain\nRewriteCond %{HTTP_HOST} $h [NC]\nRewriteCond %{HTTPS} off\nRewriteCond %{HTTP:X-Forwarded-Proto} !https\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n"
+       . "# Preview: you only (cookie set by the admin) see the website you chose\nRewriteCond %{HTTP_HOST} $h [NC]\nRewriteCond %{HTTP_COOKIE} css_preview=$t\nRewriteCond %{HTTP_COOKIE} !css_site=_old\nRewriteCond %{HTTP_COOKIE} css_site=([a-z0-9_-]+)\nRewriteCond %{REQUEST_URI} $wp\nRewriteRule ^(?!_sites/)(.*)$ _sites/%1/$1 [L]\n";
+    if ($live !== null && valid_site_id($live)) $b .= "# LIVE website for everyone: $live\nRewriteCond %{HTTP_HOST} $h [NC]\nRewriteCond %{HTTP_COOKIE} !css_site=_old\nRewriteCond %{REQUEST_URI} $wp\nRewriteRule ^(?!_sites/)(.*)$ _sites/$live/$1 [L]\n";
+    else $b .= "# No website chosen: visitors see the OLD site\n";
+    return $b . "</IfModule>\n# END CSSGROUP-SWITCH\n";
+}
+function switch_rules_present(): bool { $f = root_dir() . '/.htaccess'; $c = is_file($f) ? (string)file_get_contents($f) : ''; return str_contains($c, 'BEGIN CSSGROUP-SWITCH') && str_contains($c, (string)cfg('preview_token')); }
+/** Writes the visitor rules for the given live site (null = old site). Keeps all other lines, one-time backup, atomic. */
+function switch_install(?string $live = null): bool {
+    $live = func_num_args() ? $live : sites_reg()['live'];
+    $f = root_dir() . '/.htaccess'; $cur = is_file($f) ? (string)file_get_contents($f) : '';
+    if ($cur !== '' && !is_file($f . '.before-css-switch')) @copy($f, $f . '.before-css-switch');
+    $cur = preg_replace('/# BEGIN CSSGROUP-SWITCH.*?# END CSSGROUP-SWITCH\R?\n?/s', '', $cur);
+    $tmp = $f . '.tmp' . getmypid();
+    if (@file_put_contents($tmp, switch_block($live) . "\n" . ltrim($cur), LOCK_EX) === false) return false; @chmod($tmp, 0644); return @rename($tmp, $f);
+}
+function switch_remove(): bool { $f = root_dir() . '/.htaccess'; if (!is_file($f)) return true; return @file_put_contents($f, preg_replace('/# BEGIN CSSGROUP-SWITCH.*?# END CSSGROUP-SWITCH\R?\n?/s', '', (string)file_get_contents($f)), LOCK_EX) !== false; }
+/** Make a site live for everyone (null = back to the old site). */
+function site_set_live(?string $id): bool {
+    if ($id !== null && (!valid_site_id($id) || !is_dir(sites_dir() . '/' . $id) || !site_has_index($id))) return false;
+    if (!switch_install($id)) return false;
+    $r = sites_reg(); $r['live'] = $id; return sites_save($r);
+}
+function site_register(string $id, string $label): bool {
+    if (!valid_site_id($id) || !is_dir(sites_dir() . '/' . $id)) return false; if (!site_gate_install($id)) return false;
+    $r = sites_reg(); $r['sites'][$id] = ['label' => $label !== '' ? mb_substr($label, 0, 60) : $id, 'created' => $r['sites'][$id]['created'] ?? date('c')]; return sites_save($r);
+}
+function rrmdir(string $d): void { if (!is_dir($d) || is_link($d)) { @unlink($d); return; } foreach ((array)scandir($d) as $n) { if ($n === '.' || $n === '..') continue; rrmdir($d . '/' . $n); } @rmdir($d); }
+function site_delete(string $id): bool {
+    if (!valid_site_id($id) || $id === managed_id() || $id === live_id() || !is_dir(sites_dir() . '/' . $id)) return false;
+    rrmdir(sites_dir() . '/' . $id); rrmdir(sites_dir() . '/.backup-' . $id); $r = sites_reg(); unset($r['sites'][$id]); return sites_save($r);
+}
+/** Unpack a zip into _sites/<id> (new site, or replace an existing one - the previous files are kept in _sites/.backup-<id>). Returns an error text or '' on success. */
+function site_from_zip(string $id, string $label, string $zipPath, bool $replace): string {
+    if (!valid_site_id($id)) return 'Use a short name with letters, numbers, - or _ (2-40 characters).';
+    if (!class_exists('ZipArchive')) return 'This server has no zip support (enable "zip" in cPanel > Select PHP Version > Extensions), or upload the files with File Manager into the _sites folder.';
+    $dest = sites_dir() . '/' . $id; $exists = is_dir($dest);
+    if ($exists && !$replace) return 'A website with this name already exists. Pick another name or use "Replace files" on it.';
+    if (!$exists && $replace) return 'Website not found.'; if ($id === managed_id()) return 'This is the website you edit in this admin. Its files are managed here; update it by uploading the package with File Manager.';
+    $z = new ZipArchive; if ($z->open($zipPath) !== true) return 'That file is not a valid zip.';
+    $n = $z->numFiles; if ($n < 1 || $n > 30000) { $z->close(); return 'The zip is empty or has too many files.'; }
+    $names = []; $total = 0; for ($i = 0; $i < $n; $i++) { $st = $z->statIndex($i); $nm = str_replace('\\', '/', (string)$st['name']); $total += (int)$st['size']; $names[$i] = $nm; if (str_contains($nm, '..') || str_starts_with($nm, '/') || preg_match('#^[A-Za-z]:#', $nm)) { $z->close(); return 'The zip contains unsafe paths.'; } }
+    if ($total > 600 * 1048576) { $z->close(); return 'The zip is larger than 600 MB when unpacked.'; }
+    $strip = ''; $tops = []; foreach ($names as $nm) { if (str_starts_with($nm, '__MACOSX/')) continue; $tops[explode('/', $nm)[0]] = true; }
+    if (count($tops) === 1) { $only = (string)array_key_first($tops); if (isset($names) && !in_array('index.html', $names, true) && !in_array('index.php', $names, true)) $strip = $only . '/'; }
+    $tmp = sites_dir() . '/.tmp-' . $id . '-' . getmypid(); rrmdir($tmp); @mkdir($tmp, 0755, true);
+    for ($i = 0; $i < $n; $i++) { $nm = $names[$i]; if (str_starts_with($nm, '__MACOSX/') || str_ends_with($nm, '/')) continue; if ($strip !== '') { if (!str_starts_with($nm, $strip)) continue; $nm = substr($nm, strlen($strip)); } if ($nm === '' || basename($nm) === '.DS_Store') continue;
+        $t = $tmp . '/' . $nm; @mkdir(dirname($t), 0755, true); $in = $z->getStream($z->getNameIndex($i)); if (!$in) continue; $out = fopen($t, 'wb'); stream_copy_to_stream($in, $out); fclose($out); fclose($in); @chmod($t, 0644); }
+    $z->close();
+    if (!is_file("$tmp/index.html") && !is_file("$tmp/index.php") && !is_file("$tmp/index.htm")) { rrmdir($tmp); return 'The zip needs an index.html (or index.php) at its top level.'; }
+    $bak = sites_dir() . '/.backup-' . $id; if ($exists) { rrmdir($bak); @rename($dest, $bak); }
+    if (!@rename($tmp, $dest)) { if ($exists) @rename($bak, $dest); rrmdir($tmp); return 'Could not move the files into place (permissions).'; }
+    $keepGate = site_register($id, $label !== '' ? $label : site_label($id)); return $keepGate ? '' : 'The files were installed but the protection rules could not be written.';
+}
 function maintenance_is_on(): bool { return is_file(site_root() . '/maintenance.flag'); }
 
 /* ---------- uploads ---------- */

@@ -1,8 +1,11 @@
 <?php
 // Settings for the admin panel. Edit only if the guide tells you to.
 return [
-    // Folder of the PUBLIC website (the one that contains index.html). cPanel default for your account:
-    'site_root'     => '/home/cssgroup/public_html',
+    // Folder of the website THIS ADMIN EDITS (photos, texts, news). Every website lives in public_html/_sites/<name>;
+    // visitors only see it after you press "Make live" in the admin (Websites).
+    'site_root'     => '/home/cssgroup/public_html/_sites/css-new',
+    // Main web folder of the domain (holds the old WordPress site and the switch rules in its .htaccess).
+    'root_dir'      => '/home/cssgroup/public_html',
     'site_url'      => 'https://cssgroup.com.ng',
     'cookie_domain' => '.cssgroup.com.ng',
     // Secret that lets the admin preview the site while maintenance mode is on. Must match the website's .htaccess.

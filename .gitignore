@@ -117,3 +117,7 @@ cssgroup-admin/data/history/
 cssgroup-admin/data/*.log
 css-group-site.zip
 cssgroup-admin.zip
+
+# keep the CSS Group admin panel public/ folder tracked
+!cssgroup-admin/public/
+!cssgroup-admin/public/**

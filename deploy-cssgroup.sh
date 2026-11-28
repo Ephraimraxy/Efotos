@@ -1,7 +1,7 @@
 #!/bin/bash
-# CSS Group: install the website + admin panel on cPanel. Paste/run in cPanel > Terminal.
+# CSS Group: install the NEW website (side by side with the old one) + admin panel on cPanel. Paste/run in cPanel > Terminal.
 # BEFORE running: upload css-group-site.zip and cssgroup-admin.zip into /home/cssgroup (File Manager > Upload).
-# Safe to re-run. Backs up every website file it would overwrite.
+# Safe to re-run. The old website is NOT changed: it stays live until you press "Make live" in the admin (Websites).
 set -u
 cd ~ || exit 1
 D=$(date +%Y%m%d-%H%M)
@@ -12,19 +12,22 @@ for z in css-group-site.zip cssgroup-admin.zip; do [ -f "$z" ] && ok "$z found" 
 [ $FAIL = 1 ] && { echo "Upload the missing zip(s) to $(pwd) and run again."; exit 1; }
 [ -d public_html ] || { echo "public_html not found"; exit 1; }
 
-echo "2/6 Backing up the files the new site will replace"
-LIST=$(unzip -Z1 css-group-site.zip | grep -v '/$' | while read -r f; do [ -e "public_html/$f" ] && echo "$f"; done)
-if [ -n "$LIST" ]; then echo "$LIST" | tar czf "css-site-backup-$D.tgz" -C public_html -T - && ok "backup: ~/css-site-backup-$D.tgz"; else ok "nothing to back up"; fi
+echo "2/6 Backing up the main .htaccess (the old site is not changed)"
+[ -f public_html/.htaccess ] && cp public_html/.htaccess "public_html/.htaccess.backup-$D" && ok "backup: public_html/.htaccess.backup-$D"
 echo "  Folders inside public_html (other sites may live here, they are NOT touched):"; ls -d public_html/*/ 2>/dev/null | sed 's/^/    /'
 
-echo "3/6 Installing the website"
-unzip -oq css-group-site.zip -d public_html && ok "website files extracted to public_html"
-chmod 755 public_html/images/uploads 2>/dev/null; chmod 644 public_html/.htaccess
+echo "3/6 Installing the NEW website next to the old one (public_html/_sites/css-new)"
+mkdir -p public_html/_sites/css-new
+# keep what the admin already wrote (config.js, uploaded photos) when re-running
+unzip -oq css-group-site.zip -x 'config.js' 'images/uploads/*' -d public_html/_sites/css-new
+[ -f public_html/_sites/css-new/config.js ] || unzip -oq css-group-site.zip 'config.js' 'images/uploads/*' -d public_html/_sites/css-new
+ok "new website extracted (visitors still see the OLD site until you press Make live)"
+chmod 755 public_html/_sites public_html/_sites/css-new public_html/_sites/css-new/images/uploads 2>/dev/null
 
 echo "4/6 Installing the admin panel (outside public_html)"
 if [ -d cssgroup-admin/data ] && [ -f cssgroup-admin/data/users.json ]; then
   # already set up before: update code only, keep users/settings/history
-  unzip -oq cssgroup-admin.zip 'public/*' 'app/lib.php' -d cssgroup-admin && ok "admin code updated, your data kept"
+  unzip -oq cssgroup-admin.zip 'public/*' 'app/lib.php' 'app/install_switch.php' -d cssgroup-admin && ok "admin code updated, your data kept"
 else
   unzip -oq cssgroup-admin.zip -d cssgroup-admin && ok "admin extracted to ~/cssgroup-admin"
 fi
@@ -38,19 +41,21 @@ memory_limit = 256M
 I
 ok "upload limits file written"
 
-echo "5/6 Creating admin.cssgroup.com.ng"
+echo "5/6 Installing the website switch and the admin address"
+php cssgroup-admin/app/install_switch.php && ok "switch rules installed in public_html/.htaccess" || bad "switch install failed (see message above)"
 if command -v uapi >/dev/null; then
   R=$(uapi --output=json SubDomain addsubdomain domain=admin rootdomain=cssgroup.com.ng dir=cssgroup-admin/public 2>&1)
-  echo "$R" | grep -q '"status":1' && ok "subdomain created (document root cssgroup-admin/public)" || {
-    echo "$R" | grep -qi "already" && ok "subdomain already exists" || bad "could not create it here. Do it in cPanel > Domains > Create A New Domain: admin.cssgroup.com.ng, document root cssgroup-admin/public"; }
-else bad "uapi not available: create the subdomain in cPanel > Domains (document root cssgroup-admin/public)"; fi
+  echo "$R" | grep -q '"status":1' && ok "admin.cssgroup.com.ng created (document root cssgroup-admin/public)" || { echo "$R" | grep -qi "already\|exist" && ok "admin.cssgroup.com.ng already exists" || echo "  [INFO] create admin.cssgroup.com.ng in cPanel > Domains (untick Share document root; Document Root = cssgroup-admin/public) if you have not yet"; }
+fi
 
 echo "6/6 Checks"
 php -v | head -1
 V=$(php -r 'echo PHP_VERSION_ID>=80100?"ok":"old";'); [ "$V" = ok ] && ok "PHP 8.1+" || bad "PHP older than 8.1 in this terminal; set 8.1+ in cPanel > MultiPHP Manager for the site and admin address"
 for m in gd fileinfo mbstring json; do php -m | grep -qix "$m" && ok "php ext $m" || bad "php ext $m missing: cPanel > Select PHP Version > Extensions"; done
-[ -f public_html/index.html ] && [ -f public_html/config.js ] && ok "website files present" || bad "website files missing"
+[ -f public_html/_sites/css-new/index.html ] && [ -f public_html/_sites/css-new/config.js ] && ok "new website files present" || bad "new website files missing"
 [ -f cssgroup-admin/data/setup.key ] && echo "  First-time setup key: ~/cssgroup-admin/data/setup.key (open it in File Manager, paste it on the admin page)"
 echo
-echo "NEXT in cPanel: SSL/TLS Status > Run AutoSSL (so admin.cssgroup.com.ng gets https), then open https://admin.cssgroup.com.ng"
+echo "NEXT: cPanel > SSL/TLS Status > Run AutoSSL, open https://admin.cssgroup.com.ng, create the owner account (key: ~/cssgroup-admin/data/setup.key),"
+echo "      then Websites > Preview the new site > Make live. Rollback any time: Websites > Old website > Make live."
+echo "      Emergency rollback if the main site ever breaks: cp ~/public_html/.htaccess.before-css-switch ~/public_html/.htaccess"
 [ $FAIL = 1 ] && echo "Some checks failed - read the [FAIL] lines above." || echo "All checks passed."

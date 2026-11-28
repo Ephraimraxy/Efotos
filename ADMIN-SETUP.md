@@ -4,6 +4,7 @@ Address: **https://admin.cssgroup.com.ng** (a separate sign-in page for manageme
 ## What management can do from it
 | Screen | What it does | Who |
 |---|---|---|
+| **Websites** | Keep several websites side by side and choose which one visitors see: the old WordPress site, the new CSS Group site, and any others you add later (upload a .zip, or copy a folder with File Manager). **Make live** switches instantly; **Make live** on the Old website goes back. **Preview** shows you only (2 hours). Replace a website's files with a new zip (the previous files are kept as a backup), rename, or delete (not the live one). | owner |
 | **News** | Write, edit, publish/unpublish and delete articles: headline, date, short summary, article text (blank line = paragraph, `## ` = sub-heading), cover photo, a photo gallery (many at once, reorder, remove, pick cover), optional video (upload or YouTube/Vimeo). The News page lists all published articles and the **home page shows the latest 3**. Each article gets its own address (`article.html?a=…`). Drafts stay hidden. | owner, editor |
 | **Chairman** | Replace the Chairman's portrait (with a choice of how it is cropped), and edit the quote, name and title shown on the home and About pages. | owner, editor |
 | **Service photos** | Each of the six services (Agriculture, Construction, Energy, Aviation, Real Estate, ICT) shows a photo slideshow on its card and on its own page. Upload as many photos as you like per service, reorder or remove them, and set the speed. On hover (tap on a phone) the service description slides up and stays while you keep the pointer on the card. Edit that wording in Page texts. | owner, editor |
@@ -21,31 +22,25 @@ Address: **https://admin.cssgroup.com.ng** (a separate sign-in page for manageme
 
 Not included (phase 2): adding brand-new pages, editing wording other than the 21 blocks above, cropping photos, scheduling articles or maintenance in advance.
 
-## One-time installation (about 20 minutes)
-**You need:** `cssgroup-admin.zip` and the updated `css-group-site.zip` (both delivered with this guide).
+## One-time installation (about 15 minutes)
+**You need:** `cssgroup-admin.zip`, `css-group-site.zip` and `deploy-cssgroup.sh`.
+The old website is **not changed**: the new one is installed next to it in `public_html/_sites/css-new` and visitors keep seeing the old one until you press **Make live**.
 
-1. **Create the admin address.** cPanel → **Domains** → *Create A New Domain* → `admin.cssgroup.com.ng`.
-   Untick "Share document root". Set **Document Root** to `cssgroup-admin/public` (this folder is created in the next step; the admin
-   programme itself stays outside `public_html`, so nobody can browse its data). Then cPanel → **SSL/TLS Status** → *Run AutoSSL* for the new address.
-2. **Upload the admin panel.** File Manager → your home folder `/home/cssgroup` → Upload `cssgroup-admin.zip` → Extract. You should now have
-   `/home/cssgroup/cssgroup-admin/` containing `app`, `data`, `public`.
-3. **PHP settings.** cPanel → **MultiPHP Manager**: set PHP **8.1 or newer** for `admin.cssgroup.com.ng` (and for the main site). cPanel → **Select PHP Version → Extensions**:
-   make sure `gd`, `fileinfo`, `mbstring` are ticked. cPanel → **MultiPHP INI Editor** (for the admin address): `upload_max_filesize = 128M`, `post_max_size = 128M`,
-   `max_execution_time = 300`, `memory_limit = 256M` (needed for large photos and short videos).
-4. **Update the public website.** Upload and extract the new `css-group-site.zip` into `/home/cssgroup/public_html` (overwrite when asked), as in `DEPLOY-CSSGROUP.md`.
-   This version contains the maintenance-mode rules (`.htaccess`), the protected `images/uploads` folder, and the pieces the admin panel controls. **Do not skip it.**
-5. **Create the owner account.** Open https://admin.cssgroup.com.ng. In File Manager open `/home/cssgroup/cssgroup-admin/data/setup.key`, copy the text, paste it on the page,
-   choose a username and a strong password (12+ characters). The key file is deleted automatically.
-6. **Health check** (opens automatically): everything should be green. If a line is red, follow its hint. If your public site is not in `/home/cssgroup/public_html`,
-   edit `/home/cssgroup/cssgroup-admin/app/config.php` → `site_root`.
-7. **Turn on two-step sign-in** (My account) for every user and add your colleagues under **Users** (give *Editor* to staff who only change photos/texts).
-8. **Test:** change the phone number, refresh the public site; replace one photo; turn maintenance ON, open the site in a private window (you should see the maintenance page), use
-   "Preview live site", then **Go LIVE**.
+1. **Create the admin address.** cPanel → **Domains** → *Create A New Domain*: Domain `admin.cssgroup.com.ng`, **untick** "Share document root", Document Root `cssgroup-admin/public` (outside `public_html`, so nobody can browse the admin's data). Submit, then cPanel → **SSL/TLS Status** → *Run AutoSSL*.
+2. **Upload** the two zips and `deploy-cssgroup.sh` to `/home/cssgroup` (File Manager → Upload).
+3. **Run** cPanel → **Terminal**: `bash deploy-cssgroup.sh`. It installs the new website and the admin, writes the upload limits and installs the switch rules. Read any `[FAIL]` lines.
+4. **PHP:** cPanel → **MultiPHP Manager**: PHP **8.1 or newer** for `admin.cssgroup.com.ng` and `cssgroup.com.ng`. Select PHP Version → Extensions: `gd`, `fileinfo`, `mbstring`, `zip` ticked.
+5. **Create the owner account.** Open https://admin.cssgroup.com.ng, paste the text from `/home/cssgroup/cssgroup-admin/data/setup.key` (File Manager), choose a username and a strong password. The key file is deleted automatically.
+6. **Health check** opens: everything should be green.
+7. **Turn on two-step sign-in** (My account) and add colleagues under **Users** (*Editor* for people who only change photos/texts).
+8. **Go live:** **Websites** → *Preview* the new site (open it on phone too) → **Make live**. To go back: **Websites** → Old website → **Make live**.
+
+Emergency rollback (if the main site ever misbehaves): File Manager → `public_html` → copy `.htaccess.before-css-switch` over `.htaccess`.
 
 ## How the pieces fit (so you can trust it)
-- The public website stays plain HTML/CSS (fast, safe). The admin panel writes one generated file, `public_html/config.js`, plus uploaded files in `public_html/images/uploads/`.
+- The public website stays plain HTML/CSS (fast, safe). The admin panel writes one generated file, `_sites/css-new/config.js`, plus uploaded files in `_sites/css-new/images/uploads/`.
   Visitors' browsers read `config.js`, so a saved change is live immediately (refresh once).
-- Maintenance mode = a file `maintenance.flag` in `public_html`. The `.htaccess` rules in the website check for it. Other websites on your account (cssfarms, cssenergy, isac…) are never affected.
+- Which website is live is decided by one managed block at the top of `public_html/.htaccess` (the admin rewrites it when you press Make live; the rest of that file, e.g. WordPress, is kept). Each website lives in `public_html/_sites/<name>`. Maintenance mode = a file `maintenance.flag` in the new website's folder; it applies to the new site only. Other websites on your account (cssfarms, cssenergy, isac…) are never affected.
 - Edited texts are applied by a few lines of script in `config.js`; the original wording stays in the HTML as a fallback and for search engines.
 - Everything is stored in plain files (no database): `cssgroup-admin/data/` (users, settings, history, activity log). It is included in your normal cPanel backups. **Download `data/site.json` now and then as an extra copy.**
 
@@ -69,5 +64,7 @@ Tips: use long passwords, switch on two-step codes, give *Editor* instead of *Ow
     public/   ← the admin address points here (index.php, admin.css, admin.js, .htaccess)
     app/      ← programme code + config.php (private)
     data/     ← settings, users, history, logs (private, also blocked by .htaccess)
-  public_html/ ← your website (+ config.js, maintenance.html/flag, images/uploads written by the admin)
+  public_html/ ← the old website + the switch rules (.htaccess)
+    _sites/css-new/ ← the new website (+ config.js, maintenance files, images/uploads written by the admin)
+    _sites/<other>/ ← any other website you add
 ```

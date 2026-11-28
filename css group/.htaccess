@@ -8,7 +8,7 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^(www\.)?cssgroup\.com\.ng$ [NC]
 RewriteCond %{DOCUMENT_ROOT}/maintenance.flag -f
 RewriteCond %{HTTP_COOKIE} !css_preview=__PREVIEW_TOKEN__
-RewriteCond %{REQUEST_URI} !^/(maintenance\.html|images/css-mark\.png)$
+RewriteCond %{REQUEST_URI} !^/(maintenance\.html|images/css-logo\.png)$
 RewriteRule ^ - [R=503,L]
 ErrorDocument 503 /maintenance.html
 

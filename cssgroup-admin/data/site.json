@@ -474,8 +474,11 @@
   "fx": {
     "reveal": "pop",
     "page": "slide",
-    "tilt": ".sc,.pjc,.nw",
-    "tiltMax": 5
+    "ripple": ".btn",
+    "magnet": ".hd-actions .btn,.hero .btn,.cbk .btn",
+    "cursor": "ring",
+    "sig": "letterroll",
+    "roll": ".btn,.nav>ul>li:not(.has-sub)>a"
   },
   "maintenance": {
     "on": false,

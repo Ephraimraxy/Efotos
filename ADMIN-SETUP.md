@@ -23,12 +23,12 @@ Address: **https://admin.cssgroup.com.ng** (a separate sign-in page for manageme
 Not included (phase 2): adding brand-new pages, editing wording other than the 21 blocks above, cropping photos, scheduling articles or maintenance in advance.
 
 ## One-time installation (about 15 minutes)
-**You need:** `cssgroup-admin.zip`, `css-group-site.zip` and `deploy-cssgroup.sh`.
+**You need:** only `cssgroup-install.zip` (it contains the website, the admin and the installer; the secret keys are generated on your server).
 The old website is **not changed**: the new one is installed next to it in `public_html/_sites/css-new` and visitors keep seeing the old one until you press **Make live**.
 
 1. **Create the admin address.** cPanel → **Domains** → *Create A New Domain*: Domain `admin.cssgroup.com.ng`, **untick** "Share document root". Leave the Document Root as cPanel proposes (`public_html/admin.cssgroup.com.ng`): the setup script puts only the admin's web files there and keeps its code and data in `~/cssgroup-admin`, outside the web folders (you can also set the Document Root to `cssgroup-admin/public` if cPanel lets you; both work). Then cPanel → **SSL/TLS Status** → *Run AutoSSL*.
-2. **Upload** the two zips and `deploy-cssgroup.sh` to `/home/cssgroup` (File Manager → Upload).
-3. **Run** cPanel → **Terminal**: `bash deploy-cssgroup.sh`. It installs the new website and the admin, writes the upload limits and installs the switch rules. Read any `[FAIL]` lines.
+2. **Upload and extract.** File Manager → `/home/cssgroup` → Upload `cssgroup-install.zip` → right-click → Extract. You get a folder `cssgroup-install`.
+3. **Install.** cPanel → **Terminal**: `bash cssgroup-install/deploy-cssgroup.sh`. It installs the new website and the admin, creates the private keys, writes the upload limits and installs the switch rules. Read any `[FAIL]` lines. You can run it again any time to update; your settings are kept.
 4. **PHP:** cPanel → **MultiPHP Manager**: PHP **8.1 or newer** for `admin.cssgroup.com.ng` and `cssgroup.com.ng`. Select PHP Version → Extensions: `gd`, `fileinfo`, `mbstring`, `zip` ticked.
 5. **Create the owner account.** Open https://admin.cssgroup.com.ng, paste the text from `/home/cssgroup/cssgroup-admin/data/setup.key` (File Manager), choose a username and a strong password. The key file is deleted automatically.
 6. **Health check** opens: everything should be green.

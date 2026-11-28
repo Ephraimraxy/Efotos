@@ -121,3 +121,4 @@ cssgroup-admin.zip
 # keep the CSS Group admin panel public/ folder tracked
 !cssgroup-admin/public/
 !cssgroup-admin/public/**
+cssgroup-install.zip

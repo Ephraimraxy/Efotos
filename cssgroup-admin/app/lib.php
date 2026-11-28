@@ -36,7 +36,7 @@ function start_session(): void {
     session_name('cssadm');
     ini_set('session.use_strict_mode', '1'); ini_set('session.use_only_cookies', '1');
     session_set_cookie_params(['lifetime' => 0, 'path' => '/', 'secure' => is_https(), 'httponly' => true, 'samesite' => 'Strict']);
-    $dir = DATA_DIR . '/sessions'; if (!is_dir($dir)) @mkdir($dir, 0750, true); if (is_dir($dir) && is_writable($dir)) session_save_path($dir);
+    $dir = DATA_DIR . '/sessions'; if (!is_dir($dir)) @mkdir($dir, 0750, true); if (is_dir($dir) && !is_executable($dir)) @chmod($dir, 0700); if (is_dir($dir) && is_writable($dir) && is_executable($dir)) session_save_path($dir);
     session_start();
     if (isset($_SESSION['last']) && time() - $_SESSION['last'] > (int)cfg('idle_minutes', 60) * 60) { $_SESSION = []; }
     $_SESSION['last'] = time();

@@ -32,7 +32,8 @@ if [ -f cssgroup-admin/app/config.php ] && ! grep -q "__PREVIEW_TOKEN__" cssgrou
 else
   unzip -oq "$ZD/cssgroup-admin.zip" -d cssgroup-admin && ok "admin extracted to ~/cssgroup-admin"
 fi
-chmod 700 cssgroup-admin/data; chmod 600 cssgroup-admin/data/* 2>/dev/null
+find cssgroup-admin/data -type d -exec chmod 700 {} \; 2>/dev/null
+find cssgroup-admin/data -type f ! -name .htaccess -exec chmod 600 {} \; 2>/dev/null
 # upload limits for photos/videos (works on LiteSpeed/lsphp; MultiPHP INI Editor can also set these)
 cat > cssgroup-admin/public/.user.ini <<'I'
 upload_max_filesize = 128M

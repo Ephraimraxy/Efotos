@@ -4,7 +4,8 @@ Address: **https://admin.cssgroup.com.ng** (a separate sign-in page for manageme
 ## What management can do from it
 | Screen | What it does | Who |
 |---|---|---|
-| **Photos** | Replace any of the 59 photos on the website (hero, welcome section, service cards and pages, Chairman portrait, both news galleries…). Upload several to a library and reuse them. Photos are resized/optimised automatically; "Restore original" brings the first one back. | owner, editor |
+| **News** | Write, edit, publish/unpublish and delete articles: headline, date, short summary, article text (blank line = paragraph, `## ` = sub-heading), cover photo, a photo gallery (many at once, reorder, remove, pick cover), optional video (upload or YouTube/Vimeo). The News page lists all published articles and the **home page shows the latest 3**. Each article gets its own address (`article.html?a=…`). Drafts stay hidden. | owner, editor |
+| **Photos** | Replace the other photos on the website (hero, welcome section, service cards and pages, Chairman portrait, both news galleries…). Upload several to a library and reuse them. Photos are resized/optimised automatically; "Restore original" brings the first one back. | owner, editor |
 | **Videos** | Replace the ISAC Resort video: upload an MP4/WebM or paste a YouTube/Vimeo link. | owner, editor |
 | **Page texts** | Edit 21 main wordings: top bar, hero tagline and paragraph, welcome text, vision/mission, Chairman quote/name/title, the 6 service descriptions, careers text, call-back banner, footer text. | owner, editor |
 | **Contact details** | Phone, email, opening hours, both offices. Changing them once updates header, footer, contact page and every page. Also the **announcement banner** (coloured strip on every page). | owner, editor |
@@ -15,7 +16,7 @@ Address: **https://admin.cssgroup.com.ng** (a separate sign-in page for manageme
 | **Health check** | Green/red checks that everything is installed correctly. | everyone |
 | **My account** | Change password; turn on two-step sign-in (Google/Microsoft Authenticator). | everyone |
 
-Not included (needs a developer / phase 2): adding brand-new news articles or pages, editing wording other than the 21 blocks above, cropping photos, scheduling maintenance in advance.
+Not included (phase 2): adding brand-new pages, editing wording other than the 21 blocks above, cropping photos, scheduling articles or maintenance in advance.
 
 ## One-time installation (about 20 minutes)
 **You need:** `cssgroup-admin.zip` and the updated `css-group-site.zip` (both delivered with this guide).

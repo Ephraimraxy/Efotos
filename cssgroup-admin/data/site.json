@@ -1,4 +1,56 @@
 {
+  "news": [
+    {
+      "id": "a1b2c3d4e5",
+      "slug": "bayelsa-state-government-invests-in-its-youths-for-food-sustainability",
+      "title": "Bayelsa State Government Invests in its Youths for Food Sustainability",
+      "date": "2025-01-03",
+      "summary": "",
+      "body": "",
+      "status": "published",
+      "created": "2025-01-03T00:00:00+01:00",
+      "cover": "images/bay1.jpg",
+      "gallery": [
+        "images/bay1.jpg",
+        "images/bay2.jpg",
+        "images/bay3.jpg",
+        "images/bay4.jpg",
+        "images/bay5.jpg",
+        "images/bay6.jpg",
+        "images/bay7.jpg",
+        "images/bay8.jpg",
+        "images/bay9.jpg",
+        "images/bay10.jpg",
+        "images/bay11.jpg",
+        "images/bay12.jpg"
+      ]
+    },
+    {
+      "id": "f6e7d8c9b0",
+      "slug": "ebonyi-state-government-equips-youths-with-agricultural-entrepreneurial-skills",
+      "title": "Ebonyi State Government Equips Youths with Agricultural Entrepreneurial Skills at CSS Farms, Nasarawa State",
+      "date": "2025-01-02",
+      "summary": "",
+      "body": "",
+      "status": "published",
+      "created": "2025-01-02T00:00:00+01:00",
+      "cover": "images/ebo1.jpg",
+      "gallery": [
+        "images/ebo1.jpg",
+        "images/ebo2.jpg",
+        "images/ebo3.jpg",
+        "images/ebo4.jpg",
+        "images/ebo5.jpg",
+        "images/ebo6.jpg",
+        "images/ebo7.jpg",
+        "images/ebo8.jpg",
+        "images/ebo9.jpg",
+        "images/ebo10.jpg",
+        "images/ebo11.jpg",
+        "images/ebo12.jpg"
+      ]
+    }
+  ],
   "company": {
     "name": "CSS Group of Companies"
   },
@@ -240,260 +292,68 @@
       "alt": "Event photo 2",
       "pos": "center"
     },
-    "bay1": {
-      "label": "Bayelsa gallery 1",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay1.jpg",
-      "original": "images/bay1.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay2": {
-      "label": "Bayelsa gallery 2",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay2.jpg",
-      "original": "images/bay2.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay3": {
-      "label": "Bayelsa gallery 3",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay3.jpg",
-      "original": "images/bay3.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay4": {
-      "label": "Bayelsa gallery 4",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay4.jpg",
-      "original": "images/bay4.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay5": {
-      "label": "Bayelsa gallery 5",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay5.jpg",
-      "original": "images/bay5.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay6": {
-      "label": "Bayelsa gallery 6",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay6.jpg",
-      "original": "images/bay6.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay7": {
-      "label": "Bayelsa gallery 7",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay7.jpg",
-      "original": "images/bay7.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay8": {
-      "label": "Bayelsa gallery 8",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay8.jpg",
-      "original": "images/bay8.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay9": {
-      "label": "Bayelsa gallery 9",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay9.jpg",
-      "original": "images/bay9.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay10": {
-      "label": "Bayelsa gallery 10",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay10.jpg",
-      "original": "images/bay10.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay11": {
-      "label": "Bayelsa gallery 11",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay11.jpg",
-      "original": "images/bay11.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "bay12": {
-      "label": "Bayelsa gallery 12",
-      "group": "News – Bayelsa gallery",
-      "src": "images/bay12.jpg",
-      "original": "images/bay12.jpg",
-      "alt": "News – Bayelsa gallery photo",
-      "pos": "center"
-    },
-    "ebo1": {
-      "label": "Ebonyi gallery 1",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo1.jpg",
-      "original": "images/ebo1.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo2": {
-      "label": "Ebonyi gallery 2",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo2.jpg",
-      "original": "images/ebo2.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo3": {
-      "label": "Ebonyi gallery 3",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo3.jpg",
-      "original": "images/ebo3.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo4": {
-      "label": "Ebonyi gallery 4",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo4.jpg",
-      "original": "images/ebo4.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo5": {
-      "label": "Ebonyi gallery 5",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo5.jpg",
-      "original": "images/ebo5.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo6": {
-      "label": "Ebonyi gallery 6",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo6.jpg",
-      "original": "images/ebo6.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo7": {
-      "label": "Ebonyi gallery 7",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo7.jpg",
-      "original": "images/ebo7.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo8": {
-      "label": "Ebonyi gallery 8",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo8.jpg",
-      "original": "images/ebo8.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo9": {
-      "label": "Ebonyi gallery 9",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo9.jpg",
-      "original": "images/ebo9.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo10": {
-      "label": "Ebonyi gallery 10",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo10.jpg",
-      "original": "images/ebo10.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo11": {
-      "label": "Ebonyi gallery 11",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo11.jpg",
-      "original": "images/ebo11.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
-    "ebo12": {
-      "label": "Ebonyi gallery 12",
-      "group": "News – Ebonyi gallery",
-      "src": "images/ebo12.jpg",
-      "original": "images/ebo12.jpg",
-      "alt": "News – Ebonyi gallery photo",
-      "pos": "center"
-    },
     "oct1": {
-      "label": "More from CSS Farms 1",
-      "group": "News – More from CSS Farms",
+      "label": "\"More from CSS Farms\" grid 1",
+      "group": "News page – \"More from CSS Farms\" grid",
       "src": "images/oct1.jpg",
       "original": "images/oct1.jpg",
-      "alt": "News – More from CSS Farms photo",
+      "alt": "News page – \"More from CSS Farms\" grid photo",
       "pos": "center"
     },
     "oct2": {
-      "label": "More from CSS Farms 2",
-      "group": "News – More from CSS Farms",
+      "label": "\"More from CSS Farms\" grid 2",
+      "group": "News page – \"More from CSS Farms\" grid",
       "src": "images/oct2.jpg",
       "original": "images/oct2.jpg",
-      "alt": "News – More from CSS Farms photo",
+      "alt": "News page – \"More from CSS Farms\" grid photo",
       "pos": "center"
     },
     "oct3": {
-      "label": "More from CSS Farms 3",
-      "group": "News – More from CSS Farms",
+      "label": "\"More from CSS Farms\" grid 3",
+      "group": "News page – \"More from CSS Farms\" grid",
       "src": "images/oct3.jpg",
       "original": "images/oct3.jpg",
-      "alt": "News – More from CSS Farms photo",
+      "alt": "News page – \"More from CSS Farms\" grid photo",
       "pos": "center"
     },
     "oct4": {
-      "label": "More from CSS Farms 4",
-      "group": "News – More from CSS Farms",
+      "label": "\"More from CSS Farms\" grid 4",
+      "group": "News page – \"More from CSS Farms\" grid",
       "src": "images/oct4.jpg",
       "original": "images/oct4.jpg",
-      "alt": "News – More from CSS Farms photo",
+      "alt": "News page – \"More from CSS Farms\" grid photo",
       "pos": "center"
     },
     "oct5": {
-      "label": "More from CSS Farms 5",
-      "group": "News – More from CSS Farms",
+      "label": "\"More from CSS Farms\" grid 5",
+      "group": "News page – \"More from CSS Farms\" grid",
       "src": "images/oct5.jpg",
       "original": "images/oct5.jpg",
-      "alt": "News – More from CSS Farms photo",
+      "alt": "News page – \"More from CSS Farms\" grid photo",
       "pos": "center"
     },
     "oct6": {
-      "label": "More from CSS Farms 6",
-      "group": "News – More from CSS Farms",
+      "label": "\"More from CSS Farms\" grid 6",
+      "group": "News page – \"More from CSS Farms\" grid",
       "src": "images/oct6.jpg",
       "original": "images/oct6.jpg",
-      "alt": "News – More from CSS Farms photo",
+      "alt": "News page – \"More from CSS Farms\" grid photo",
       "pos": "center"
     },
     "oct7": {
-      "label": "More from CSS Farms 7",
-      "group": "News – More from CSS Farms",
+      "label": "\"More from CSS Farms\" grid 7",
+      "group": "News page – \"More from CSS Farms\" grid",
       "src": "images/oct7.jpg",
       "original": "images/oct7.jpg",
-      "alt": "News – More from CSS Farms photo",
+      "alt": "News page – \"More from CSS Farms\" grid photo",
       "pos": "center"
     },
     "oct8": {
-      "label": "More from CSS Farms 8",
-      "group": "News – More from CSS Farms",
+      "label": "\"More from CSS Farms\" grid 8",
+      "group": "News page – \"More from CSS Farms\" grid",
       "src": "images/oct8.jpg",
       "original": "images/oct8.jpg",
-      "alt": "News – More from CSS Farms photo",
+      "alt": "News page – \"More from CSS Farms\" grid photo",
       "pos": "center"
     }
   },

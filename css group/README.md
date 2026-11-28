@@ -2,7 +2,7 @@
 
 CSS Group of Companies – Agrigo-style design with the real CSS Group content. cPanel: static + forms.php.
 
-Pages: `index.html`, `about.html`, `services.html`, `agriculture.html`, `construction.html`, `energy.html`, `aviation.html`, `real-estate.html`, `ict.html`, `news.html`, `news-bayelsa.html`, `news-ebonyi.html`, `careers.html`, `contact.html` · `admin.html` (form inbox)
+Pages: `index.html`, `about.html`, `services.html`, `agriculture.html`, `construction.html`, `energy.html`, `aviation.html`, `real-estate.html`, `ict.html`, `news.html`, `article.html`, `careers.html`, `contact.html` · `admin.html` (form inbox)
 
 ## Run
 ```bash

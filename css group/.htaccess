@@ -8,7 +8,7 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^(www\.)?cssgroup\.com\.ng$ [NC]
 RewriteCond %{DOCUMENT_ROOT}/maintenance.flag -f
 RewriteCond %{HTTP_COOKIE} !css_preview=__PREVIEW_TOKEN__
-RewriteCond %{REQUEST_URI} !^/(maintenance\.html|images/css-logo\.png)$
+RewriteCond %{REQUEST_URI} !^/(maintenance\.html|images/css-mark\.png)$
 RewriteRule ^ - [R=503,L]
 ErrorDocument 503 /maintenance.html
 
@@ -31,8 +31,8 @@ RewriteRule ^service/ict/?$ /ict.html [R=301,L]
 RewriteRule ^blog/?$ /news.html [R=301,L]
 RewriteRule ^css-group-news/?$ /news.html [R=301,L]
 RewriteRule ^category/css-group-news/?$ /news.html [R=301,L]
-RewriteRule ^2025/01/03/bayelsa-state-government-invests-in-its-youths-for-food-sustainability/?$ /news-bayelsa.html [R=301,L]
-RewriteRule ^2025/01/02/ebonyi-state-government-equips-youths-with-agricultural-entrepreneurial-skills-at-css-farms-nasarawa-state/?$ /news-ebonyi.html [R=301,L]
+RewriteRule ^2025/01/03/bayelsa-state-government-invests-in-its-youths-for-food-sustainability/?$ /article.html?a=bayelsa-state-government-invests-in-its-youths-for-food-sustainability [R=301,L]
+RewriteRule ^2025/01/02/ebonyi-state-government-equips-youths-with-agricultural-entrepreneurial-skills-at-css-farms-nasarawa-state/?$ /article.html?a=ebonyi-state-government-equips-youths-with-agricultural-entrepreneurial-skills [R=301,L]
 RewriteRule ^contact-us/?$ /contact.html [R=301,L]
 RewriteRule ^company-overview/careers/?$ /careers.html [R=301,L]
 RewriteRule ^job-listing-grid/?$ /careers.html [R=301,L]

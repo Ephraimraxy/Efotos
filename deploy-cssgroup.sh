@@ -43,9 +43,23 @@ ok "upload limits file written"
 
 echo "5/6 Installing the website switch and the admin address"
 php cssgroup-admin/app/install_switch.php && ok "switch rules installed in public_html/.htaccess" || bad "switch install failed (see message above)"
+ADM_URL=admin.cssgroup.com.ng
+DR=""
 if command -v uapi >/dev/null; then
-  R=$(uapi --output=json SubDomain addsubdomain domain=admin rootdomain=cssgroup.com.ng dir=cssgroup-admin/public 2>&1)
-  echo "$R" | grep -q '"status":1' && ok "admin.cssgroup.com.ng created (document root cssgroup-admin/public)" || { echo "$R" | grep -qi "already\|exist" && ok "admin.cssgroup.com.ng already exists" || echo "  [INFO] create admin.cssgroup.com.ng in cPanel > Domains (untick Share document root; Document Root = cssgroup-admin/public) if you have not yet"; }
+  DR=$(uapi --output=json DomainInfo single_domain_data domain=$ADM_URL 2>/dev/null | grep -o '"documentroot":"[^"]*"' | head -1 | sed 's/.*:"//; s/"$//; s#\\/#/#g')
+  if [ -z "$DR" ]; then
+    R=$(uapi --output=json SubDomain addsubdomain domain=admin rootdomain=cssgroup.com.ng dir=cssgroup-admin/public 2>&1)
+    echo "$R" | grep -q '"status":1' && { ok "admin.cssgroup.com.ng created (document root cssgroup-admin/public)"; DR="$HOME/cssgroup-admin/public"; } || echo "  [INFO] create admin.cssgroup.com.ng in cPanel > Domains first (see ADMIN-SETUP.md step 1), then run this script again"
+  fi
+fi
+if [ -n "$DR" ]; then
+  echo "  admin address folder: $DR"
+  case "$DR" in
+    "$HOME/cssgroup-admin/public") ok "document root is cssgroup-admin/public - nothing more to do" ;;
+    "$HOME/public_html/"*|"$HOME/"*)
+      mkdir -p "$DR" && cp -a cssgroup-admin/public/. "$DR/" && ok "admin web files copied to $DR (the admin's code and data stay private in ~/cssgroup-admin)" || bad "could not copy the admin web files to $DR" ;;
+    *) bad "unexpected document root $DR" ;;
+  esac
 fi
 
 echo "6/6 Checks"

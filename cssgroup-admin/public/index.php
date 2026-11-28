@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
-require dirname(__DIR__) . '/app/lib.php';
+// The admin code (app/, data/) lives OUTSIDE the web folders: next to public/ (docroot cssgroup-admin/public) or in ~/cssgroup-admin when this folder is the domain's own folder under public_html.
+$__app = is_file(dirname(__DIR__) . '/app/lib.php') ? dirname(__DIR__) . '/app' : dirname(__DIR__, 2) . '/cssgroup-admin/app';
+require $__app . '/lib.php';
 
 if (cfg('force_https', true) && !is_https() && php_sapi_name() !== 'cli-server') { header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], true, 301); exit; }
 header('X-Frame-Options: DENY'); header('X-Content-Type-Options: nosniff'); header('Referrer-Policy: same-origin');

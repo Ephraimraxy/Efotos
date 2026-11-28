@@ -1,6 +1,9 @@
 Options -Indexes
 DirectoryIndex index.php
 RewriteEngine On
+# Only through admin.cssgroup.com.ng (not through the main domain's /admin.cssgroup.com.ng/ path)
+RewriteCond %{HTTP_HOST} !^admin\.cssgroup\.com\.ng$ [NC]
+RewriteRule ^ - [F]
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

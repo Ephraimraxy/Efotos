@@ -66,6 +66,6 @@
   /* tap on a flip card on touch screens: first tap flips, second opens */
   document.addEventListener('click', function (e) {
     if (fine) return; var c = e.target.closest && e.target.closest('.sc'); if (!c) return;
-    if (!c.classList.contains('flipped')) { e.preventDefault(); $$('.sc.flipped').forEach(function (x) { x.classList.remove('flipped'); }); c.classList.add('flipped'); }
-  });
+    if (!c.classList.contains('flipped')) { e.preventDefault(); e.stopPropagation(); $$('.sc.flipped').forEach(function (x) { x.classList.remove('flipped'); }); c.classList.add('flipped'); }
+  }, true);
 })();

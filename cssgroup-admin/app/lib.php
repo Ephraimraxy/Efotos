@@ -99,6 +99,8 @@ function build_config_js(array $s): string {
     $out .= 'window.FX = ' . json_encode($s['fx'] ?? new stdClass, $flags) . ";\n";
     $out .= 'window.MEDIA = ' . json_encode($MEDIA ?: new stdClass, $flags) . ";\n";
     $out .= 'window.VIDEOS = ' . json_encode($VIDEOS ?: new stdClass, $flags) . ";\n";
+    $out .= 'window.SERVICES = ' . json_encode(services_public($s), $flags) . ";\n";
+    $out .= 'window.GALLERY = ' . json_encode(gallery_public($s), $flags) . ";\n";
     $out .= 'window.NEWS = ' . json_encode($NEWS, $flags) . ";\n";
     $out .= 'window.SITE_TEXT = ' . json_encode($TEXT ?: new stdClass, $flags) . ";\n";
     $out .= <<<'JS'
@@ -119,6 +121,59 @@ function build_config_js(array $s): string {
   function sched() { if (!busy) { busy = true; requestAnimationFrame(apply); } }
   document.addEventListener('DOMContentLoaded', sched);
   new MutationObserver(sched).observe(document.documentElement, { childList: true, subtree: true });
+})();
+
+/* services: each service card / page photo can hold several photos that change by themselves */
+(function () {
+  var busy = false;
+  function el(tag, cls) { var e = document.createElement(tag); if (cls) e.className = cls; return e; }
+  function build(box, list, secs, idx) {
+    box.textContent = ''; var items = [], cur = 0, dots = el('div', 'gd gd-s');
+    list.forEach(function (src, i) { var p = el('div', 'gs-i' + (i === 0 ? ' on' : '')); p.style.setProperty('--img', 'url("' + String(src).replace(/"/g, '%22') + '")'); box.appendChild(p); items.push(p); var d = el('span', 'gdot' + (i === 0 ? ' on' : '')); dots.appendChild(d); });
+    box.classList.add('has-s'); if (items.length < 2) return; box.appendChild(dots);
+    function go(i) { items[cur].classList.remove('on'); dots.children[cur].classList.remove('on'); cur = (i + items.length) % items.length; items[cur].classList.add('on'); dots.children[cur].classList.add('on'); }
+    if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    setTimeout(function () { var t = setInterval(function () { if (!box.isConnected) { clearInterval(t); return; } go(cur + 1); }, secs * 1000); }, 400 + idx * 700);
+  }
+  function render() {
+    busy = false; var S = window.SERVICES || { items: {} };
+    document.querySelectorAll('[data-svc]').forEach(function (b, i) {
+      var list = (S.items || {})[b.getAttribute('data-svc')] || [], key = JSON.stringify(list) + '|' + S.interval; if (!list.length || b.getAttribute('data-k') === key) return; b.setAttribute('data-k', key); build(b, list, Math.max(2, +S.interval || 4), i);
+    });
+  }
+  function sched() { if (!busy) { busy = true; requestAnimationFrame(render); } }
+  document.addEventListener('DOMContentLoaded', sched); new MutationObserver(sched).observe(document.documentElement, { childList: true, subtree: true });
+})();
+
+/* gallery: auto-rotating photo cards (edited in the admin panel > Gallery sliders) */
+(function () {
+  var busy = false, timers = [];
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function build(card, secs, idx) {
+    var wrap = el('div', 'pjc gcard'), stack = el('div', 'gs'), cap = el('div', 'cap'), t = el('span'), sub = el('small'), dots = el('div', 'gd'), cur = 0, slides = card.slides || [], items = [];
+    slides.forEach(function (s, i) { var p = el('div', 'ph gs-i' + (i === 0 ? ' on' : '')); p.style.setProperty('--img', 'url("' + String(s.src).replace(/"/g, '%22') + '")'); stack.appendChild(p); items.push(p); var d = el('button', 'gdot' + (i === 0 ? ' on' : '')); d.type = 'button'; d.setAttribute('aria-label', 'Photo ' + (i + 1)); d.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); go(i); reset(); }); dots.appendChild(d); });
+    cap.appendChild(t); cap.appendChild(sub); wrap.appendChild(stack); wrap.appendChild(cap);
+    function caption(i) { var s = slides[i] || {}; t.textContent = s.title || ''; sub.textContent = s.sub || ''; cap.style.visibility = (s.title || s.sub) ? 'visible' : 'hidden'; }
+    function go(i) { items[cur].classList.remove('on'); dots.children[cur].classList.remove('on'); cur = (i + items.length) % items.length; items[cur].classList.add('on'); dots.children[cur].classList.add('on'); caption(cur); }
+    var tm = null; function reset() { if (tm) clearInterval(tm); tm = null; if (items.length > 1 && !matchMedia('(prefers-reduced-motion:reduce)').matches) { tm = setInterval(function () { if (!wrap.isConnected) { clearInterval(tm); return; } if (!wrap.matches(':hover')) go(cur + 1); }, secs * 1000); timers.push(tm); } }
+    if (items.length > 1) {
+      var prev = el('button', 'gnav gprev', '‹'), next = el('button', 'gnav gnext', '›'); prev.type = next.type = 'button'; prev.setAttribute('aria-label', 'Previous photo'); next.setAttribute('aria-label', 'Next photo');
+      prev.addEventListener('click', function (e) { e.preventDefault(); go(cur - 1); reset(); }); next.addEventListener('click', function (e) { e.preventDefault(); go(cur + 1); reset(); });
+      wrap.appendChild(prev); wrap.appendChild(next); wrap.appendChild(dots);
+      var x0 = null; wrap.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true }); wrap.addEventListener('touchend', function (e) { if (x0 == null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); reset(); } x0 = null; });
+    }
+    caption(0); setTimeout(reset, idx * 900); return wrap;
+  }
+  function render() {
+    busy = false; var G = window.GALLERY || { cards: [] };
+    document.querySelectorAll('[data-gallery-title]').forEach(function (h) { if (G.title && h.textContent !== G.title) h.textContent = G.title; });
+    document.querySelectorAll('[data-gallery]').forEach(function (c) {
+      var key = JSON.stringify(G).length + '|' + G.interval; if (c.getAttribute('data-k') === key && c.childNodes.length) return; c.setAttribute('data-k', key); c.textContent = '';
+      (G.cards || []).forEach(function (card, i) { if (card.slides && card.slides.length) c.appendChild(build(card, Math.max(2, +G.interval || 5), i)); });
+    });
+  }
+  function sched() { if (!busy) { busy = true; requestAnimationFrame(render); } }
+  document.addEventListener('DOMContentLoaded', sched); new MutationObserver(sched).observe(document.documentElement, { childList: true, subtree: true });
 })();
 
 /* news: renders the latest-news cards, the news list and a single article from window.NEWS (edited in the admin panel) */
@@ -242,7 +297,7 @@ function uploaded_files(): array {
     foreach ($it as $f) { if (!$f->isFile()) continue; $n = $f->getFilename(); if ($n[0] === '.' || $n === 'index.html') continue; $rel = 'images/uploads/' . ltrim(substr($f->getPathname(), strlen($base)), '/'); $out[] = ['path' => $rel, 'size' => $f->getSize(), 'time' => $f->getMTime()]; }
     usort($out, fn($a, $b) => $b['time'] <=> $a['time']); return $out;
 }
-function used_paths(array $s): array { $u = []; foreach (($s['media'] ?? []) as $m) $u[$m['src']] = 1; foreach (($s['videos'] ?? []) as $v) $u[$v['src']] = 1; foreach (($s['news'] ?? []) as $a) { if (!empty($a['cover'])) $u[$a['cover']] = 1; foreach (($a['gallery'] ?? []) as $g) $u[$g] = 1; if (!empty($a['video'])) $u[$a['video']] = 1; } return $u; }
+function used_paths(array $s): array { $u = []; foreach (($s['media'] ?? []) as $m) $u[$m['src']] = 1; foreach (($s['videos'] ?? []) as $v) $u[$v['src']] = 1; foreach (($s['services']['items'] ?? []) as $sl) foreach ($sl as $x) $u[$x['src']] = 1; foreach (($s['gallery']['cards'] ?? []) as $c) foreach (($c['slides'] ?? []) as $x) $u[$x['src']] = 1; foreach (($s['news'] ?? []) as $a) { if (!empty($a['cover'])) $u[$a['cover']] = 1; foreach (($a['gallery'] ?? []) as $g) $u[$g] = 1; if (!empty($a['video'])) $u[$a['video']] = 1; } return $u; }
 
 /* ---------- form submissions ---------- */
 function submissions_file(): string { return site_root() . '/submissions/forms.jsonl'; }
@@ -274,3 +329,16 @@ function news_slug(string $title, array $s, ?string $keepId = null): string {
     $taken = fn($x) => (bool)array_filter($s['news'] ?? [], fn($a) => $a['slug'] === $x && $a['id'] !== $keepId);
     while ($taken($slug)) $slug = $b . '-' . $n++; return $slug;
 }
+
+
+/* ---------- gallery sliders ---------- */
+function gallery_public(array $s): array {
+    $g = $s['gallery'] ?? []; $cards = [];
+    foreach (($g['cards'] ?? []) as $c) { $sl = []; foreach (($c['slides'] ?? []) as $x) $sl[] = ['src' => $x['src'], 'title' => $x['title'] ?? '', 'sub' => $x['sub'] ?? '']; if ($sl) $cards[] = ['slides' => $sl]; }
+    return ['title' => $g['title'] ?? '', 'interval' => (int)($g['interval'] ?? 5), 'cards' => $cards];
+}
+
+
+/* ---------- service photo sliders ---------- */
+function service_defs(): array { return ['agriculture' => 'Agriculture', 'construction' => 'Construction', 'energy' => 'Energy', 'aviation' => 'Aviation', 'real-estate' => 'Real Estate', 'ict' => 'ICT']; }
+function services_public(array $s): array { $v = $s['services'] ?? []; $items = []; foreach (service_defs() as $k => $n) { $l = []; foreach (($v['items'][$k] ?? []) as $x) $l[] = $x['src']; if ($l) $items[$k] = $l; } return ['interval' => (int)($v['interval'] ?? 4), 'items' => (object)$items]; }

@@ -1,4 +1,125 @@
 {
+  "services": {
+    "interval": 4,
+    "items": {
+      "agriculture": [
+        {
+          "src": "images/sector-service-farm.jpg"
+        },
+        {
+          "src": "images/train2.jpg"
+        },
+        {
+          "src": "images/train1.jpg"
+        }
+      ],
+      "construction": [
+        {
+          "src": "images/sector-construction.jpg"
+        }
+      ],
+      "energy": [
+        {
+          "src": "images/sector-energy.jpg"
+        }
+      ],
+      "aviation": [
+        {
+          "src": "images/sector-airplane2.jpg"
+        }
+      ],
+      "real-estate": [
+        {
+          "src": "images/sector-real-estate.jpg"
+        },
+        {
+          "src": "images/resort.jpg"
+        },
+        {
+          "src": "images/rest.jpg"
+        },
+        {
+          "src": "images/room1.jpg"
+        }
+      ],
+      "ict": [
+        {
+          "src": "images/sector-ict.jpg"
+        }
+      ]
+    }
+  },
+  "gallery": {
+    "title": "From CSS Farms and ISAC Resort",
+    "interval": 5,
+    "cards": [
+      {
+        "id": "g1a1b2c3",
+        "slides": [
+          {
+            "src": "images/train2.jpg",
+            "title": "Youth agricultural training",
+            "sub": "CSS Farms, Nasarawa State"
+          },
+          {
+            "src": "images/train1.jpg",
+            "title": "Youth agricultural training",
+            "sub": "CSS Farms, Nasarawa State"
+          },
+          {
+            "src": "images/ev2.jpg",
+            "title": "Youth agricultural training",
+            "sub": "CSS Farms, Nasarawa State"
+          }
+        ]
+      },
+      {
+        "id": "g2d4e5f6",
+        "slides": [
+          {
+            "src": "images/lounge.jpg",
+            "title": "ISAC Resort",
+            "sub": "Hospitality and leisure"
+          },
+          {
+            "src": "images/resort.jpg",
+            "title": "ISAC Resort",
+            "sub": "Hospitality and leisure"
+          },
+          {
+            "src": "images/rest.jpg",
+            "title": "ISAC Resort",
+            "sub": "Restaurant"
+          },
+          {
+            "src": "images/room1.jpg",
+            "title": "ISAC Resort",
+            "sub": "Rooms"
+          }
+        ]
+      },
+      {
+        "id": "g3a7b8c9",
+        "slides": [
+          {
+            "src": "images/ev1.jpg",
+            "title": "Training programmes",
+            "sub": "State government partnerships"
+          },
+          {
+            "src": "images/about2.jpg",
+            "title": "Training programmes",
+            "sub": "State government partnerships"
+          },
+          {
+            "src": "images/ev2.jpg",
+            "title": "Training programmes",
+            "sub": "State government partnerships"
+          }
+        ]
+      }
+    ]
+  },
   "news": [
     {
       "id": "a1b2c3d4e5",

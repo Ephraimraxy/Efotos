@@ -21,14 +21,14 @@ h1,h2,h3,.hero h1,.logo,.quote p,.stat b,.nums b,.pr b,.vc b,.cbk h2{font-family
 .hero::after{width:300px;height:300px;left:24%;bottom:-130px;background:radial-gradient(circle,rgba(245,197,24,.28),transparent 65%);animation:drift 11s ease-in-out infinite alternate-reverse}
 @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,40px) scale(1.2)}}
 .hero .wrap{grid-template-columns:minmax(0,.56fr) minmax(0,1.44fr);gap:10px;min-height:560px;max-width:1360px;padding-right:0}
-.hero .t{padding:56px 10px 56px 4px;transform:translate3d(calc(var(--mx,0)*-14px),calc(var(--my,0)*-10px),0);position:relative;z-index:3}
+.hero .t{container-type:inline-size;padding:56px 10px 56px 4px;transform:translate3d(calc(var(--mx,0)*-14px),calc(var(--my,0)*-10px),0);position:relative;z-index:3}
 .hero .ph{height:540px;border-radius:44px 0 0 44px;margin-right:calc(50% - 50vw);box-shadow:-30px 30px 70px rgba(0,40,10,.38);transform:translate3d(calc(var(--mx,0)*18px),calc(var(--my,0)*12px),0);transition:transform .25s ease-out;position:relative}
 .hero .ph::after{animation:kb 18s ease-in-out infinite alternate;transition:none}@keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.14) translate(-2%,-1.5%)}}
 .hero .ph::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(260px circle at var(--px,70%) var(--py,40%),rgba(255,255,255,.22),transparent 70%);pointer-events:none}
 .hero small{display:inline-flex;align-items:center;gap:10px;font:700 10px 'Rethink Sans';letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
 .hero small::before{content:"";width:34px;height:2px;background:#f5c518;animation:grow 1.2s .3s both cubic-bezier(.2,.8,.2,1);transform-origin:left}@keyframes grow{from{transform:scaleX(0)}}
-.hero h1{font-size:clamp(30px,3.05vw,46px);line-height:1.02;font-weight:800;letter-spacing:-.02em;margin:0 0 18px;max-width:none}
-.hero h1 .ln{display:block;overflow:hidden;padding:.04em 0}.hero h1 .ln>span{display:block;animation:rise 1s cubic-bezier(.2,.9,.2,1) both}.hero h1 .ln:nth-child(2)>span{animation-delay:.18s}
+.hero h1{font-size:clamp(26px,3.05vw,46px);font-size:min(12.4cqw,58px);line-height:1.04;font-weight:800;letter-spacing:-.02em;margin:0 0 18px;max-width:none}
+.hero h1 .ln{display:block;overflow:hidden;padding:.04em .2em .04em 0;margin-right:-.2em}.hero h1 .ln>span{display:block;animation:rise 1s cubic-bezier(.2,.9,.2,1) both}.hero h1 .ln:nth-child(2)>span{animation-delay:.18s}
 @keyframes rise{from{transform:translateY(110%) rotate(4deg);opacity:0}to{transform:none;opacity:1}}
 .hero h1 .g>span{background:linear-gradient(100deg,#fff 0%,#fff 35%,#ffe27a 50%,#fff 65%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise 1s .18s cubic-bezier(.2,.9,.2,1) both,shimmer 5s 1.4s linear infinite}
 @keyframes shimmer{to{background-position:-150% 0}}
@@ -64,5 +64,5 @@ h1,h2,h3,.hero h1,.logo,.quote p,.stat b,.nums b,.pr b,.vc b,.cbk h2{font-family
 .feat .ph{animation:float 7s ease-in-out infinite}.feat .vidc{transition:transform .4s}.feat .vidc:hover{transform:translateX(8px)}.vidc .play{animation:pulse2 2s infinite}@keyframes pulse2{50%{transform:scale(1.3)}}
 .ft a{transition:transform .25s,color .25s}.ft li a:hover{transform:translateX(6px);color:#f5c518;display:inline-block}.ft .logo img{transition:transform .5s cubic-bezier(.3,1.6,.4,1)}.ft .logo:hover img{transform:rotate(-4deg) scale(1.08)}
 .others a{transition:transform .35s cubic-bezier(.3,1.7,.4,1),background .25s,color .25s}.others a:hover{transform:translateY(-6px) rotate(-2deg)}
-@media(max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr);padding-right:20px}.hero .ph{height:320px;border-radius:26px;margin-right:0;transform:none}.hero .t{transform:none;padding:40px 0 10px}.sc.flipc{height:280px}.an-side,.an-side:nth-child(even){transform:translateY(40px)}}
+@media(max-width:900px){.hero h1{font-size:min(15cqw,54px)}.hero .wrap{grid-template-columns:minmax(0,1fr);padding-right:20px}.hero .ph{height:320px;border-radius:26px;margin-right:0;transform:none}.hero .t{transform:none;padding:40px 0 10px}.sc.flipc{height:280px}.an-side,.an-side:nth-child(even){transform:translateY(40px)}}
 @media(prefers-reduced-motion:reduce){.an{opacity:1!important;transform:none!important}.hero h1 .ln>span,.hero .t p,.hero .t .btn{animation:none!important}.hero .ph::after,.hero::before,.hero::after,.hero .rate,.feat .ph,.quote .qp .ph,.flipc .fb i{animation:none!important}}
